@@ -1,0 +1,114 @@
+@charset "UTF-8";
+:root {
+  --duration: 90s;
+}
+html {
+    font-family: sans-serif;
+    color: lightgray;
+}
+
+body {
+  background: #080808;
+  overflow: hidden;
+}
+
+.wrapper-images {
+  display: flex;
+  flex-direction: column;
+  height: 150vh;
+  justify-content: center;
+  left: 50%;
+  position: absolute;
+  top: 50%;
+  opacity: 0.8;
+  transform: translate3d(-50%, -50%, 0) perspective(800px) rotatey(-10deg) rotate(10deg);
+}
+
+.images-line {
+  -webkit-animation: runner var(--duration) linear infinite;
+          animation: runner var(--duration) linear infinite;
+  display: flex;
+  transform: translateX(23%);
+}
+
+.images-line .line {
+  background-position: 50% 50%;
+  background-size: cover;
+  flex: none;
+  height: 20vh;
+  margin: clamp(15px, 3vw, 30px);
+  width: 20vh;
+  position: relative;
+  transition: ease-in-out all 0.3s;
+}
+.images-line .line .img {
+  position: absolute;
+  z-index: 2;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background-position: 50% 50%;
+  background-size: cover;
+  transition: ease-in-out all 0.3s;
+}
+
+.images-line .line:after {
+  content: "";
+  background: inherit;
+  display: block;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  top: 3vh;
+  position: absolute;
+  background-size: cover;
+  z-index: -1;
+  transition: ease-in-out all 0.3s;
+  filter: blur(25px) opacity(0.8);
+}
+
+.box {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 275px;
+    height: 470px;
+    transform: translate(-50%, -50%);
+    background: rgba(0, 0, 0, 0.75);
+    backdrop-filter: blur( 20px );
+    -webkit-backdrop-filter: blur( 20px );
+    border-radius: 20px;
+    z-index: 999;
+    padding-left: 0.625em;
+    padding-right: 0.625em;
+}
+
+.header {
+    position:absolute;
+    inset:15px;
+    filter:grayscale(100%);
+    -webkit-filter:grayscale(100%);
+    text-align: center;
+    font-size: 1.2em;
+}
+
+hr {
+    width:100%;
+    height:1px;
+    border:none;
+    border-bottom:1px solid rgba(111, 111, 111, 0.60);
+    margin-top:43px;
+}
+
+@-webkit-keyframes runner {
+  to {
+    transform: translateX(-10.4%);
+  }
+}
+
+@keyframes runner {
+  to {
+    transform: translateX(-10.4%);
+  }
+}
