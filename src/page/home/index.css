@@ -11,7 +11,7 @@
 .nav {
     background: black;
     padding: 2rem;
-    width: 12%;
+    min-width: 12%;
 }
 
 nav > ul { 
@@ -23,14 +23,30 @@ a {
     margin-bottom: 1rem;
 }
 
+.nav-button {
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+    align-items: center;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+}
+
 li {
-    color: gray;
+    color: white;
+    opacity: 75%;
     transition-duration: 100ms;
 }
 
 li:hover {
-    color: white;
-    text-decoration: none;
+    opacity: 100%;
+}
+
+.divider {
+    border-bottom: 1px solid gray;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    opacity: 50%;
 }
 
 main {
@@ -40,6 +56,13 @@ main {
 .title {
     font-size: 1.5rem;
     margin-bottom: 1rem;
+}
+
+.songs-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 1rem;
 }
 
 .song-card {

@@ -10,23 +10,48 @@
 </head>
 <body class="home-body">
     <nav class="nav">
-        <ul>
+        <h1 class="title">\(OwO)/</h1>
+        <ul>                
             <a href="/src/page/home/index.html">
-                <li>
-                    Home
+                <li class="nav-button">
+                    <lord-icon
+                        src="https://cdn.lordicon.com/osuxyevn.json"
+                        trigger="hover"
+                        colors="primary:#ffffff"
+                        style="width:2rem;height:2rem">
+                    </lord-icon>
+                    <p>Home</p>
                 </li>
             </a>
             <a href="/src/page/home/index.html">
-                <li>
-                    Search
+                <li class="nav-button">
+                    <lord-icon
+                        src="https://cdn.lordicon.com/xfftupfv.json"
+                        trigger="hover"
+                        colors="primary:#ffffff"
+                        style="width:2rem;height:2rem">
+                    </lord-icon>
+                    <p>Search</p>
+                </li>
+            </a>
+            <a href="/src/page/home/index.html">
+                <li class="nav-button">
+                    <lord-icon
+                        src="https://cdn.lordicon.com/fpmskzsv.json"
+                        trigger="hover"
+                        colors="primary:#ffffff"
+                        style="width:2rem;height:2rem">
+                    </lord-icon>
+                    <p>Albums</p>
                 </li>
             </a>
         </ul>
+        <div class="divider"></div>
     </nav>
 
     <main>
         <h1 class="title">Songs</h1>
-        <div>
+        <div class="songs-container">
             <div 
                 class="song-card" 
                 onmouseenter="document.getElementById('play-button').style.opacity = '100%'; document.getElementById('play-button').style.transform = 'translateY(0)'" 
@@ -39,13 +64,33 @@
                 >
                 <div class="song-info">
                     <h2 class="song-title">Song Title</h2>
-                    <p class="song-artist">Artist Name</p>
+                    <p class="song-artist">Artist Name - Year - Genre</p>
                 </div>
                 <div id="play-button" class="play-button">
-                    <div class="triangle" />
+                    <div class="triangle"></div>
+                </div>
+            </div>
+
+            <div 
+                class="song-card" 
+                onmouseenter="document.getElementById('play-button2').style.opacity = '100%'; document.getElementById('play-button2').style.transform = 'translateY(0)'" 
+                onmouseleave="document.getElementById('play-button2').style.opacity = '0'; document.getElementById('play-button2').style.transform = 'translateY(0.5rem)'"
+            >
+                <img 
+                    src="https://picsum.photos/200" 
+                    alt="song image"
+                    class="song-image"
+                >
+                <div class="song-info">
+                    <h2 class="song-title">Song Title</h2>
+                    <p class="song-artist">Artist Name - Year - Genre</p>
+                </div>
+                <div id="play-button2" class="play-button">
+                    <div class="triangle"></div>
                 </div>
             </div>
         </div>
     </main>
+    <script src="https://cdn.lordicon.com/pzdvqjsp.js"></script>
 </body>
 </html>
