@@ -12,6 +12,10 @@
     background: black;
     padding: 2rem;
     min-width: 12%;
+    position: sticky;
+    left: 0;
+    bottom: 0;
+    z-index: 50;
 }
 
 nav > ul { 
@@ -121,4 +125,30 @@ main {
     border-bottom: 0.5rem solid transparent;
     border-left: 0.75rem solid var(--p-black);
     margin-left: 0.25rem;
+}
+
+@media screen and (max-width: 768px) {
+    .home-body {
+        flex-direction: column-reverse;
+    }
+    .nav-button {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+    .divider {
+        display: none;
+    }
+    .nav-container {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+    }
+    .app-title {
+        display: none;
+    }
+    .nav {
+        padding-top: 0.25rem;
+        padding-bottom: 0.25rem;
+    }
 }
