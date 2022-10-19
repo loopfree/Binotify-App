@@ -25,7 +25,27 @@
     </nav>
 
     <main>
-        <h1>Recently played</h1>
+        <h1 class="title">Songs</h1>
+        <div>
+            <div 
+                class="song-card" 
+                onmouseenter="document.getElementById('play-button').style.opacity = '100%'; document.getElementById('play-button').style.transform = 'translateY(0)'" 
+                onmouseleave="document.getElementById('play-button').style.opacity = '0'; document.getElementById('play-button').style.transform = 'translateY(0.5rem)'"
+            >
+                <img 
+                    src="https://picsum.photos/200" 
+                    alt="song image"
+                    class="song-image"
+                >
+                <div class="song-info">
+                    <h2 class="song-title">Song Title</h2>
+                    <p class="song-artist">Artist Name</p>
+                </div>
+                <div id="play-button" class="play-button">
+                    <div class="triangle" />
+                </div>
+            </div>
+        </div>
     </main>
 </body>
 </html>
