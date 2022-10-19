@@ -1,0 +1,33 @@
+@import url('../../style/global.css');
+
+.home-body {
+    background: linear-gradient(180deg, #242526, var(--p-black));
+    background-repeat: no-repeat;
+    min-height: 100vh;
+    display: flex;
+    color: white;
+}
+
+.nav {
+    background: var(--p-black);
+    padding: 2rem;
+}
+
+nav > ul { 
+    list-style-type: none;
+}
+
+a {
+    text-decoration: none;
+    margin-bottom: 1rem;
+}
+
+li {
+    color: grey;
+    transition-duration: 100ms;
+}
+
+li:hover {
+    color: white;
+    text-decoration: none;
+}
