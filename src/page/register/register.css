@@ -1,0 +1,233 @@
+@charset "UTF-8";
+
+@import url('../../style/global.css');
+
+:root {
+  --duration: 90s;
+}
+
+body {
+    overflow: hidden;
+    font-family: 'Gotham Regular', sans-serif;
+}
+
+/* Section 1 - Sliding Image */
+/* Section 1 - Sliding Image */
+/* Section 1 - Sliding Image */
+
+
+.wrapper-images {
+    display: flex;
+    flex-direction: column;
+    height: 150vh;
+    justify-content: center;
+    left: 50%;
+    position: absolute;
+    top: 50%;
+    opacity: 0.8;
+    transform: translate3d(-50%, -50%, 0) perspective(800px) rotatey(-10deg) rotate(10deg);
+    z-index: -999;
+}
+  
+.images-line {
+    -webkit-animation: runner var(--duration) linear infinite;
+            animation: runner var(--duration) linear infinite;
+    display: flex;
+    transform: translateX(13%);
+}
+  
+.images-line .line {
+    background-position: 50% 50%;
+    background-size: cover;
+    flex: none;
+    height: 20vh;
+    margin: clamp(15px, 3vw, 30px);
+    width: 20vh;
+    position: relative;
+    transition: ease-in-out all 0.3s;
+}
+.images-line .line .img {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background-position: 50% 50%;
+    background-size: cover;
+    transition: ease-in-out all 0.3s;
+}
+
+@-webkit-keyframes runner {
+    to {
+      transform: translateX(-10.4%);
+    }
+  }
+  
+@keyframes runner {
+    to {
+      transform: translateX(-10.4%);
+    }
+}
+
+/* Section 2 - Content */
+/* Section 2 - Content */
+/* Section 2 - Content */
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 40px;
+    flex-grow: 1;
+}
+
+.main-header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 140px;
+}
+
+.brand-logo {
+    display: flex;
+    align-items: center;
+    font-size: 1.25em;
+    color: inherit;
+    text-decoration: none;
+}
+
+.logo {
+    width: 60px;
+    height: 60px;
+}
+
+.brand-logo-name {
+    margin-left: 1rem;
+    font-weight: 600;
+}
+
+.main-nav ul{
+    display: flex;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.main-nav a{
+    color: inherit;
+    text-decoration: none;
+    padding: 1rem;
+    font-weight: 600;
+}
+
+.main-nav a:hover{
+    text-decoration: underline;
+    text-decoration-color: #1DB954;
+    text-decoration-thickness: 3px;
+}
+
+.join-main-section {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-grow: 1;
+    padding-top: 5%;
+}
+  
+.join-text {
+    font-size: 2.0em;
+    font-weight: bold;
+    margin: 0;
+}
+  
+.accent-text {
+    color: #1DB954;
+    font-size: 3.5em;
+}
+  
+.join-form {
+    background-color: rgba(36, 37, 38, 0.75);
+    backdrop-filter: blur( 20px );
+    -webkit-backdrop-filter: blur( 20px );
+    border-radius: 20px;
+    width: 50vw;
+    max-width: 50%;
+    padding: 2rem 4rem;
+    border-radius: 20px;
+}
+  
+.input-group {
+    margin-bottom: 2rem;
+    display: flex;
+    flex-direction: column;
+}
+  
+.input-group:last-child {
+    margin-bottom: 0;
+}
+  
+.input-group label {
+    font-weight: bold;
+    margin-bottom: .5rem;
+}
+  
+.input-group input {
+    outline: none;
+    background: none;
+    border: 1px solid gray;
+    font-size: 1em;
+    padding: .5em;
+    color: inherit;
+    border-radius: 5px;
+}
+  
+.input-group input:focus {
+    border-color: #fff;
+}
+  
+@media (max-width: 800px) {
+    .join-main-section {
+      flex-direction: column;
+      justify-content: center;
+    }
+  
+    .join-form {
+      width: 80vw;
+      max-width: inherit;
+      margin: 2rem 0;
+    }
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+body {
+    padding: 0;
+    margin: 0;
+    font-size: 1.2rem;
+    background: linear-gradient(180deg, #242526, var(--p-black));
+    background-repeat: no-repeat;
+    min-height: 100vh;
+    color: white;
+}
+
+.btn {
+    color: white;
+    background-color: #1DB954;
+    padding: .75rem 1.5rem;
+    border-radius: .5rem;
+    text-decoration: none;
+    font-size: .9rem;
+    outline: none;
+    border: none;
+    cursor: pointer;
+    font-weight: 600;
+}
+
+.btn:hover {
+    background-color: #1ED760;
+}
+
+.btn:focus {
+    background-color: #30bd61;
+}
