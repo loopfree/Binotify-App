@@ -4,23 +4,21 @@
 
 ## Daftar Requirement
 1. [Docker](https://www.docker.com/get-started)
-2. [PHP](https://www.php.net/)
 
 ## Cara Instalasi
-1. Download atau clone repo ini
-2. Lakukan setting pada file `php.ini-develop`
-   1. Ubah nama file `php.ini-develop` menjadi `php.ini`
-   2. Pada file `php.ini` Cari `;extension=pgsql` lalu hilangkan `;`
-   3. Pada file `php.ini` Cari `upload_max_filesize` lalu ganti nilainya menjadi 0. Dalam hal ini, pengaturan nilai menjadi 0 berarti mengganti nilai maksimum upload filesize menjadi takhingga
-   4. Pada file `php.ini` Cari `post_max_size` lalu ganti nilainya menjadi 0. Dalam hal ini, pengaturan nilai menjadi 0 berarti mengganti nilai maksimum post filesize menjadi takhingga
-3. Buatlah database
-4. Jalankan terminal pada folder src
-5. Eksekusi perintah berikut
+1. Download atau clone repository ini.
+2. Jalankan Docker Desktop.
+3. Jalankan command berikut di terminal repository ini.
     ```
-    php -S localhost:8080
+    docker compose build
     ```
 
 ## Cara Menjalankan Server
+1. Jalankan Docker Desktop.
+2. Jalankan command berikut di terminal repository ini.
+    ```
+    docker compose up
+    ```
 
 ## Screenshot Tampilan Aplikasi
 
