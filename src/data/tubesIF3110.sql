@@ -41,4 +41,5 @@ CREATE TABLE IF NOT EXISTS public."Song"
         ON DELETE NO ACTION
 );
 
+-- Initial query untuk akun admin
 INSERT INTO "User" VALUES (531, 'admin@mail.com', 'a', 'admin', true);
