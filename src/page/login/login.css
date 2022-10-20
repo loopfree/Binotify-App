@@ -140,8 +140,9 @@ body {
 }
   
 .accent-text {
-    color: #1DB954;
+    color: #2bd868;
     font-size: 3.5em;
+    -webkit-text-stroke: 1px #00000060;
 }
   
 .join-form {
