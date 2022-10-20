@@ -1,3 +1,47 @@
 <?php
 
+if($_SERVER['REQUEST_METHOD'] === "GET") {
+    header("Location: /index.php");
+}
+
+$json_content = file_get_contents("php://input");
+
+$decoded = json_decode($json_content, true);
+
+$username = $decoded["username"];
+$password = $decoded["password"];
+
+$query = "
+    SELECT 
+        user_id
+    FROM
+        \"User\"
+    WHERE
+        username = '$username'
+        AND
+        password = '$password';
+";
+
+$json = array();
+
+$conn = pg_connect("host=localhost port=5432 dbname=tubesIF3110 user=postgres password=admin");
+
+$result = pg_query($conn, $query);
+
+$row = pg_fetch_row($result);
+
+if($row === false) {
+    $json += ["success" => "false"];
+} else {
+    $json += ["success" => "true"];
+    /**
+     * $row[0] is user_id
+     */
+    $json += ["user-id" => $row[0]];
+}
+
+pg_close($conn);
+
+echo json_encode($json);
+
 ?>
