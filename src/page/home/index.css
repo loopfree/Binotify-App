@@ -29,16 +29,20 @@ a {
     align-items: center;
     padding-top: 0.5rem;
     padding-bottom: 0.5rem;
-}
-
-li {
     color: white;
     opacity: 75%;
     transition-duration: 100ms;
 }
 
-li:hover {
+.nav-button:hover {
     opacity: 100%;
+}
+
+.logout-button {
+    position: absolute;
+    bottom: 2rem;
+    left: 2rem;
+    color: var(--s-fuschia);
 }
 
 .divider {
@@ -129,6 +133,15 @@ main {
     .nav-button {
         flex-direction: column;
         gap: 0.5rem;
+        text-align: center;
+        align-items: space-between;
+        justify-content: space-between;
+    }
+    .nav-desc {
+        display: none;
+    }
+    .logout-button {
+        display: none;
     }
     .divider {
         display: none;
