@@ -23,7 +23,7 @@ const usernameValidate = debounce(() => {
         const unique = this.responseText;
 
         if(unique === "unique") {
-            usernameInput.style = "border: 4mm ridge #0F0";
+            usernameInput.style = "border: 1px ridge #0F0";
             usernameUnique = true;
         } else {
             usernameUnique = false;
@@ -46,7 +46,7 @@ const emailValidate = debounce(() => {
         const unique = this.responseText;
 
         if(unique === "unique") {
-            emailInput.style = "border: 4mm ridge #0F0";
+            emailInput.style = "border: 1px ridge #0F0";
             emailUnique = true;
         } else {
             emailUnique = false;
