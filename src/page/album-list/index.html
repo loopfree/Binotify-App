@@ -5,7 +5,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>\(OwO)/</title>
-    <link rel="stylesheet" href="index.css">
+    <link rel="icon" href="/img/icon.ico">
+    <link rel="stylesheet" href="album-list.css">
+    <script src="album-list.js" defer></script>
 </head>
 <body class="dark-bg home-body">
     <nav class="nav">
@@ -33,7 +35,7 @@
                     <p class="nav-desc">Search</p>
                 </li>
             </a>
-            <a href="/page/album-list">
+            <a href="/page/album-list/">
                 <li class="nav-button">
                     <lord-icon
                         src="https://cdn.lordicon.com/fpmskzsv.json"
@@ -58,46 +60,8 @@
     </nav>
 
     <main>
-        <h1 class="title">Songs</h1>
-        <div class="songs-container">
-            <div 
-                class="song-card" 
-                onmouseenter="document.getElementById('play-button').style.opacity = '100%'; document.getElementById('play-button').style.transform = 'translateY(0)'" 
-                onmouseleave="document.getElementById('play-button').style.opacity = '0'; document.getElementById('play-button').style.transform = 'translateY(0.5rem)'"
-            >
-                <img 
-                    src="https://picsum.photos/200" 
-                    alt="song image"
-                    class="song-image"
-                >
-                <div class="song-info">
-                    <h2 class="song-title">Song Title</h2>
-                    <p class="song-artist">Artist Name - Year - Genre</p>
-                </div>
-                <div id="play-button" class="play-button">
-                    <div class="triangle"></div>
-                </div>
-            </div>
-
-            <div 
-                class="song-card" 
-                onmouseenter="document.getElementById('play-button2').style.opacity = '100%'; document.getElementById('play-button2').style.transform = 'translateY(0)'" 
-                onmouseleave="document.getElementById('play-button2').style.opacity = '0'; document.getElementById('play-button2').style.transform = 'translateY(0.5rem)'"
-            >
-                <img 
-                    src="https://picsum.photos/200" 
-                    alt="song image"
-                    class="song-image"
-                >
-                <div class="song-info">
-                    <h2 class="song-title">Song Title</h2>
-                    <p class="song-artist">Artist Name - Year - Genre</p>
-                </div>
-                <div id="play-button2" class="play-button">
-                    <div class="triangle"></div>
-                </div>
-            </div>
-        </div>
+        <h1 class="title">Albums</h1>
+        <div id="album-container" class="album-container"></div>
     </main>
     <script src="https://cdn.lordicon.com/pzdvqjsp.js"></script>
 </body>
