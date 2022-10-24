@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>\(OwO)/</title>
+    <link rel="stylesheet" href="add_song.css">
+</head>
+<body class="body dark-bg">
+    <nav class="nav">
+        <h1 class="title app-title">\(OwO)/</h1>
+        <ul class="nav-container">                
+            <a href="/src/page/home/index.html">
+                <li class="nav-button">
+                    <lord-icon
+                        src="https://cdn.lordicon.com/osuxyevn.json"
+                        trigger="hover"
+                        colors="primary:#ffffff"
+                        style="width:2rem;height:2rem">
+                    </lord-icon>
+                    <p class="nav-desc">Home</p>
+                </li>
+            </a>
+            <a href="/src/page/home/index.html">
+                <li class="nav-button">
+                    <lord-icon
+                        src="https://cdn.lordicon.com/fpmskzsv.json"
+                        trigger="hover"
+                        colors="primary:#ffffff"
+                        style="width:2rem;height:2rem">
+                    </lord-icon>
+                    <p class="nav-desc">Albums</p>
+                </li>
+            </a>
+            <a href="/src/page/home/index.html">
+                <li class="nav-button">
+                    <lord-icon
+                        src="https://cdn.lordicon.com/ynwbvguu.json"
+                        trigger="hover"
+                        colors="primary:#ffffff"
+                        style="width:2rem;height:2rem">
+                    </lord-icon>
+                    <p class="nav-desc">Add Album</p>
+                </li>
+            </a>
+            <a href="/src/page/home/index.html">
+                <li class="nav-button">
+                    <lord-icon
+                        src="https://cdn.lordicon.com/wfadduyp.json"
+                        trigger="hover"
+                        colors="primary:#ffffff"
+                        style="width:2rem;height:2rem">
+                    </lord-icon>
+                    <p class="nav-desc">Add Song</p>
+                </li>
+            </a>
+            <a href="/src/page/home/index.html">
+                <li class="nav-button">
+                    <lord-icon
+                        src="https://cdn.lordicon.com/bhfjfgqz.json"
+                        trigger="hover"
+                        colors="primary:#ffffff"
+                        style="width:2rem;height:2rem">
+                    </lord-icon>
+                    <p class="nav-desc">User List</p>
+                </li>
+            </a>
+        </ul>
+        <div class="divider"></div>
+        <p class="status app-title">Admin</p>
+        <a href="/src/page/home/index.html" class="nav-button logout-button">
+            <lord-icon
+                src="https://cdn.lordicon.com/nhfyhmlt.json"
+                trigger="hover"
+                colors="primary:#f037a5"
+                style="width:2rem;height:2rem">
+            </lord-icon>
+            <p class="nav-desc">Log Out</p>
+        </a>
+    </nav>
+
+    <main>
+        <h1 class="title">Add Song</h1>
+        <form>
+          <label for="Judul">Title</label>
+          <input type="text" id="Judul" name="Judul" placeholder="Shape of You" maxlength="64" required>
+          <label for="Album">Artist</label>
+          <input type="text" id="Penyanyi" name="Penyanyi" placeholder="Ed Sheeran" maxlength="128">
+          <label for="Tanggal_terbit">Release date</label>
+          <input type="date" id="Tanggal_terbit" name="Tanggal_terbit" placeholder="2020-01-01" required>
+          <label for="Genre">Genre</label>
+          <input type="text" id="Genre" name="Genre" placeholder="Pop" maxlength="64" required>
+          <label for="Duration">Duration (in seconds)</label>
+          <input type="number" id="Duration" name="Duration" placeholder="180" min="0" max="999" required>
+          <label for="Audio">Audio</label>
+          <input type="file" id="Audio" name="Audio" accept="audio/*" required>
+          <label for="Image">Cover Image</label>
+          <input type="file" id="Image" name="Image" accept="image/*">
+          <label for="Album">Album</label>
+          <input type="text" id="Album" name="Album" placeholder="Divide" maxlength="128" required>
+        </form>
+    </main>
+    <script src="https://cdn.lordicon.com/pzdvqjsp.js"></script>
+</body>
+</html>
