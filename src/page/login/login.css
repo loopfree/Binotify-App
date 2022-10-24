@@ -254,3 +254,29 @@ body {
 .btn:focus {
     background-color: #30bd61;
 }
+
+/* Guess section */
+/* Guess section */
+/* Guess section */
+
+.guess {
+    text-align: center;
+    font-size: 1rem;
+}
+
+/* unvisited link */
+.guess > a:link {
+    color: #959698;
+    text-decoration: none;
+}
+
+/* visited link */
+.guess > a:visited {
+    color: #959698;
+    text-decoration: none;
+}
+
+.guess > a:hover {
+    text-decoration: underline;
+    cursor: pointer;
+}
