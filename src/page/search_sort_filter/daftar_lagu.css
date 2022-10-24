@@ -1,0 +1,417 @@
+@import url('../../style/global.css');
+
+/* ------------------------------------------------------ */
+/* ------------------------------------------------------ */
+/* ------------------------------------------------------ */
+/*                     Home Template                      */
+/* ------------------------------------------------------ */
+/* ------------------------------------------------------ */
+/* ------------------------------------------------------ */
+.home-body {
+    display: flex;
+}
+
+.nav {
+    background: black;
+    padding: 2rem;
+    min-width: 12%;
+    position: sticky;
+    left: 0;
+    bottom: 0;
+    z-index: 50;
+}
+
+nav > ul { 
+    list-style-type: none;
+}
+
+a {
+    text-decoration: none;
+}
+
+.nav-button {
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+    align-items: center;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    color: white;
+    opacity: 75%;
+    transition-duration: 100ms;
+}
+
+.nav-button:hover {
+    opacity: 100%;
+}
+
+.logout-button {
+    position: absolute;
+    bottom: 2rem;
+    left: 2rem;
+    color: var(--s-fuschia);
+}
+
+.divider {
+    border-bottom: 1px solid gray;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    opacity: 50%;
+}
+
+main {
+    padding: 2rem;
+}
+
+.title {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.songs-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.song-card {
+    width: 12rem;
+    background: #242526;
+    padding: 1rem;
+    border-radius: 8px;
+    transition-duration: 300ms;
+    cursor: pointer;
+    position: relative;
+}
+
+.song-card:hover {
+    background: #191414;
+}
+
+.song-image {
+    width: 100%;
+    aspect-ratio: 1/1;
+    object-fit: cover;
+    border-radius: 4px;
+    margin-bottom: 0.5rem;
+    box-shadow: #242526 0px 0px 10px;
+}
+
+.song-title {
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+}
+
+.song-artist {
+    font-size: 0.75rem;
+    color: gray;
+}
+
+/* .play-button {
+    background-color: var(--p-green);
+    border-radius: 100%;
+    height: 2rem;
+    width: 2rem;
+    position: absolute;
+    bottom: 1rem;
+    right: 1rem;
+    transform: translateY(0.5rem);
+    opacity: 0;
+    transition-duration: 300ms;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+} */
+
+.triangle {
+    width: 0;
+    height: 0;
+    border-top: 0.5rem solid transparent;
+    border-bottom: 0.5rem solid transparent;
+    border-left: 0.75rem solid var(--p-black);
+    margin-left: 0.25rem;
+}
+
+@media screen and (max-width: 768px) {
+    .home-body {
+        flex-direction: column-reverse;
+    }
+    .nav-button {
+        flex-direction: column;
+        gap: 0.5rem;
+        text-align: center;
+        align-items: space-between;
+        justify-content: space-between;
+    }
+    .nav-desc {
+        display: none;
+    }
+    .logout-button {
+        display: none;
+    }
+    .divider {
+        display: none;
+    }
+    .nav-container {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+    }
+    .app-title {
+        display: none;
+    }
+    .nav {
+        padding-top: 0.25rem;
+        padding-bottom: 0.25rem;
+    }
+}
+
+/* ------------------------------------------------------ */
+/* ------------------------------------------------------ */
+/* ------------------------------------------------------ */
+/*                       Song List                        */
+/* ------------------------------------------------------ */
+/* ------------------------------------------------------ */
+/* ------------------------------------------------------ */
+.main-content {
+    padding: 2rem;
+    width: 100%;
+    font-family: "Gotham Bold";
+}
+
+/* Search, Sort, and Filter Section */
+/* Search, Sort, and Filter Section */
+/* Search, Sort, and Filter Section */
+/* Search, Sort, and Filter Section */
+/* Search, Sort, and Filter Section */
+
+.search-sort-filter {
+    width: 100%;
+}
+  
+.search-bar {
+    width: 95%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+  
+#search-input {
+    width: 100%;
+    height: 2.8rem;
+    background: #f5f5f5;
+    outline: none;
+    border: none;
+    border-radius: 1.625rem;
+    padding: 0 3.5rem 0 1.5rem;
+    font-size: 1rem;
+}
+  
+#search-submit {
+    width: 3.5rem;
+    height: 2.8rem;
+    margin-left: -3.5rem;
+    background: none;
+    border: none;
+    outline: none;
+    /* margin-right: 20rem; */
+}
+  
+#search-submit:hover {
+    cursor: pointer;
+}
+
+.sort{
+    margin-left: 4rem;
+}
+
+.sort > button, .filter > button{
+    all: unset;
+    cursor: pointer;
+    height: 2.8rem;
+    width: 2.8rem;
+}
+
+.fa-sort-alpha-up:hover {
+    color: #1ED760;
+}
+
+
+.fa-filter:hover {
+    color: #1ED760;
+}
+
+/* Song List Section */
+/* Song List Section */
+/* Song List Section */
+/* Song List Section */
+/* Song List Section */
+
+.song-list {
+    margin-top: 1rem;
+    height: 80%;
+}
+
+.song {
+    height: 10%;
+    padding: 0.2rem;
+}
+
+.song:hover {
+    background-color:#2a2a2a;
+}
+
+.song:hover .number {
+    display: none;
+}
+
+.song:not(:hover) .play-button {
+    display: none;
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: 3rem 5rem 15rem auto 25rem;
+    grid-template-rows: repeat(2, 1fr);
+    grid-column-gap: 0px;
+    grid-row-gap: 0px;
+    background-color: transparent;
+    align-items: center;
+    height: 100%;
+}
+
+/* 
+Ilustrasi grid:
+no | img | judul    | -gap- | genre | tahun |
+   |     | penyanyi | -gap- |       |       |
+*/
+
+
+/* ----------------------------------------------------------------- */
+.number {
+    text-align: center;
+    grid-area: 1 / 1 / 3 / 2;
+    font-family: "Gotham Regular";
+}
+
+.play-button {
+    all: unset;
+    height: 100%;
+    cursor: pointer;
+}
+
+.fa-play {
+    color: white;
+}
+
+.play-button {
+    text-align: center;
+    grid-area: 1 / 1 / 3 / 2;
+    font-family: "Gotham Regular";
+}
+/* ----------------------------------------------------------------- */
+
+.image {
+    text-align: center;
+    grid-area: 1 / 2 / 3 / 3;
+    height: 100%;
+}
+
+/* ----------------------------------------------------------------- */
+
+.judul {
+    text-align: left;
+    grid-area: 1 / 3 / 2 / 4;
+    font-family: "Gotham Bold";
+}
+
+/* ----------------------------------------------------------------- */
+
+.penyanyi {
+    text-align: left;
+    grid-area: 2 / 3 / 3 / 4;
+    font-family: "Gotham Regular";
+}
+
+/* ----------------------------------------------------------------- */
+
+.blank {
+    grid-area: 1 / 4 / 3 / 5;
+    height: 100%;
+}
+
+/* ----------------------------------------------------------------- */
+
+.genre {
+    text-align: center;
+    grid-area: 1 / 5 / 3 / 6;
+    font-family: "Gotham Regular";
+}
+
+
+/* ----------------------------------------------------------------- */
+
+.tahun {
+    text-align: center;
+    grid-area: 1 / 6 / 3 / 7;
+    font-family: "Gotham Regular";
+}
+
+/* ----------------------------------------------------------------- */
+
+/* Ngeset biar imagenya fix tapi gak pecah */
+.image-container {
+    height: 100%;
+}
+
+.image-container > img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+/* Pagination Section */
+/* Pagination Section */
+/* Pagination Section */
+/* Pagination Section */
+/* Pagination Section */
+
+.pagination {
+    position: fixed;
+    bottom: 3%;
+    height: 50px;
+}
+
+.page {
+    display: grid;
+    place-items: center;
+}
+  
+.pagination {
+    display: flex;
+    justify-content: center;
+}
+
+.pagination > button {
+    all: unset;
+    text-align: center;
+    margin: 0.75rem;
+    width: 2rem;
+    cursor: pointer;
+    border-radius: 10px;
+}
+
+.page-number:hover {
+    background-color: #1ED760;
+}
+
+#first {
+    background-color: #1ED760;
+}
+
+.back:hover, .forward:hover {
+    background-color: transparent;
+    font-size: 1.3rem;
+}

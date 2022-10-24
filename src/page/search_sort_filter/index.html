@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>\(OwO)/</title>
+    <link rel="stylesheet" href="daftar_lagu.css">
+
+    <!-- Font Awesome -->
+  <script defer src="https://use.fontawesome.com/releases/v5.0.7/js/all.js"></script>
+</head>
+<body class="dark-bg home-body">
+    <nav class="nav">
+        <h1 class="title app-title">\(OwO)/</h1>
+        <ul class="nav-container">                
+            <a href="/src/page/home/index.html">
+                <li class="nav-button">
+                    <lord-icon
+                        src="https://cdn.lordicon.com/osuxyevn.json"
+                        trigger="hover"
+                        colors="primary:#ffffff"
+                        style="width:2rem;height:2rem">
+                    </lord-icon>
+                    <p class="nav-desc">Home</p>
+                </li>
+            </a>
+            <a href="/src/page/home/index.html">
+                <li class="nav-button">
+                    <lord-icon
+                        src="https://cdn.lordicon.com/xfftupfv.json"
+                        trigger="hover"
+                        colors="primary:#ffffff"
+                        style="width:2rem;height:2rem">
+                    </lord-icon>
+                    <p class="nav-desc">Search</p>
+                </li>
+            </a>
+            <a href="/src/page/home/index.html">
+                <li class="nav-button">
+                    <lord-icon
+                        src="https://cdn.lordicon.com/fpmskzsv.json"
+                        trigger="hover"
+                        colors="primary:#ffffff"
+                        style="width:2rem;height:2rem">
+                    </lord-icon>
+                    <p class="nav-desc">Albums</p>
+                </li>
+            </a>
+        </ul>
+        <div class="divider"></div>
+        <a href="/src/page/home/index.html" class="nav-button logout-button">
+            <lord-icon
+                src="https://cdn.lordicon.com/nhfyhmlt.json"
+                trigger="hover"
+                colors="primary:#f037a5"
+                style="width:2rem;height:2rem">
+            </lord-icon>
+            <p class="nav-desc">Log Out</p>
+        </a>
+    </nav>
+
+    <div class="main-content">
+        <div class="search-sort-filter">
+            <div class="search-bar">
+                <input 
+                    id="search-input"
+                    type="text"
+                    placeholder="What do you want to listen to?"
+                    value="" 
+                />
+                <button
+                    id="search-submit"
+                    type="submit" 
+                >
+                    <svg style="width:24px;height:24px" viewBox="0 0 24 24"><path fill="#666666" d="M9.5,3A6.5,6.5 0 0,1 16,9.5C16,11.11 15.41,12.59 14.44,13.73L14.71,14H15.5L20.5,19L19,20.5L14,15.5V14.71L13.73,14.44C12.59,15.41 11.11,16 9.5,16A6.5,6.5 0 0,1 3,9.5A6.5,6.5 0 0,1 9.5,3M9.5,5C7,5 5,7 5,9.5C5,12 7,14 9.5,14C12,14 14,12 14,9.5C14,7 12,5 9.5,5Z" />
+                    </svg>
+                </button>
+                
+                <div class="sort">    
+                    <button class="sort-button">
+                        <i class="fas fa-sort-alpha-up"></i>
+                    </button>
+                </div>
+
+                <div class="filter">
+                    <button class="filter-button">
+                        <i class="fas fa-filter"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div class="song-list">
+            <div class="song">
+                <div class="grid-container">
+                    <div class="number">1</div>
+                    <button class="play-button">
+                        <i class="fas fa-play"></i>
+                    </button>
+                    <div class="image">
+                        <div class="image-container">
+                            <img
+                                src="../../img/auth-img/feel_special.jpg"
+                                alt="song-image"
+                            />
+                        </div>
+                    </div>
+                    <div class="judul">Feel Special</div>
+                    <div class="penyanyi">TWICE</div>
+                    <div class="blank"></div>
+                    <div class="genre">idk the genre</div>
+                    <div class="tahun">2019</div>
+                </div>
+            </div>
+
+            <div class="song">
+                <div class="grid-container">
+                    <div class="number">2</div>
+                    <button class="play-button">
+                        <i class="fas fa-play"></i>
+                    </button>
+                    <div class="image">
+                        <div class="image-container">
+                            <img
+                                src="../../img/auth-img/feel_special.jpg"
+                                alt="song-image"
+                            />
+                        </div>
+                    </div>
+                    <div class="judul">Feel Special</div>
+                    <div class="penyanyi">TWICE</div>
+                    <div class="blank"></div>
+                    <div class="genre">idk</div>
+                    <div class="tahun">2019</div>
+                </div>
+            </div>
+
+            <div class="song">
+                <div class="grid-container">
+                    <div class="number">3</div>
+                    <button class="play-button">
+                        <i class="fas fa-play"></i>
+                    </button>
+                    <div class="image">
+                        <div class="image-container">
+                            <img
+                                src="../../img/auth-img/feel_special.jpg"
+                                alt="song-image"
+                            />
+                        </div>
+                    </div>
+                    <div class="judul">Feel Special</div>
+                    <div class="penyanyi">TWICE</div>
+                    <div class="blank"></div>
+                    <div class="genre">idk</div>
+                    <div class="tahun">2019</div>
+                </div>
+            </div>
+            
+            <div class="song">
+                <div class="grid-container">
+                    <div class="number">4</div>
+                    <button class="play-button">
+                        <i class="fas fa-play"></i>
+                    </button>
+                    <div class="image">
+                        <div class="image-container">
+                            <img
+                                src="../../img/auth-img/feel_special.jpg"
+                                alt="song-image"
+                            />
+                        </div>
+                    </div>
+                    <div class="judul">Feel Special</div>
+                    <div class="penyanyi">TWICE</div>
+                    <div class="blank"></div>
+                    <div class="genre">idk</div>
+                    <div class="tahun">2019</div>
+                </div>
+            </div>
+
+            <div class="song">
+                <div class="grid-container">
+                    <div class="number">5</div>
+                    <button class="play-button">
+                        <i class="fas fa-play"></i>
+                    </button>
+                    <div class="image">
+                        <div class="image-container">
+                            
+                        </div>
+                    </div>
+                    <div class="judul">Coming Soon</div>
+                    <div class="penyanyi">??</div>
+                    <div class="blank"></div>
+                    <div class="genre">?</div>
+                    <div class="tahun">xxxx</div>
+                </div>
+            </div>
+
+            <div class="song">
+                <div class="grid-container">
+                    <div class="number">6</div>
+                    <button class="play-button">
+                        <i class="fas fa-play"></i>
+                    </button>
+                    <div class="image">
+                        <div class="image-container">
+                            
+                        </div>
+                    </div>
+                    <div class="judul">Coming Soon</div>
+                    <div class="penyanyi">??</div>
+                    <div class="blank"></div>
+                    <div class="genre">?</div>
+                    <div class="tahun">xxxx</div>
+                </div>
+            </div>
+
+            <div class="song">
+                <div class="grid-container">
+                    <div class="number">7</div>
+                    <button class="play-button">
+                        <i class="fas fa-play"></i>
+                    </button>
+                    <div class="image">
+                        <div class="image-container">
+                            
+                        </div>
+                    </div>
+                    <div class="judul">Coming Soon</div>
+                    <div class="penyanyi">??</div>
+                    <div class="blank"></div>
+                    <div class="genre">?</div>
+                    <div class="tahun">xxxx</div>
+                </div>
+            </div>
+
+            <div class="song">
+                <div class="grid-container">
+                    <div class="number">8</div>
+                    <button class="play-button">
+                        <i class="fas fa-play"></i>
+                    </button>
+                    <div class="image">
+                        <div class="image-container">
+                            
+                        </div>
+                    </div>
+                    <div class="judul">Coming Soon</div>
+                    <div class="penyanyi">??</div>
+                    <div class="blank"></div>
+                    <div class="genre">?</div>
+                    <div class="tahun">xxxx</div>
+                </div>
+            </div>
+
+            <div class="song">
+                <div class="grid-container">
+                    <div class="number">9</div>
+                    <button class="play-button">
+                        <i class="fas fa-play"></i>
+                    </button>
+                    <div class="image">
+                        <div class="image-container">
+                            
+                        </div>
+                    </div>
+                    <div class="judul">Coming Soon</div>
+                    <div class="penyanyi">??</div>
+                    <div class="blank"></div>
+                    <div class="genre">?</div>
+                    <div class="tahun">xxxx</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="page">
+            <div class="pagination">
+                <button class="back"><i class="fas fa-angle-double-left"></i></button>
+                <button class="page-number" id="first">1</button>
+                <button class="page-number" id="second">2</button>
+                <button class="page-number" id="third">3</button>
+                <button class="page-number" id="fourth">4</button>
+                <button class="forward"><i class="fas fa-angle-double-right"></i></button>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.lordicon.com/pzdvqjsp.js"></script>
+</body>
+</html>
