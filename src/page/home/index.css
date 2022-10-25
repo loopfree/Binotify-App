@@ -62,20 +62,23 @@ main {
 }
 
 .songs-container {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    gap: 1rem;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 3rem;
+    padding-right: 10%;
 }
 
 .song-card {
-    width: 12rem;
+    width: 20%;
     background: #242526;
+    color: white;
     padding: 1rem;
     border-radius: 8px;
     transition-duration: 300ms;
     cursor: pointer;
     position: relative;
+    height: 100%;
+    width: 100%;
 }
 
 .song-card:hover {
@@ -96,7 +99,7 @@ main {
     margin-bottom: 0.5rem;
 }
 
-.song-artist {
+.song-desc {
     font-size: 0.75rem;
     color: gray;
 }
