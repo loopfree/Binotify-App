@@ -15,12 +15,12 @@
 /* FONTS */
 @font-face {
   font-family: "Gotham Bold";
-  src: url("../font/GothamBold.ttf") format("truetype");
+  src: url("../assets/font/GothamBold.ttf") format("truetype");
 }
 
 @font-face {
   font-family: "Gotham Regular";
-  src: url("../font/GothamRegular.ttf") format("truetype");
+  src: url("../assets/font/GothamRegular.ttf") format("truetype");
 }
 
 h1, h2, h3, h4, h5, h6 {
