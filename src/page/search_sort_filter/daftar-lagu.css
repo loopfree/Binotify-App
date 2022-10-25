@@ -243,6 +243,58 @@ main {
     color: #1ED760;
 }
 
+.fa-filter {
+    position: relative;
+    display: inline-block;
+}
+
+.genre-list {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+    height: 200px;
+    overflow-y: scroll;
+    font-family: "Gotham Regular";
+}
+
+::-webkit-scrollbar {
+    width: 17px;
+}
+  
+::-webkit-scrollbar-track {
+    background-color: transparent;
+}
+  
+::-webkit-scrollbar-thumb {
+    background-color: #d6dee1;
+    border-radius: 20px;
+    border: 6px solid transparent;
+    background-clip: content-box;
+}
+  
+::-webkit-scrollbar-thumb:hover {
+    background-color: #a8bbbf;
+}
+
+.genre-list .song-genre {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.genre-list .song-genre:hover {
+    background-color: #f1f1f1;
+}
+
+.filter:hover .genre-list {
+    /* margin-top: 1px; */
+    display: block;
+}
+
 /* Song List Section */
 /* Song List Section */
 /* Song List Section */
