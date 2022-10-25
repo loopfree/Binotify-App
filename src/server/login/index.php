@@ -4,12 +4,15 @@ if($_SERVER['REQUEST_METHOD'] === "GET") {
     header("Location: /index.php");
 }
 
+require $_SERVER['DOCUMENT_ROOT'] . '/hash.php';
+
 $json_content = file_get_contents("php://input");
 
 $decoded = json_decode($json_content, true);
 
 $username = $decoded["username"];
 $password = $decoded["password"];
+$passwordHashed = hashPasswordTo($password);
 
 $query = "
     SELECT 
@@ -19,7 +22,7 @@ $query = "
     WHERE
         username = '$username'
         AND
-        password = '$password';
+        password = '$passwordHashed';
 ";
 
 $json = array();

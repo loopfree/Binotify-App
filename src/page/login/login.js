@@ -3,6 +3,18 @@ const password = document.getElementById("password-input");
 
 const submitBtn = document.getElementById("button-submit");
 
+if(window.localStorage.getItem("user-id") !== null) {
+    const redirectForm = document.createElement("form");
+
+    redirectForm.action = "/index.php";
+    redirectForm.method = "POST";
+
+    document.body.appendChild(redirectForm);
+
+    redirectForm.submit();
+}
+
+
 submitBtn.onclick = () => {
     const xhr = new XMLHttpRequest();
 
@@ -14,6 +26,15 @@ submitBtn.onclick = () => {
 
         if(json["success"] === "true") {
             window.localStorage.setItem("user-id", json["user-id"]);
+
+            const redirectForm = document.createElement("form");
+
+            redirectForm.action = "/index.php";
+            redirectForm.method = "POST";
+
+            document.body.appendChild(redirectForm);
+
+            redirectForm.submit();
         } else {
             alert("Login fail");
         }
