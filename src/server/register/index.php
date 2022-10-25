@@ -13,8 +13,9 @@
     $username = $decoded["username"];
     $email = $decoded["email"];
     $password = $decoded["password"];
+    $passwordHashed = hashPasswordTo($password);
 
-    $userId = hashString($username);
+    $userId = hashUsername($username);
 
     $conn = pg_connect("host=localhost port=5432 dbname=tubesIF3110 user=postgres password=admin");
 
@@ -24,7 +25,7 @@
         VALUES (
             $userId,
             '$email',
-            '$password',
+            '$passwordHashed',
             '$username',
             false
         );
