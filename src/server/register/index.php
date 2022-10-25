@@ -4,7 +4,7 @@
         return;
     }
 
-    require '/hash.php';
+    require $_SERVER['DOCUMENT_ROOT'] . '/hash.php';
 
     $json_content = file_get_contents("php://input");
 
@@ -19,19 +19,29 @@
 
     $conn = pg_connect("host=localhost port=5432 dbname=tubesIF3110 user=postgres password=admin");
 
-    $query = "
-        INSERT INTO
-            \"User\"
-        VALUES (
-            $userId,
-            '$email',
-            '$passwordHashed',
-            '$username',
-            false
-        );
-    ";
+    // $query = "
+    //     INSERT INTO
+    //         \"User\"
+    //     VALUES (
+    //         $userId,
+    //         '$email',
+    //         '$passwordHashed',
+    //         '$username',
+    //         false
+    //     );
+    // ";
 
-    $reuslt = pg_query($conn, $query);
+    $query = "INSERT INTO" .
+                "\"User\"" .
+            "VALUES (" .
+                "$userId," .
+                "'$email'," .
+                "'$passwordHashed'," .
+                "'$username'," .
+                "false" .
+            ");";
+
+    $result = pg_query($conn, $query);
 
     if(!$result) {
         echo "fail";

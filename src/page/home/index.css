@@ -32,6 +32,7 @@ a {
     color: white;
     opacity: 75%;
     transition-duration: 100ms;
+    z-index: -100;
 }
 
 .nav-button:hover {

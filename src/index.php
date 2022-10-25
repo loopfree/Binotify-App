@@ -1,5 +1,9 @@
 <?php
 
-header("Location: /page/login/");
+if($_SERVER["REQUEST_METHOD"] === "GET") {
+    header("Location: /page/login/");
+    return;
+}
 
+header("Location: /page/home/");
 ?>

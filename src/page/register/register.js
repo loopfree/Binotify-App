@@ -26,8 +26,14 @@ const usernameValidate = debounce(() => {
             usernameInput.style = "border: 1px ridge #0F0";
             usernameUnique = true;
         } else {
+            usernameInput.style = "border: 1px ridge #F00";
             usernameUnique = false;
         }
+
+        setTimeout(() => {
+        if(usernameInput.value === "") {
+            usernameInput.style = "";
+        }}, 50);
     }
 
     xhr.open("GET", `/server/register/validate.php?name=${usernameInput.value}`);
@@ -49,8 +55,14 @@ const emailValidate = debounce(() => {
             emailInput.style = "border: 1px ridge #0F0";
             emailUnique = true;
         } else {
+            usernameInput.style = "border: 1px ridge #F00";
             emailUnique = false;
         }
+
+        setTimeout(() => {
+            if(emailInput.value === "") {
+                emailInput.style = "";
+            }}, 50);
     }
 
     xhr.open("GET", `/server/register/validate.php?email=${emailInput.value}`);
