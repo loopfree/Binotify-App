@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>\(OwO)/</title>
+    <link rel="stylesheet" href="album-detail.css">
+    <script src="edit-modal.js" defer></script>
+    <script src="del-modal.js" defer></script>
+</head>
+<body class="dark-bg home-body">
+    <nav class="nav">
+        <h1 class="title app-title">\(OwO)/</h1>
+        <ul class="nav-container">                
+            <a href="/page/home">
+                <li class="nav-button">
+                    <lord-icon
+                        src="https://cdn.lordicon.com/osuxyevn.json"
+                        trigger="hover"
+                        colors="primary:#ffffff"
+                        style="width:2rem;height:2rem">
+                    </lord-icon>
+                    <p class="nav-desc">Home</p>
+                </li>
+            </a>
+            <a href="/src/page/home/index.html">
+                <li class="nav-button">
+                    <lord-icon
+                        src="https://cdn.lordicon.com/xfftupfv.json"
+                        trigger="hover"
+                        colors="primary:#ffffff"
+                        style="width:2rem;height:2rem">
+                    </lord-icon>
+                    <p class="nav-desc">Search</p>
+                </li>
+            </a>
+            <a href="/page/album-list">
+                <li class="nav-button">
+                    <lord-icon
+                        src="https://cdn.lordicon.com/fpmskzsv.json"
+                        trigger="hover"
+                        colors="primary:#ffffff"
+                        style="width:2rem;height:2rem">
+                    </lord-icon>
+                    <p class="nav-desc">Albums</p>
+                </li>
+            </a>
+        </ul>
+        <div class="divider"></div>
+        <a href="/src/page/home/index.html" class="nav-button logout-button">
+            <lord-icon
+                src="https://cdn.lordicon.com/nhfyhmlt.json"
+                trigger="hover"
+                colors="primary:#f037a5"
+                style="width:2rem;height:2rem">
+            </lord-icon>
+            <p class="nav-desc">Log Out</p>
+        </a>
+    </nav>
+
+    <main>
+        <div class="container-grid">
+            <div class="user">
+                user
+            </div>
+            <div class="album-image">
+                <img src="../../music/19981665838597.png" />
+            </div>
+            <div class="judul-album">
+                <div class="vert-cent">
+                    Feel Special
+                </div>
+                <div class="penyanyi-info">
+                    TWICE
+                </div>
+            </div>
+            <div class="album-info">
+                <div class="durasi-info">
+                    1:15:43
+                </div>
+                <div class="genre-info">
+                    K-Pop
+                </div>
+            </div>
+            <div class="edit">
+                <div class="edit-del-blank"></div>
+
+                <button class="edit-btn" id="edit-btn">
+                    Edit
+                </button>
+
+                <div id="edit-modal" class="modal">
+                    <div class="modal-content">
+                        <div class="close-area">
+                            <span class="close">&times;</span>
+                        </div>
+
+                        <div class="judul-album-edit">
+                            Judul Album
+                        </div>
+                        <div class="judul-album-new">
+                            <input type="text">
+                        </div>
+
+                        <div class="penyanyi-edit">
+                            Penyanyi
+                        </div>
+                        <div class="penyanyi-new">
+                            <input type="text">
+                        </div>
+
+                        <div class="album-cover-edit">
+                            Album Cover
+                        </div>
+                        <div class="album-cover-new">
+                            <input type="file" id="Image" name="Image" accept="image/*">
+                        </div>
+
+                        <div class="genre-edit">
+                            Genre
+                        </div>
+                        <div class="genre-new">
+                            <input type="text">
+                        </div>
+
+                        <!-- <div class="penyanyi-edit">
+                            Penyanyi
+                        </div>
+                        <div class="penyanyi-new">
+                            <input type="text">
+                        </div>
+
+                        <div class="tgl-edit">
+                            Tanggal Terbit
+                        </div>
+                        <div class="tgl-new">
+                            <input type="date" id="Tanggal_terbit" name="Tanggal_terbit" placeholder="2020-01-01" required>
+                        </div>
+
+                        <div class="genre-edit">
+                            Genre
+                        </div>
+                        <div class="genre-new">
+                            <input type="text">
+                        </div> -->
+
+                        <div class="save-changes">
+                            <button>Save Changes</button>
+                        </div>
+                    </div>
+                </div>
+
+                <button class="del-btn">
+                    Delete
+                </button>
+            </div>
+        </div>
+
+
+        <div class="cont">
+            <div class="song-list">
+                <div class="song">
+                    <div class="grid-container">
+                        <div class="number">1</div>
+                        <button class="play-button">
+                            <i class="fas fa-play"></i>
+                        </button>
+                        <div class="image">
+                            <div class="image-container">
+                                <img
+                                    src="../../img/auth-img/feel_special.jpg"
+                                    alt="song-image"
+                                />
+                            </div>
+                        </div>
+                        <div class="judul">Feel Special</div>
+                        <div class="penyanyi">TWICE</div>
+                        <div class="blank"></div>
+                        <div class="tahun">2019</div>
+                        <div class="remove">
+                            <button>Remove</button>
+                        </div>
+                    </div>
+                </div>
+    
+                <div class="song">
+                    <div class="grid-container">
+                        <div class="number">2</div>
+                        <button class="play-button">
+                            <i class="fas fa-play"></i>
+                        </button>
+                        <div class="image">
+                            <div class="image-container">
+                                <img
+                                    src="../../img/auth-img/feel_special.jpg"
+                                    alt="song-image"
+                                />
+                            </div>
+                        </div>
+                        <div class="judul">Rainbow</div>
+                        <div class="penyanyi">TWICE</div>
+                        <div class="blank"></div>
+                        <div class="tahun">2019</div>
+                        <div class="remove">
+                            <button>Remove</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="song">
+                    <div class="grid-container">
+                        <div class="number">3</div>
+                        <button class="play-button">
+                            <i class="fas fa-play"></i>
+                        </button>
+                        <div class="image">
+                            <div class="image-container">
+                                <img
+                                    src="../../img/auth-img/feel_special.jpg"
+                                    alt="song-image"
+                                />
+                            </div>
+                        </div>
+                        <div class="judul">Get Loud</div>
+                        <div class="penyanyi">TWICE</div>
+                        <div class="blank"></div>
+                        <div class="tahun">2019</div>
+                        <div class="remove">
+                            <button>Remove</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="song">
+                    <div class="grid-container">
+                        <div class="number">4</div>
+                        <button class="play-button">
+                            <i class="fas fa-play"></i>
+                        </button>
+                        <div class="image">
+                            <div class="image-container">
+                                <img
+                                    src="../../img/auth-img/feel_special.jpg"
+                                    alt="song-image"
+                                />
+                            </div>
+                        </div>
+                        <div class="judul">Trick It</div>
+                        <div class="penyanyi">TWICE</div>
+                        <div class="blank"></div>
+                        <div class="tahun">2019</div>
+                        <div class="remove">
+                            <button>Remove</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="song">
+                    <div class="grid-container">
+                        <div class="number">5</div>
+                        <button class="play-button">
+                            <i class="fas fa-play"></i>
+                        </button>
+                        <div class="image">
+                            <div class="image-container">
+                                <img
+                                    src="../../img/auth-img/feel_special.jpg"
+                                    alt="song-image"
+                                />
+                            </div>
+                        </div>
+                        <div class="judul">Love Foolish</div>
+                        <div class="penyanyi">TWICE</div>
+                        <div class="blank"></div>
+                        <div class="tahun">2019</div>
+                        <div class="remove">
+                            <button>Remove</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="song">
+                    <div class="grid-container">
+                        <div class="number">6</div>
+                        <button class="play-button">
+                            <i class="fas fa-play"></i>
+                        </button>
+                        <div class="image">
+                            <div class="image-container">
+                                <img
+                                    src="../../img/auth-img/feel_special.jpg"
+                                    alt="song-image"
+                                />
+                            </div>
+                        </div>
+                        <div class="judul">21:29</div>
+                        <div class="penyanyi">TWICE</div>
+                        <div class="blank"></div>
+                        <div class="tahun">2019</div>
+                        <div class="remove">
+                            <button>Remove</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+       
+    </main>
+    <script src="https://cdn.lordicon.com/pzdvqjsp.js"></script>
+</body>
+</html>
