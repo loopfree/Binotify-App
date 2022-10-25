@@ -69,7 +69,6 @@ main {
 }
 
 .song-card {
-    width: 20%;
     background: #242526;
     color: white;
     padding: 1rem;
@@ -102,6 +101,12 @@ main {
 .song-desc {
     font-size: 0.75rem;
     color: gray;
+}
+
+a {
+    color: white;
+    height: 100%;
+    width: 100%;
 }
 
 .play-button {
