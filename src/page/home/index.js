@@ -1,15 +1,26 @@
-const songContainer = document.getElementById("songs-container");
-console.log(songContainer.style.display);
-
 window.onload = () => {
-    const xhr = new XMLHttpRequest();
+    getNav();
+    getSongCards();
+}
 
+function getNav() {
+    const nav = document.getElementsByClassName('nav')[0];
+    const xhr = new XMLHttpRequest();
+    xhr.open('GET', '/server/nav/nav.php');
+    xhr.onload = function() {
+        nav.innerHTML = this.responseText;
+    }
+    xhr.send();
+}
+
+function getSongCards() {
+    const songContainer = document.getElementById("songs-container");
+    const xhr = new XMLHttpRequest();
     xhr.open("GET", "/server/home/index.php", true);
     xhr.onload = function() {
         songContainer.innerHTML = this.responseText;
         songPlayUpdate();
     }
-    
     xhr.send(null);
 }
 

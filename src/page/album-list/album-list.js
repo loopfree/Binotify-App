@@ -1,14 +1,27 @@
-const albumContainer = document.getElementById("album-container");
-
 window.onload = () => {
-    const xhr = new XMLHttpRequest();
+    const nav = document.getElementsByClassName('nav')[0];
+    getNav();
+    getAlbumCards();
+}
 
+function getNav() {
+    const nav = document.getElementsByClassName('nav')[0];
+    const xhr = new XMLHttpRequest();
+    xhr.open('GET', '/server/nav/nav.php');
+    xhr.onload = function() {
+        nav.innerHTML = this.responseText;
+    }
+    xhr.send();
+}
+
+function getAlbumCards() {
+    const albumContainer = document.getElementById("album-container");
+    const xhr = new XMLHttpRequest();
     xhr.open("GET", "/server/album-list/index.php", true);
     xhr.onload = function() {
         albumContainer.innerHTML = this.responseText;
         albumPlayUpdate();
     }
-    
     xhr.send(null);
 }
 
