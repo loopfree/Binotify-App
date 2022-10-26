@@ -1,3 +1,39 @@
+<?php
+
+$songId = null;
+
+$audioPath = null;
+$imagePath = null;
+
+if(isset($_GET["song-id"])) {
+    $songId = $_GET["song-id"];
+
+    $conn = pg_connect("host=db_x port=5432 dbname=postgres user=postgres password=postgres");
+
+    $query = "
+        SELECT
+            audio_path,
+            image_path
+        FROM
+            \"Song\"
+        WHERE
+            song_id = $songId;
+    ";
+
+    $result = pg_query($conn, $query);
+
+    $row = pg_fetch_row($result);
+
+    if($row !== false) {
+        $audioPath = trim($row[0]);
+        $imagePath = trim($row[1]);
+    }
+
+    pg_close($conn);
+}
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,7 +43,9 @@
     <title>\(OwO)/</title>
     <link rel="stylesheet" href="detail-lagu.css">
     <script src="edit-modal.js" defer></script>
-    <script src="del-modal.js" defer></script>
+    <script src="manage-admin.js" defer></script>
+    <!-- <script src="del-modal.js" defer></script> -->
+
 </head>
 <body class="dark-bg home-body">
     <nav class="nav"></nav>
@@ -93,14 +131,28 @@
 
             </div>
             <div class="song-image">
-                <img src="../../img/auth-img/feel_special.jpg" />
+                <img src="<?php echo $imagePath ?>" alt="no-image"/>
             </div>
             <div class="duration">
-                <audio controls>
-                    <source src="../../music/feel-special.mp3" type="audio/mp3">
+                <audio controls id="audio-player">
+                    <source src="<?php echo $audioPath ?>" type="audio/mp3">
                   Your browser does not support the audio element.
                 </audio>
             </div>
+            <?php
+                if(isset($_GET["autoplay"])) {
+                    ?>
+                        <script>
+                            const audioPlayer = document.getElementById("audio-player");
+
+                            document.onload = () => {
+                                audioPlayer.currentTime = 0;
+                                audioPlayer.play();
+                            }
+                            </script>
+                    <?php
+                }
+            ?>
             <div class="album">
                 <button>
                     Album
@@ -116,7 +168,7 @@
                 25 Oktober 2022
             </div>
             <div class="genre">
-                Idk the genre
+                genre
             </div>
         </div>
     </main>
