@@ -7,10 +7,11 @@ $json = json_decode($query, true);
 $searchQuery = $json["searchQuery"];
 $pageNumber = $json["pageNum"];
 $genreFilter = $json["genreFilter"];
+$reversed = $json["reversed"];
 
 $offset = $pageNumber;
 
-$conn = pg_connect("host=localhost port=5432 dbname=tubesIF3110 user=postgres password=admin");
+$conn = pg_connect("host=db_x port=5432 dbname=postgres user=postgres password=postgres");
 
 $sqlQuery;
 
@@ -26,7 +27,7 @@ if(count($genreFilter) === 0) {
         FROM
             \"Song\"
         WHERE
-            judul LIKE '$searchQuery%'
+            LOWER(judul) LIKE LOWER('$searchQuery%')
         ORDER BY
             judul ASC
         LIMIT 10 OFFSET $offset;
@@ -34,10 +35,10 @@ if(count($genreFilter) === 0) {
 } else {
     $filterStr = "(";
     for($i = 0; $i < count($genreFilter) - 1; ++$i) {
-        $filterStr .= $genreFilter[$i] . ",";
+        $filterStr .= "'" . $genreFilter[$i] . "',";
     }
 
-    $filterStr .= $genreFilter[$i] . ")";
+    $filterStr .= "'" . $genreFilter[$i] . "')";
 
     $sqlQuery = "
             SELECT
@@ -50,7 +51,7 @@ if(count($genreFilter) === 0) {
         FROM
             \"Song\"
         WHERE
-            judul LIKE '$searchQuery%'
+            LOWER(judul) LIKE LOWER('$searchQuery%')
             AND
             genre IN
         " . $filterStr . "
@@ -58,6 +59,10 @@ if(count($genreFilter) === 0) {
             judul ASC
         LIMIT 10 OFFSET $offset  
     ";
+}
+
+if($reversed) {
+    $sqlQuery = str_replace("ASC", "DESC", $sqlQuery);
 }
 
 $result = pg_query($conn, $sqlQuery);
