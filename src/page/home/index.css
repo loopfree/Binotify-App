@@ -19,6 +19,9 @@ nav > ul {
 }
 
 a {
+    /* color: white;
+    height: 100%;
+    width: 100%; */
     text-decoration: none;
 }
 
@@ -102,12 +105,6 @@ main {
 .song-desc {
     font-size: 0.75rem;
     color: gray;
-}
-
-a {
-    color: white;
-    height: 100%;
-    width: 100%;
 }
 
 .play-button {
