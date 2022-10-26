@@ -120,20 +120,29 @@ main {
     height: 50%;
     color: #000;
 
-    /* grid */
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: repeat(9, 1fr);
-    grid-column-gap: 0px;
-    grid-row-gap: 0px;
-    padding-left: 1rem;
-
     /* Invisible */
     background-color: rgba(89, 93, 97, 0.75);
     backdrop-filter: blur( 20px );
     -webkit-backdrop-filter: blur( 20px );
     border-radius: 5px;
     color: white;
+}
+
+#edit-modal > .modal-content {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(10, 1fr);
+    grid-column-gap: 0px;
+    grid-row-gap: 0px;
+    padding-left: 1rem;
+}
+
+#delete-modal > .modal-content {
+    display: grid;
+    grid-template-columns: 1fr 0.15fr 0.15fr 1fr;
+    grid-template-rows: 2fr 1fr 3fr;
+    grid-column-gap: 0px;
+    grid-row-gap: 0px;
 }
   
 /* The Close Button */
@@ -187,7 +196,7 @@ main {
 
 .save-changes > button {
     width: 30%;
-    font-family: "Gotham Bold";
+    color: var(--p-white);
     padding-top: 10px;
     padding-bottom: 10px;
     background-color: #1ed760;
@@ -208,6 +217,43 @@ main {
 
 .del-btn:hover {
     font-family: "Gotham Bold";
+}
+
+.delete-sentence {
+    grid-area: 2 / 1 / 3 / 5;
+    text-align: center;
+}
+
+#delete-confirm-container {
+    grid-area: 3 / 1 / 4 / 2;
+    text-align: right;
+}
+
+#delete-cancel-container {
+    grid-area: 3 / 4 / 4 / 5;
+    text-align: left;
+}
+
+#delete-confirm-container > button {
+    height: 40%;
+    width: 50%;
+    border-radius: 36px;
+    border: none;
+    margin-top: 10%;
+    font-size: 1.15rem;
+    color: var(--p-white);
+    background-color: var(--p-green);
+}
+
+#delete-cancel-container > button {
+    height: 40%;
+    width: 50%;
+    border-radius: 36px;
+    border: none;
+    margin-top: 10%;
+    font-size: 1.15rem;
+    color: var(--p-white);
+    background-color: var(--p-gray);
 }
 
 

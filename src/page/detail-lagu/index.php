@@ -44,9 +44,7 @@ if(isset($_GET["song-id"])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>\(OwO)/</title>
     <link rel="stylesheet" href="detail-lagu.css">
-    <script src="edit-modal.js" defer></script>
-    <!-- <script src="manage-admin.js" defer></script> -->
-    <!-- <script src="del-modal.js" defer></script> -->
+    <script src="modal.js" defer></script>
 
 </head>
 <body class="dark-bg home-body">
@@ -132,9 +130,24 @@ if(isset($_GET["song-id"])) {
                             </div>
                         </div>
 
-                        <button class="del-btn">
+                        <button class="del-btn" id="del-btn">
                             Delete
                         </button>
+
+                        <div id="delete-modal" class="modal">
+                        <div class="modal-content">
+                            <div class="close-area">
+                                <span class="close">&times;</span>
+                            </div>
+                            <p class="delete-sentence">Do you want to delete the song?</p>
+                            <div id="delete-confirm-container">
+                                <button>Confirm</button>
+                            </div>
+                            <div id="delete-cancel-container">
+                                <button>Cancel</button>
+                            </div>
+                        </div>
+                    </div>
 
                     </div>
                     <?php
