@@ -1,4 +1,4 @@
-@import url('../../style/global.css');
+@import url('/style/global.css');
 
 .home-body {
     display: flex;

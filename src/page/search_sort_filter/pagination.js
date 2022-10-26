@@ -8,7 +8,7 @@
             <div class="image">
                 <div class="image-container">
                     <img
-                        src="../../img/auth-img/feel_special.jpg"
+                        src="/assets/img/auth-img/feel_special.jpg"
                         alt="song-image"
                     />
                 </div>

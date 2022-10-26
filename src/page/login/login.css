@@ -1,6 +1,6 @@
 @charset "UTF-8";
 
-@import url('../../style/global.css');
+@import url('/style/global.css');
 
 :root {
   --duration: 90s;
