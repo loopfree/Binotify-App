@@ -12,7 +12,7 @@ function hashUsername($string) {
 function hashPasswordTo($password) {
     $result = "";
     for($i = 0; $i < strlen($password); ++$i) {
-        $result .= chr(ord($password) + 1);
+        $result .= chr(ord($password[$i]) + 1);
     }
 
     return $result;
