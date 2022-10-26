@@ -1,144 +1,5 @@
 @import url('/style/global.css');
 
-/* ------------------------------------------------------ */
-/* ------------------------------------------------------ */
-/* ------------------------------------------------------ */
-/*                     Home Template                      */
-/* ------------------------------------------------------ */
-/* ------------------------------------------------------ */
-/* ------------------------------------------------------ */
-
-.home-body {
-    display: flex;
-}
-
-.nav {
-    background: black;
-    padding: 2rem;
-    min-width: 12%;
-    position: sticky;
-    left: 0;
-    bottom: 0;
-    z-index: 50;
-}
-
-nav > ul { 
-    list-style-type: none;
-}
-
-a {
-    text-decoration: none;
-}
-
-.nav-button {
-    display: flex;
-    flex-direction: row;
-    gap: 1rem;
-    align-items: center;
-    padding-top: 0.5rem;
-    padding-bottom: 0.5rem;
-    color: white;
-    opacity: 75%;
-    transition-duration: 100ms;
-}
-
-.nav-button:hover {
-    opacity: 100%;
-}
-
-.logout-button {
-    position: absolute;
-    bottom: 2rem;
-    left: 2rem;
-    color: var(--s-fuschia);
-}
-
-.divider {
-    border-bottom: 1px solid gray;
-    margin-top: 1rem;
-    margin-bottom: 1rem;
-    opacity: 50%;
-}
-
-main {
-    padding: 2rem;
-    width: 100%;
-}
-
-/* 
-<div id="play-button" class="play-button">
-    <div class="triangle"></div>
-</div>
-*/
-
-.play-button {
-    background-color: var(--p-green);
-    border-radius: 100%;
-    height: 2rem;
-    width: 2rem;
-    position: absolute;
-    bottom: 1rem;
-    right: 1rem;
-    transform: translateY(0.5rem);
-    opacity: 0;
-    transition-duration: 300ms;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.triangle {
-    width: 0;
-    height: 0;
-    border-top: 0.5rem solid transparent;
-    border-bottom: 0.5rem solid transparent;
-    border-left: 0.75rem solid var(--p-black);
-    margin-left: 0.25rem;
-}
-
-@media screen and (max-width: 768px) {
-    .home-body {
-        flex-direction: column-reverse;
-    }
-    .nav-button {
-        flex-direction: column;
-        gap: 0.5rem;
-        text-align: center;
-        align-items: space-between;
-        justify-content: space-between;
-    }
-    .nav-desc {
-        display: none;
-    }
-    .logout-button {
-        display: none;
-    }
-    .divider {
-        display: none;
-    }
-    .nav-container {
-        display: flex;
-        flex-direction: row;
-        justify-content: space-between;
-        align-items: center;
-    }
-    .app-title {
-        display: none;
-    }
-    .nav {
-        padding-top: 0.25rem;
-        padding-bottom: 0.25rem;
-    }
-}
-
-/* ------------------------------------------------------ */
-/* ------------------------------------------------------ */
-/* ------------------------------------------------------ */
-/*                       Detail Lagu                      */
-/* ------------------------------------------------------ */
-/* ------------------------------------------------------ */
-/* ------------------------------------------------------ */
-
 .container-grid {
     display: grid;
     grid-template-columns: 10rem 10rem 40rem;
@@ -147,16 +8,11 @@ main {
     grid-row-gap: 0px;
     font-family: "Gotham Regular";
 }
-    
-.user { grid-area: 1 / 1 / 2 / 6; }
+
 .album-image { grid-area: 2 / 1 / 4 / 3; }
 .judul-album { grid-area: 2 / 3 / 3 / 4; }
 .album-info { grid-area: 3 / 3 / 4 / 4; }
 .edit { grid-area: 2 / 4 / 4 / 6; }
-
-.user {
-    text-align: right;
-}
 
 .album-image {
     text-align: center;

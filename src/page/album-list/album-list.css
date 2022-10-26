@@ -1,57 +1,5 @@
 @import url('/style/global.css');
 
-.home-body {
-    display: flex;
-}
-
-.nav {
-    background: black;
-    padding: 2rem;
-    min-width: 12%;
-    position: sticky;
-    left: 0;
-    bottom: 0;
-    z-index: 50;
-}
-
-nav > ul { 
-    list-style-type: none;
-}
-
-a {
-    text-decoration: none;
-}
-
-.nav-button {
-    display: flex;
-    flex-direction: row;
-    gap: 1rem;
-    align-items: center;
-    padding-top: 0.5rem;
-    padding-bottom: 0.5rem;
-    color: white;
-    opacity: 75%;
-    transition-duration: 100ms;
-}
-
-.nav-button:hover {
-    opacity: 100%;
-}
-
-.logout-button {
-    position: absolute;
-    bottom: 2rem;
-    left: 2rem;
-    color: var(--s-fuschia);
-}
-
-.divider {
-    border-bottom: 1px solid gray;
-    margin-top: 1rem;
-    margin-bottom: 1rem;
-    opacity: 50%;
-}
-
 main {
     padding: 2rem;
 }
@@ -124,39 +72,4 @@ main {
     border-bottom: 0.5rem solid transparent;
     border-left: 0.75rem solid var(--p-black);
     margin-left: 0.25rem;
-}
-
-@media screen and (max-width: 768px) {
-    .home-body {
-        flex-direction: column-reverse;
-    }
-    .nav-button {
-        flex-direction: column;
-        gap: 0.5rem;
-        text-align: center;
-        align-items: space-between;
-        justify-content: space-between;
-    }
-    .nav-desc {
-        display: none;
-    }
-    .logout-button {
-        display: none;
-    }
-    .divider {
-        display: none;
-    }
-    .nav-container {
-        display: flex;
-        flex-direction: row;
-        justify-content: space-between;
-        align-items: center;
-    }
-    .app-title {
-        display: none;
-    }
-    .nav {
-        padding-top: 0.25rem;
-        padding-bottom: 0.25rem;
-    }
 }
