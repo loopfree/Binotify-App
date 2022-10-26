@@ -9,6 +9,14 @@ if(window.localStorage.getItem("user-id") !== null) {
     redirectForm.action = "/index.php";
     redirectForm.method = "POST";
 
+    const userId = document.createElement("input");
+
+    userId.type = "hidden";
+    userId.name = "user-id";
+    userId.value = window.localStorage.getItem("user-id");
+
+    redirectForm.appendChild(userId);
+
     document.body.appendChild(redirectForm);
 
     redirectForm.submit();
@@ -31,6 +39,14 @@ submitBtn.onclick = () => {
 
             redirectForm.action = "/index.php";
             redirectForm.method = "POST";
+            
+            const userId = document.createElement("input");
+
+            userId.type = "hidden";
+            userId.name = "user-id";
+            userId.value = json["user-id"];
+            
+            redirectForm.appendChild(userId);
 
             document.body.appendChild(redirectForm);
 
