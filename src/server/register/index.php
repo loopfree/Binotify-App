@@ -17,7 +17,7 @@
 
     $userId = hashUsername($username);
 
-    $conn = pg_connect("host=localhost port=5432 dbname=tubesIF3110 user=postgres password=admin");
+    $conn = pg_connect("host=db_x port=5432 dbname=postgres user=postgres password=postgres");
 
     // $query = "
     //     INSERT INTO
