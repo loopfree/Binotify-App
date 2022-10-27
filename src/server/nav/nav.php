@@ -77,23 +77,44 @@ session_start();
         <?php
     }
     ?>
-    <script src="/server/nav/logout.js" defer></script>
-    <div class="nav-button logout-button" onclick="
-        const logoutButton = document.getElementsByClassName('nav-button logout-button')[0];
-        logoutButton.onclick = function() {
-            const xhr = new XMLHttpRequest();
-            xhr.open('GET', `/server/nav/logout.php`);
-            xhr.onload = function() {
-                window.location.href = '/page/login/';
-            }
-            xhr.send();
-        }"
-    >
-        <lord-icon
-            src="/assets/lord-icon/logout-icon.json"
-            trigger="hover"
-            colors="primary:#f037a5"
-            style="width:2rem;height:2rem">
-        </lord-icon>
-        <p class="nav-desc">Log Out</p>
-    </div>
+    <?php
+    if(isset($_SESSION['logged_in'])) {
+        ?>
+        <script src="/server/nav/logout.js" defer></script>
+        <div class="nav-button logout-button" onclick="
+            const logoutButton = document.getElementsByClassName('nav-button logout-button')[0];
+            logoutButton.onclick = function() {
+                const xhr = new XMLHttpRequest();
+                xhr.open('GET', `/server/nav/logout.php`);
+                xhr.onload = function() {
+                    window.location.href = '/page/login/';
+                }
+                xhr.send();
+            }"
+        >
+            <lord-icon
+                src="/assets/lord-icon/logout-icon.json"
+                trigger="hover"
+                colors="primary:#f037a5"
+                style="width:2rem;height:2rem">
+            </lord-icon>
+            <p class="nav-desc">Log Out</p>
+        </div>
+        <?php
+    } else {
+        ?>
+        <div class="nav-button logout-button" onclick="
+            window.location.href ='/index.php';
+            "
+        >
+            <script src="https://cdn.lordicon.com/qjzruarw.js"></script>
+            <lord-icon
+                src="https://cdn.lordicon.com/rivoakkk.json"
+                trigger="hover"
+                colors="primary:#f037a5"
+                style="width:2rem;height:2rem">
+            </lord-icon>
+            <p class="nav-desc">Log In</p>
+        </div>
+        <?php
+    }
