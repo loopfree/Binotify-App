@@ -1,20 +1,31 @@
 @import url('/style/global.css');
 
-.status {
-    border: solid 1px var(--p-green);
-    color: var(--p-green);
-    border-radius: 24px;
-    padding: 0.25rem 0.5rem;
-    font-family: 'Gotham Bold', sans-serif;
-    font-size: 0.75rem;
-    width: fit-content;
-}
-
 main {
     padding: 2rem;
+    padding-right: 10%;
+    font-family: 'Gotham Regular', sans-serif;
 }
 
 .title {
     font-size: 1.5rem;
     margin-bottom: 1rem;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    table-layout: fixed;
+    text-align: left;
+}
+
+th {
+    border-bottom: solid 1px gray;
+}
+
+td {
+    border-bottom: 1px solid rgb(73, 72, 75);
+}
+
+th, td {
+    padding: 1rem 0.5rem;
 }
