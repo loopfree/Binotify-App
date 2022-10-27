@@ -38,14 +38,46 @@ const debounce = (cb, time) => {
     return func;
 }
 
+const first = document.getElementById("first");
+const second = document.getElementById("second");
+const third = document.getElementById("third");
+const fourth = document.getElementById("fourth");
+const back = document.getElementById("back");
+const forward = document.getElementById("forward");
+
+second.onclick = () => {
+    pageNum += 1;
+    getNewSong();
+}
+
+third.onclick = () => {
+    pageNum += 2;
+    getNewSong();
+}
+
+fourth.onclick = () => {
+    pageNum += 3;
+    getNewSong();
+}
+
+back.onclick = () => {
+    pageNum -= 1;
+    getNewSong();
+}
+
+forward.onclick = () => {
+    pageNum += 1;
+    getNewSong();
+}
+
 songList.innerHTML = "";
 
 const getNewSong = debounce(() => {
     const xhr = new XMLHttpRequest();
 
-    xhr.onloadend = function() {
+    xhr.onloadend = () => {
         try {
-            const resp = JSON.parse(this.responseText);
+            const resp = JSON.parse(xhr.responseText);
 
             console.log(resp);
 
@@ -183,9 +215,14 @@ const getNewSong = debounce(() => {
                 innerDiv.appendChild(tahunDiv);
 
                 songList.appendChild(outerDiv);
+
             }
+            first.innerText = pageNum + 1;
+            second.innerText = pageNum + 2;
+            third.innerText = pageNum + 3;
+            fourth.innerText = pageNum + 4;
         } catch(e) {
-            console.log(this.responseText);
+            console.log(xhr.responseText);
             console.log(e);
         }
     }
