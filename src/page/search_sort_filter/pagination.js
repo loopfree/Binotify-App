@@ -93,7 +93,16 @@ const getNewSong = debounce(() => {
                 const outerDiv = document.createElement("div");
                 outerDiv.className = "song";
 
+                let buttonOnclick = false;
+
+                setInterval(() => {
+                    buttonOnclick = false;
+                }, 100);
+
                 outerDiv.onclick = () => {
+                    if(buttonOnclick) {
+                        return;
+                    }
                     const redirectForm = document.createElement("form");
 
                     redirectForm.action = "/server/detail-lagu/index.php";
@@ -105,6 +114,13 @@ const getNewSong = debounce(() => {
                     songId.name = "song-id";
 
                     redirectForm.appendChild(songId);
+
+                    // const autoplay = document.createElement("input");
+                    // autoplay.type = "hidden";
+                    // autoplay.value = "true";
+                    // autoplay.name = "autoplay";
+
+                    // redirectForm.appendChild(autoplay);
 
                     document.body.appendChild(redirectForm);
 
@@ -119,15 +135,15 @@ const getNewSong = debounce(() => {
                 const songNum = document.createElement("div");     
                 songNum.className = "number";
                 
-                songNum.innerText = "" + (i + 1);
+                songNum.innerText = "" + (i + 1 + (pageNum * 7));
 
                 innerDiv.appendChild(songNum);
 
                 const playBtn = document.createElement("button");
                 playBtn.className = "play-button";
 
-                playBtn.onclick = () => {
-
+                playBtn.onclick = (e) => {
+                    buttonOnclick = true;
                     const redirectForm = document.createElement("form");
 
                     redirectForm.action = "/server/detail-lagu/index.php";
