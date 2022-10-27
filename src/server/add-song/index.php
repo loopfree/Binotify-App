@@ -109,17 +109,7 @@ if($album !== "") {
     }
 }
 
-$songId = hashUsername($judul);
-
-// print_r($songId);
-// print_r('judul: '$judul);
-// print_r('penyanyi: '$penyanyi);
-// print_r('tanggal terbit:' $tanggalTerbit);
-// print_r($genre);
-// print_r($duration);
-// print_r($sqlMusicFile);
-// print_r($sqlImageFile);
-// print_r($albumId);
+$songId = hashUsername($judul . $currentTime);
 
 if($albumId !== null) {
     $query = "

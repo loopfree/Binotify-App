@@ -65,10 +65,18 @@ $duration = $_POST["Duration"];
 $album = $_POST["Album"];
 
 $conn = pg_connect("host=db_x port=5432 dbname=postgres user=postgres password=postgres");
-$albumId = hashUsername($judul);
-$query = "INSERT INTO \"Album\" VALUES ($1,$2,$3,$4,$5,$6,$7);";
+$result = pg_query_params($conn, "SELECT * FROM \"Album\" WHERE Judul=$1", [$judul]);
 
-pg_query_params($conn, $query, [$albumId, $judul, $penyanyi, 0, $sqlImageFile, $tanggalTerbit, $genre]);
-pg_close($conn);
-header("Refresh:0; url=/page/album-list/");
+if (pg_num_rows($result) > 0) {
+    echo "<script type='text/javascript'>alert('Album name existed');
+          window.location.href='/page/add-album/'</script>";
+}
+else {
+    $albumId = hashUsername($judul);
+    $query = "INSERT INTO \"Album\" VALUES ($1,$2,$3,$4,$5,$6,$7);";
+
+    pg_query_params($conn, $query, [$albumId, $judul, $penyanyi, 0, $sqlImageFile, $tanggalTerbit, $genre]);
+    pg_close($conn);
+    header("Refresh:0; url=/page/album-list/");
+}
 ?>
