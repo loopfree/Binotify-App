@@ -45,7 +45,7 @@ if(isset($_GET["song-id"])) {
     <title>\(OwO)/</title>
     <link rel="stylesheet" href="detail-lagu.css">
     <script src="modal.js" defer></script>
-
+    <script src="edit-lagu.js" defer></script>
 </head>
 <body class="dark-bg home-body">
     <nav class="nav"></nav>
@@ -57,6 +57,9 @@ if(isset($_GET["song-id"])) {
             <div class="head">
                 Song Detail
             </div>
+            <script>
+                const songId = <?php echo $songId ?>
+            </script>
             <?php
             (function(){
                 if($_SESSION["is-admin"]) {
@@ -81,6 +84,7 @@ if(isset($_GET["song-id"])) {
                                 <div class="cover-img-new">
                                     <input type="file" id="Image" name="Image" accept="image/*">
                                 </div>
+                                <input type="hidden" id="image-data">
 
                                 <div class="audio-edit">
                                     Audio
@@ -88,27 +92,29 @@ if(isset($_GET["song-id"])) {
                                 <div class="audio-new">
                                     <input type="file" id="Audio" name="Audio" accept="audio/*" required>
                                 </div>
+                                <input type="hidden" id="audio-data" />
+                                <input type="hidden" id="duration-data" />
 
                                 <div class="album-edit">
                                     Album
                                 </div>
                                 <div class="album-new">
-                                    <input type="text">
+                                    <input type="text" id="album-new" >
                                 </div>
 
                                 <div class="judul-edit">
                                     Judul
                                 </div>
                                 <div class="judul-new">
-                                    <input type="text">
+                                    <input type="text" id="judul-new">
                                 </div>
 
-                                <div class="penyanyi-edit">
+                                <!-- <div class="penyanyi-edit">
                                     Penyanyi
                                 </div>
                                 <div class="penyanyi-new">
                                     <input type="text">
-                                </div>
+                                </div> -->
 
                                 <div class="tgl-edit">
                                     Tanggal Terbit
@@ -121,7 +127,7 @@ if(isset($_GET["song-id"])) {
                                     Genre
                                 </div>
                                 <div class="genre-new">
-                                    <input type="text">
+                                    <input type="text" id="genre-new">
                                 </div>
 
                                 <div class="save-changes">

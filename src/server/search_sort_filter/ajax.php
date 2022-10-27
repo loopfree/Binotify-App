@@ -9,7 +9,7 @@ $pageNumber = $json["pageNum"];
 $genreFilter = $json["genreFilter"];
 $reversed = $json["reversed"];
 
-$offset = $pageNumber;
+$offset = $pageNumber * 10;
 
 $conn = pg_connect("host=db_x port=5432 dbname=postgres user=postgres password=postgres");
 
