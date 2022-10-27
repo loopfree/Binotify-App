@@ -39,7 +39,7 @@ session_start();
     <?php
     if ($_SESSION['admin']) {
         ?>
-        <a href="/page/home/">
+        <a href="/page/add-album/">
             <li class="nav-button">
                 <lord-icon
                     src="/assets/lord-icon/add-album-icon.json"

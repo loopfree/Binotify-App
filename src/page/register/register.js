@@ -1,6 +1,7 @@
 const usernameInput = document.getElementById("username-input");
 const emailInput = document.getElementById("email-input");
 const passwordInput = document.getElementById("password-input");
+const passwordConfirmationInput = document.getElementById("password-confirmation-input");
 const submitBtn = document.getElementById("submit-button");
 
 let usernameUnique = false;
@@ -76,7 +77,12 @@ emailInput.onkeydown = () => {
 
 submitBtn.onclick = () => {
     if(!(usernameUnique && emailUnique)) {
-        alert("username and/or email invalid");
+        alert("Username and/or email invalid");
+        return;
+    }
+
+    if (passwordInput.value !== passwordConfirmationInput.value) {
+        alert("Password doesn't match");
         return;
     }
 
@@ -84,9 +90,8 @@ submitBtn.onclick = () => {
 
     xhr.onloadend = function() {
         const result = this.responseText;
-
         alert(result);
-
+        window.location.href = "/index.php";
     }
 
     xhr.open("POST", "/server/register/index.php", true);
