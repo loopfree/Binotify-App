@@ -75,3 +75,15 @@ main {
     border-left: 0.75rem solid var(--p-black);
     margin-left: 0.25rem;
 }
+
+.profile {
+    padding: 0.5rem 1rem;
+    position: fixed;
+    top: 2rem;
+    right: 5%;
+    background-color: rgba(214, 220, 226, 0.25);
+    backdrop-filter: blur(10px);
+    border-radius: 36px;
+    border: solid 1px rgb(214, 220, 226);
+    z-index: 50;
+}
