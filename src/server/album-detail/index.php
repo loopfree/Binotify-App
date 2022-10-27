@@ -25,7 +25,7 @@ for ($row = 0; $row < pg_num_rows($result); $row++) {
     $imgpath = pg_fetch_result($result, $row, "Image_path");
     $song_nb = $row + 1;
     $content .= "
-        <div class='song'>
+        <div class='song' song-id='$song_id'>
             <div class='grid-container'>
                 <div class='number'>$song_nb</div>
                 <button class='play-button'>

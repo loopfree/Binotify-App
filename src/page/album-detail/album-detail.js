@@ -81,15 +81,18 @@ function secToString(t) {
 }
 
 function updateSongList() {
+    const songBoxes = document.getElementsByClassName("song");
+    for (let i=0; i < songBoxes.length; i++) {
+        const songBox = songBoxes[i];
+        songBox.addEventListener("click", function() {
+            window.location.href = `/page/detail-lagu/index.php?song-id=${songBox.getAttribute("song-id")}`;
+        });
+    }
+
     const removeButtons = document.getElementsByClassName("remove-button");
-    console.log(removeButtons);
-    console.log(removeButtons[0]);
     for (let i=0; i < removeButtons.length; i++) {
-        console.log('ye');
         const removeButton = removeButtons[i];
-        console.log('yo');
         removeButton.addEventListener("click", function() {
-            console.log('hi');
             window.location.href = `/server/album-detail/delete-song.php?album-id=${albumId}&song-id=${removeButton.getAttribute("song-id")}`;
         });
     }

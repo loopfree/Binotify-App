@@ -50,5 +50,8 @@ function songPlayUpdate() {
             playButton.style.opacity = "0";
             playButton.style.transform = "translateY(0.5rem)";
         })
+        songCard.addEventListener("click", function() {
+            window.location.href = `/page/detail-lagu/index.php?song-id=${songCard.getAttribute("song-id")}`;
+        })
     }
 }
