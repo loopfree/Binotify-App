@@ -88,6 +88,7 @@ if(isset($_GET["message"])) {
     <link rel="stylesheet" href="detail-lagu.css">
     <script src="modal.js" defer></script>
     <script src="edit-lagu.js" defer></script>
+    <script src="audio-onplay.js" defer></script>
 </head>
 <body class="dark-bg home-body">
     <nav class="nav"></nav>
@@ -206,25 +207,42 @@ if(isset($_GET["message"])) {
             <div class="song-image">
                 <img src="<?php echo $imagePath ?>" alt="no-image"/>
             </div>
-            <div class="duration">
-                <audio controls id="audio-player">
-                    <source src="<?php echo $audioPath ?>" type="audio/mp3">
-                  Your browser does not support the audio element.
-                </audio>
-            </div>
+                <div class="duration">
+                    <audio controls id="audio-player">
+                        <source src="<?php echo $audioPath ?>" type="audio/mp3">
+                    Your browser does not support the audio element.
+                    </audio>
+                </div>
+                <script>
+                    const audioPlayer = document.getElementById("audio-player");
+        
+                    audioPlayer.onplay = () => {
+                        const xhr = new XMLHttpRequest();
+                    
+                        xhr.onloadend = () => {
+                            if(xhr.responseText === "invalid") {
+                                audioPlayer.pause();
+                            }
+    
+                            console.log(xhr.responseText);
+                        }
+                    
+                        xhr.open("GET", `/server/detail-lagu/play_song.php?song-id=${songId}`);
+    
+                        xhr.send();
+                    }
+                </script>
             <?php
                 if(isset($_GET["autoplay"])) {
                     ?>
                         <script>
-                            const audioPlayer = document.getElementById("audio-player");
-
-                            document.onload = () => {
-                                audioPlayer.currentTime = 0;
-                                audioPlayer.play();
-                            }
+                            (async() => {
+                                console.log(await audioPlayer.play());
+                            })();
                             </script>
                     <?php
                 }
+                
             ?>
             <?php
             if($albumName !== "") {
