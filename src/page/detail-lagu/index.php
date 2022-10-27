@@ -1,5 +1,7 @@
 <?php
 
+session_start();
+
 $songId = null;
 
 $audioPath = null;
@@ -42,9 +44,7 @@ if(isset($_GET["song-id"])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>\(OwO)/</title>
     <link rel="stylesheet" href="detail-lagu.css">
-    <script src="edit-modal.js" defer></script>
-    <script src="manage-admin.js" defer></script>
-    <!-- <script src="del-modal.js" defer></script> -->
+    <script src="modal.js" defer></script>
 
 </head>
 <body class="dark-bg home-body">
@@ -57,79 +57,103 @@ if(isset($_GET["song-id"])) {
             <div class="head">
                 Song Detail
             </div>
-            <div class="edit">
-                <div class="edit-del-blank"></div>
+            <?php
+            (function(){
+                if($_SESSION["is-admin"]) {
+                    ?>
 
-                <button class="edit-btn" id="edit-btn">
-                    Edit
-                </button>
+                    <div class="edit">
+                        <div class="edit-del-blank"></div>
 
-                <div id="edit-modal" class="modal">
-                    <div class="modal-content">
-                        <div class="close-area">
-                            <span class="close">&times;</span>
+                        <button class="edit-btn" id="edit-btn">
+                            Edit
+                        </button>
+
+                        <div id="edit-modal" class="modal">
+                            <div class="modal-content">
+                                <div class="close-area">
+                                    <span class="close">&times;</span>
+                                </div>
+
+                                <div class="cover-img-edit">
+                                    Cover Image
+                                </div>
+                                <div class="cover-img-new">
+                                    <input type="file" id="Image" name="Image" accept="image/*">
+                                </div>
+
+                                <div class="audio-edit">
+                                    Audio
+                                </div>
+                                <div class="audio-new">
+                                    <input type="file" id="Audio" name="Audio" accept="audio/*" required>
+                                </div>
+
+                                <div class="album-edit">
+                                    Album
+                                </div>
+                                <div class="album-new">
+                                    <input type="text">
+                                </div>
+
+                                <div class="judul-edit">
+                                    Judul
+                                </div>
+                                <div class="judul-new">
+                                    <input type="text">
+                                </div>
+
+                                <div class="penyanyi-edit">
+                                    Penyanyi
+                                </div>
+                                <div class="penyanyi-new">
+                                    <input type="text">
+                                </div>
+
+                                <div class="tgl-edit">
+                                    Tanggal Terbit
+                                </div>
+                                <div class="tgl-new">
+                                    <input type="date" id="Tanggal_terbit" name="Tanggal_terbit" placeholder="2020-01-01" required>
+                                </div>
+
+                                <div class="genre-edit">
+                                    Genre
+                                </div>
+                                <div class="genre-new">
+                                    <input type="text">
+                                </div>
+
+                                <div class="save-changes">
+                                    <button>Save Changes</button>
+                                </div>
+                            </div>
                         </div>
 
-                        <div class="cover-img-edit">
-                            Cover Image
-                        </div>
-                        <div class="cover-img-new">
-                            <input type="file" id="Image" name="Image" accept="image/*">
-                        </div>
+                        <button class="del-btn" id="del-btn">
+                            Delete
+                        </button>
 
-                        <div class="audio-edit">
-                            Audio
-                        </div>
-                        <div class="audio-new">
-                            <input type="file" id="Audio" name="Audio" accept="audio/*" required>
-                        </div>
-
-                        <div class="album-edit">
-                            Album
-                        </div>
-                        <div class="album-new">
-                            <input type="text">
-                        </div>
-
-                        <div class="judul-edit">
-                            Judul
-                        </div>
-                        <div class="judul-new">
-                            <input type="text">
-                        </div>
-
-                        <div class="penyanyi-edit">
-                            Penyanyi
-                        </div>
-                        <div class="penyanyi-new">
-                            <input type="text">
-                        </div>
-
-                        <div class="tgl-edit">
-                            Tanggal Terbit
-                        </div>
-                        <div class="tgl-new">
-                            <input type="date" id="Tanggal_terbit" name="Tanggal_terbit" placeholder="2020-01-01" required>
-                        </div>
-
-                        <div class="genre-edit">
-                            Genre
-                        </div>
-                        <div class="genre-new">
-                            <input type="text">
-                        </div>
-
-                        <div class="save-changes">
-                            <button>Save Changes</button>
+                        <div id="delete-modal" class="modal">
+                        <div class="modal-content">
+                            <div class="close-area">
+                                <span class="close">&times;</span>
+                            </div>
+                            <p class="delete-sentence">Do you want to delete the song?</p>
+                            <div id="delete-confirm-container">
+                                <button>Confirm</button>
+                            </div>
+                            <div id="delete-cancel-container">
+                                <button>Cancel</button>
+                            </div>
                         </div>
                     </div>
-                </div>
 
-                <button class="del-btn">
-                    Delete
-                </button>
-
-            </div>
+                    </div>
+                    <?php
+                }
+            })();
+            ?>
             <div class="song-image">
                 <img src="<?php echo $imagePath ?>" alt="no-image"/>
             </div>

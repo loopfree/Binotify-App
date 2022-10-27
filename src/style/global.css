@@ -15,12 +15,12 @@
 /* FONTS */
 @font-face {
   font-family: "Gotham Bold";
-  src: url("../assets/font/GothamBold.ttf") format("truetype");
+  src: url("/assets/font/GothamBold.ttf") format("truetype");
 }
 
 @font-face {
   font-family: "Gotham Regular";
-  src: url("../assets/font/GothamRegular.ttf") format("truetype");
+  src: url("/assets/font/GothamRegular.ttf") format("truetype");
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -44,6 +44,10 @@ p, a, li {
   font-family: 'Gotham Bold', sans-serif;
   font-size: 0.75rem;
   width: fit-content;
+}
+
+.home-body {
+  display: flex;
 }
 
 .nav {
@@ -153,6 +157,41 @@ a {
 
 .btn:focus {
   background-color: #30bd61;
+}
+
+@media screen and (max-width: 768px) {
+  .home-body {
+      flex-direction: column-reverse;
+  }
+  .nav-button {
+      flex-direction: column;
+      gap: 0.5rem;
+      text-align: center;
+      align-items: space-between;
+      justify-content: space-between;
+  }
+  .nav-desc {
+      display: none;
+  }
+  .logout-button {
+      display: none;
+  }
+  .divider {
+      display: none;
+  }
+  .nav-container {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+  }
+  .app-title {
+      display: none;
+  }
+  .nav {
+      padding-top: 0.25rem;
+      padding-bottom: 0.25rem;
+  }
 }
 
 /* CSS RESET */

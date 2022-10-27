@@ -16,7 +16,8 @@ $passwordHashed = hashPasswordTo($password);
 
 $query = "
     SELECT 
-        user_id
+        user_id,
+        is_admin
     FROM
         \"User\"
     WHERE
@@ -33,6 +34,8 @@ $result = pg_query($conn, $query);
 
 $row = pg_fetch_row($result);
 
+session_start();
+
 if($row === false) {
     $json += ["success" => "false"];
 } else {
@@ -41,6 +44,12 @@ if($row === false) {
      * $row[0] is user_id
      */
     $json += ["user-id" => $row[0]];
+
+    if($row[1] === "f") {
+        $_SESSION["is-admin"] = false;
+    } else {
+        $_SESSION["is-admin"] = true;
+    }
 }
 
 pg_close($conn);

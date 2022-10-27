@@ -1,64 +1,5 @@
 @import url('/style/global.css');
 
-/* ------------------------------------------------------ */
-/* ------------------------------------------------------ */
-/* ------------------------------------------------------ */
-/*                     Home Template                      */
-/* ------------------------------------------------------ */
-/* ------------------------------------------------------ */
-/* ------------------------------------------------------ */
-.home-body {
-    display: flex;
-}
-
-.nav {
-    background: black;
-    padding: 2rem;
-    min-width: 12%;
-    position: sticky;
-    left: 0;
-    bottom: 0;
-    z-index: 50;
-}
-
-nav > ul { 
-    list-style-type: none;
-}
-
-a {
-    text-decoration: none;
-}
-
-.nav-button {
-    display: flex;
-    flex-direction: row;
-    gap: 1rem;
-    align-items: center;
-    padding-top: 0.5rem;
-    padding-bottom: 0.5rem;
-    color: white;
-    opacity: 75%;
-    transition-duration: 100ms;
-}
-
-.nav-button:hover {
-    opacity: 100%;
-}
-
-.logout-button {
-    position: absolute;
-    bottom: 2rem;
-    left: 2rem;
-    color: var(--s-fuschia);
-}
-
-.divider {
-    border-bottom: 1px solid gray;
-    margin-top: 1rem;
-    margin-bottom: 1rem;
-    opacity: 50%;
-}
-
 main {
     padding: 2rem;
 }
@@ -66,46 +7,6 @@ main {
 .title {
     font-size: 1.5rem;
     margin-bottom: 1rem;
-}
-
-.songs-container {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    gap: 1rem;
-}
-
-.song-card {
-    width: 12rem;
-    background: #242526;
-    padding: 1rem;
-    border-radius: 8px;
-    transition-duration: 300ms;
-    cursor: pointer;
-    position: relative;
-}
-
-.song-card:hover {
-    background: #191414;
-}
-
-.song-image {
-    width: 100%;
-    aspect-ratio: 1/1;
-    object-fit: cover;
-    border-radius: 4px;
-    margin-bottom: 0.5rem;
-    box-shadow: #242526 0px 0px 10px;
-}
-
-.song-title {
-    font-size: 1rem;
-    margin-bottom: 0.5rem;
-}
-
-.song-artist {
-    font-size: 0.75rem;
-    color: gray;
 }
 
 /* .play-button {
@@ -123,50 +24,6 @@ main {
     justify-content: center;
     align-items: center;
 } */
-
-.triangle {
-    width: 0;
-    height: 0;
-    border-top: 0.5rem solid transparent;
-    border-bottom: 0.5rem solid transparent;
-    border-left: 0.75rem solid var(--p-black);
-    margin-left: 0.25rem;
-}
-
-@media screen and (max-width: 768px) {
-    .home-body {
-        flex-direction: column-reverse;
-    }
-    .nav-button {
-        flex-direction: column;
-        gap: 0.5rem;
-        text-align: center;
-        align-items: space-between;
-        justify-content: space-between;
-    }
-    .nav-desc {
-        display: none;
-    }
-    .logout-button {
-        display: none;
-    }
-    .divider {
-        display: none;
-    }
-    .nav-container {
-        display: flex;
-        flex-direction: row;
-        justify-content: space-between;
-        align-items: center;
-    }
-    .app-title {
-        display: none;
-    }
-    .nav {
-        padding-top: 0.25rem;
-        padding-bottom: 0.25rem;
-    }
-}
 
 /* ------------------------------------------------------ */
 /* ------------------------------------------------------ */

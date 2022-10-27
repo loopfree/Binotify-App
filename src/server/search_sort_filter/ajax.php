@@ -57,7 +57,7 @@ if(count($genreFilter) === 0) {
         " . $filterStr . "
         ORDER BY
             judul ASC
-        LIMIT 10 OFFSET $offset  
+        LIMIT 10 OFFSET $offset;  
     ";
 }
 

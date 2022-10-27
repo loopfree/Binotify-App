@@ -1,0 +1,49 @@
+var editModal = document.getElementById("edit-modal");
+var editButton = document.getElementById("edit-btn");
+var editClose = document.getElementsByClassName("close")[0];
+var deleteModal = document.getElementById("delete-modal");
+var deleteButton = document.getElementById("del-btn");
+var deleteClose = document.getElementsByClassName("close")[1];
+
+window.onload = () => {
+    const userId = window.localStorage.getItem("user-id");
+
+    let addition = "";
+
+    if(userId !== null) {
+        addition = `?user-id=${userId}`;
+    }
+    
+    const nav = document.getElementsByClassName('nav')[0];
+    const xhr = new XMLHttpRequest();
+    xhr.open('GET', `/server/nav/nav.php${addition}`);
+    xhr.onload = function() {
+        nav.innerHTML = this.responseText;
+    }
+    xhr.send();
+}
+
+window.onclick = function(event) {
+    if (event.target === editModal) {
+        editModal.style.display = "none";
+    }
+    else if (event.target === deleteModal) {
+        deleteModal.style.display = "none";
+    }
+}
+
+editButton.onclick = function() {
+    editModal.style.display = "block";
+}
+
+editClose.onclick = function() {
+    editModal.style.display = "none";
+}
+
+deleteButton.onclick = function() {
+    deleteModal.style.display = "block";
+}
+
+deleteClose.onclick = function() {
+    deleteModal.style.display = "none";
+}
