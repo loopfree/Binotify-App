@@ -46,20 +46,20 @@ if(isset($_GET["email"])) {
 
     $isUnique;
 
-    if($row !== false) {
-        $isUnique = "not unique";
-    } else {
-        $isUnique = "unique";
-    }
-
     // regex = ^\w+@[A-Za-z]+[.][A-Za-z]+([.][A-Za-z]+)*$
     $regexp = "/^\w+@[A-Za-z]+[.][A-Za-z]+([.][A-Za-z]+)*$/i";
 
-    if(preg_match($regexp, $email) === 1) {
-        $isUnique = "unique";
-    } else {
+    if($row !== false || preg_match($regexp, $email) === 0) {
         $isUnique = "not unique";
+    } else {
+        $isUnique = "unique";
     }
+
+    // if(preg_match($regexp, $email) === 1) {
+    //     $isUnique = "unique";
+    // } else {
+    //     $isUnique = "not unique";
+    // }
 
     echo $isUnique;
 
