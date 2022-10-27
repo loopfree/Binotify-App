@@ -1,19 +1,8 @@
 window.onload = () => {
-    const userId = window.localStorage.getItem("user-id");
-    if(userId === null) {
-        window.location.href = "/page/login";
-    }
-
-    // const addition = "";
-
-    // if(userId !== null) {
-    //     addition = `?user-id=${userId}`;
-    // }
-    
     // NAV
     const nav = document.getElementsByClassName('nav')[0];
     const xhr = new XMLHttpRequest();
-    xhr.open('GET', `/server/nav/nav.php?user-id=${userId || null}`);
+    xhr.open('GET', `/server/nav/nav.php`);
     xhr.onload = function() {
         nav.innerHTML = this.responseText;
     }
