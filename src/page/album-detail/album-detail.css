@@ -238,6 +238,10 @@ no | img | judul    | -gap- | genre | tahun |
     grid-row-gap: 0px;
 }
 
+button {
+    cursor: pointer;
+}
+
 .close {
     color: #aaaaaa;
     font-size: 28px;

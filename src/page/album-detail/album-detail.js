@@ -4,7 +4,8 @@ var editButton = document.getElementsByClassName("settings-button")[0];
 var editClose = document.getElementsByClassName("close")[0];
 var deleteModal = document.getElementById("delete-modal");
 var deleteButton = document.getElementsByClassName("settings-button")[1];
-var deleteClose = document.getElementsByClassName("close")[1];
+var confirmDeleteButton = document.getElementsByClassName("confirm-button")[0];
+var cancelDeleteButton = document.getElementsByClassName("cancel-button")[0];
 
 window.onload = () => {
     getNav();
@@ -39,10 +40,9 @@ function getAlbumInfo() {
     xhr.open('GET', '/server/album-detail/index.php?album-id='+albumId);
     xhr.onload = function() {
         var json = JSON.parse(this.responseText);
-        console.log(json);
         albumImage.src = json["imgpath"];
         albumTitle.innerHTML = json["title"];
-        albumDesc.innerHTML = `${json["artist"]} • ${json["genre"]}, ${json["duration"]} seconds`;
+        albumDesc.innerHTML = `${json["artist"]} • ${json["genre"]}, ${secToString(json["duration"])}`;
         albumSongList.innerHTML = json["song-list-html"];
     }
     xhr.send();
@@ -60,6 +60,24 @@ deleteButton.onclick = function() {
     deleteModal.style.display = "block";
 }
 
-deleteClose.onclick = function() {
+confirmDeleteButton.onclick = function() {
+    const xhr = new XMLHttpRequest();
+    xhr.open('GET', '/server/album-detail/delete-album.php?album-id='+albumId);
+    xhr.onload = function() {
+        console.log(this.response);
+    }
+    xhr.send();
+}
+
+cancelDeleteButton.onclick = function() {
     deleteModal.style.display = "none";
+}
+
+function secToString(t) {
+    if (t >= 3600) {
+        return `${Math.floor(t/3600)} hr ${(t%3600)%60} min`;
+    }
+    else {
+        return `${Math.floor(t/60)} min ${t%60} sec`;
+    }
 }
