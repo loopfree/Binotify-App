@@ -4,19 +4,19 @@ $db_handle = pg_connect("host=db_x port=5432 dbname=postgres user=postgres passw
 
 // $no_of_rows = pg_query($db_handle, 'SELECT COUNT(*) FROM "Album";');     // for pagination
 
-$result = pg_query($db_handle, 'SELECT Judul, EXTRACT(YEAR FROM Tanggal_terbit) AS Tahun, Penyanyi,
-                                Genre, Image_path FROM "Album" ORDER BY Judul;');
+$result = pg_query($db_handle, 'SELECT * FROM "Album" ORDER BY Judul;');
 $content = "";
 
 for ($row = 0; $row < pg_num_rows($result); $row++) {
+    $album_id = pg_fetch_result($result, $row, "album_id");
     $title = pg_fetch_result($result, $row, "Judul");
-    $year = pg_fetch_result($result, $row, "Tahun");
+    $year = (new DateTime(pg_fetch_result($result, $row, "Tanggal_terbit")))->format("Y");
     $artist = pg_fetch_result($result, $row, "Penyanyi");
     $genre = pg_fetch_result($result, $row, "Genre");
     $imgpath = pg_fetch_result($result, $row, "Image_path");
 
     $content .= "
-        <div class='album-card'>
+        <div class='album-card' album-id=$album_id>
             <img 
                 src='$imgpath'
                 alt='$title'

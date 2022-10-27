@@ -26,12 +26,12 @@ function getAlbumCards() {
     xhr.open("GET", "/server/album-list/index.php", true);
     xhr.onload = function() {
         albumContainer.innerHTML = this.responseText;
-        albumPlayUpdate();
+        albumUpdate();
     }
-    xhr.send(null);
+    xhr.send();
 }
 
-function albumPlayUpdate() {
+function albumUpdate() {
     const albumCards = document.getElementsByClassName("album-card");
 
     for (let i=0; i < albumCards.length; i++) {
@@ -45,6 +45,9 @@ function albumPlayUpdate() {
             const playButton = albumCard.querySelector(".play-button");
             playButton.style.opacity = "0";
             playButton.style.transform = "translateY(0.5rem)";
+        })
+        albumCard.addEventListener("click", function() {
+            window.location.href = "/page/album-detail/index.php?album-id=" + albumCard.getAttribute("album-id");
         })
     }
 }
