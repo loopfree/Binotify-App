@@ -2,7 +2,7 @@
 
 $db_handle = pg_connect("host=db_x port=5432 dbname=postgres user=postgres password=postgres");
 
-$result = pg_query($db_handle, 'SELECT Username, Email FROM "User";');
+$result = pg_query($db_handle, 'SELECT Username, Email FROM "User" WHERE is_admin=false;');
 $content = "";
 
 for ($row = 0; $row < pg_num_rows($result); $row++) {
