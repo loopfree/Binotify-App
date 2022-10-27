@@ -7,6 +7,13 @@ $songId = null;
 $audioPath = null;
 $imagePath = null;
 
+$judul;
+$penyanyi;
+$tanggalTerbit;
+$genre;
+$albumId;
+$albumName = "";
+
 if(isset($_GET["song-id"])) {
     $songId = $_GET["song-id"];
 
@@ -15,7 +22,12 @@ if(isset($_GET["song-id"])) {
     $query = "
         SELECT
             audio_path,
-            image_path
+            image_path,
+            judul,
+            penyanyi,
+            tanggal_terbit,
+            genre,
+            album_id
         FROM
             \"Song\"
         WHERE
@@ -29,9 +41,39 @@ if(isset($_GET["song-id"])) {
     if($row !== false) {
         $audioPath = trim($row[0]);
         $imagePath = trim($row[1]);
+        $judul = trim($row[2]);
+        $penyanyi = trim($row[3]);
+        $tanggalTerbit = trim($row[4]);
+        $genre = trim($row[5]);
+        $albumId = $row[6];
+
+        if($row[6] !== null) {
+            $query = "
+                SELECT
+                    judul
+                FROM
+                    \"Album\"
+                WHERE
+                    album_id = $row[6];
+            ";
+
+            $result = pg_query($conn, $query);
+
+            $row = pg_fetch_row($result);
+
+            $albumName = $row[0];
+        }
     }
 
     pg_close($conn);
+}
+
+if(isset($_GET["message"])) {
+    ?>
+    <script>
+        alert("<?php echo $_GET['message'] ?>");
+    </script>
+    <?php
 }
 
 ?>
@@ -51,9 +93,6 @@ if(isset($_GET["song-id"])) {
     <nav class="nav"></nav>
     <main>
         <div class="container-grid">
-            <div class="user">
-                user
-            </div>
             <div class="head">
                 Song Detail
             </div>
@@ -61,7 +100,7 @@ if(isset($_GET["song-id"])) {
                 const songId = <?php echo $songId ?>
             </script>
             <?php
-            (function(){
+            (function() use($songId) {
                 if($_SESSION["is-admin"]) {
                     ?>
 
@@ -77,80 +116,84 @@ if(isset($_GET["song-id"])) {
                                 <div class="close-area">
                                     <span class="close">&times;</span>
                                 </div>
+                                <form action="/server/detail-lagu/edit_song.php" method="POST" enctype="multipart/form-data">
 
-                                <div class="cover-img-edit">
-                                    Cover Image
-                                </div>
-                                <div class="cover-img-new">
-                                    <input type="file" id="Image" name="Image" accept="image/*">
-                                </div>
-                                <input type="hidden" id="image-data">
-
-                                <div class="audio-edit">
-                                    Audio
-                                </div>
-                                <div class="audio-new">
-                                    <input type="file" id="Audio" name="Audio" accept="audio/*" required>
-                                </div>
-                                <input type="hidden" id="audio-data" />
-                                <input type="hidden" id="duration-data" />
-
-                                <div class="album-edit">
-                                    Album
-                                </div>
-                                <div class="album-new">
-                                    <input type="text" id="album-new" >
-                                </div>
-
-                                <div class="judul-edit">
-                                    Judul
-                                </div>
-                                <div class="judul-new">
-                                    <input type="text" id="judul-new">
-                                </div>
-
-                                <!-- <div class="penyanyi-edit">
-                                    Penyanyi
-                                </div>
-                                <div class="penyanyi-new">
-                                    <input type="text">
-                                </div> -->
-
-                                <div class="tgl-edit">
-                                    Tanggal Terbit
-                                </div>
-                                <div class="tgl-new">
-                                    <input type="date" id="Tanggal_terbit" name="Tanggal_terbit" placeholder="2020-01-01" required>
-                                </div>
-
-                                <div class="genre-edit">
-                                    Genre
-                                </div>
-                                <div class="genre-new">
-                                    <input type="text" id="genre-new">
-                                </div>
-
-                                <div class="save-changes">
-                                    <button>Save Changes</button>
-                                </div>
+                                    <div class="cover-img-edit">
+                                        Cover Image
+                                    </div>
+                                    <div class="cover-img-new">
+                                        <input type="file" id="Image" name="Image" accept="image/*">
+                                    </div>
+                                    <input type="hidden" id="image-data">
+    
+                                    <div class="audio-edit">
+                                        Audio
+                                    </div>
+                                    <div class="audio-new">
+                                        <input type="file" id="Audio" name="Audio" accept="audio/*">
+                                    </div>
+                                    <input type="hidden" name="songId" value="<?php echo $songId ?>" />
+    
+                                    <div class="album-edit">
+                                        Album
+                                    </div>
+                                    <div class="album-new">
+                                        <input type="text" id="album-new" name="Album" >
+                                    </div>
+    
+                                    <div class="judul-edit">
+                                        Judul
+                                    </div>
+                                    <div class="judul-new">
+                                        <input type="text" id="judul-new" name="Judul" >
+                                    </div>
+    
+                                    <!-- <div class="penyanyi-edit">
+                                        Penyanyi
+                                    </div>
+                                    <div class="penyanyi-new">
+                                        <input type="text">
+                                    </div> -->
+    
+                                    <div class="tgl-edit">
+                                        Tanggal Terbit
+                                    </div>
+                                    <div class="tgl-new">
+                                        <input type="date" id="Tanggal_terbit" name="Tanggal_terbit" placeholder="2020-01-01">
+                                    </div>
+    
+                                    <div class="genre-edit">
+                                        Genre
+                                    </div>
+                                    <div class="genre-new">
+                                        <input type="text" id="genre-new" name="Genre">
+                                    </div>
+    
+                                    <div class="save-changes">
+                                        <button>Save Changes</button>
+                                    </div>
+                                </form>
                             </div>
                         </div>
 
                         <button class="del-btn" id="del-btn">
                             Delete
                         </button>
-
+                        
                         <div id="delete-modal" class="modal">
-                        <div class="modal-content">
-                            <div class="close-area">
-                                <span class="close">&times;</span>
-                            </div>
-                            <p class="delete-sentence">Do you want to delete the song?</p>
-                            <div id="delete-confirm-container">
-                                <button>Confirm</button>
-                            </div>
+                            <div class="modal-content">
+                                <div class="close-area">
+                                    <!-- <span class="close">&times;</span> -->
+                                </div>
+                                <p class="delete-sentence">Do you want to delete this song permanently?</p>
+                            <form action="/server/detail-lagu/delete_song.php" method="POST">
+                                <input type="hidden" name="song-id" value="<?php echo $songId ?>">
+                                <div id="delete-confirm-container">
+                                    <button>Confirm</button>
+                                </div>
+                            </form>
                             <div id="delete-cancel-container">
-                                <button>Cancel</button>
+                                <button class="close">Cancel</button>
                             </div>
                         </div>
                     </div>
@@ -183,22 +226,28 @@ if(isset($_GET["song-id"])) {
                     <?php
                 }
             ?>
-            <div class="album">
-                <button>
-                    Album
-                </button>
-            </div>
+            <?php
+            if($albumName !== null) {
+                ?>
+                <div class="album">
+                    <a href="/page/album-detail/index.php?album-id=<?php echo $albumId ?>">
+                        <?php echo $albumName ?>
+                    </a>
+                </div>
+                <?php
+            }
+            ?>
             <div class="judul-lagu">
-                Feel Special
+                <?php echo $judul ?>
             </div>
             <div class="penyanyi">
-                TWICE
+                <?php echo $penyanyi ?>
             </div>
-            <div class="tanggal-terbit">
-                25 Oktober 2022
+            <div class="tanggal-terbit">    
+                <?php echo $tanggalTerbit ?>
             </div>
             <div class="genre">
-                genre
+                <?php echo $genre ?>
             </div>
         </div>
     </main>
