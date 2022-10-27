@@ -12,12 +12,13 @@ $json += ["genre" => pg_fetch_result($result, 0, "Genre")];
 $json += ["imgpath" => pg_fetch_result($result, 0, "Image_path")];
 $json += ["duration" => pg_fetch_result($result, 0, "Total_duration")];
 
-$query = "SELECT Judul, EXTRACT(YEAR FROM Tanggal_terbit) AS Tahun, Penyanyi, Image_path 
+$query = "SELECT song_id, Judul, EXTRACT(YEAR FROM Tanggal_terbit) AS Tahun, Penyanyi, Image_path 
           FROM \"Song\" WHERE album_id = $album_id;";
 $result = pg_query($conn, $query);
 $content = "";
 
 for ($row = 0; $row < pg_num_rows($result); $row++) {
+    $song_id = pg_fetch_result($result, $row, "song_id");
     $title = pg_fetch_result($result, $row, "Judul");
     $year = pg_fetch_result($result, $row, "Tahun");
     $artist = pg_fetch_result($result, $row, "Penyanyi");
@@ -36,11 +37,15 @@ for ($row = 0; $row < pg_num_rows($result); $row++) {
                     </div>
                 </div>
                 <div class='judul'>$title</div>
-                <div class='penyanyi'>$year</div>
-                <div class='blank'></div>
+                <div class='penyanyi'>$artist</div>
                 <div class='tahun'>$year</div>
-                <div class='remove'>
-                    <button>Remove</button>
+                <div class='remove-button' song-id='$song_id'>
+                    <lord-icon
+                        src='/assets/lord-icon/delete-icon.json'
+                        trigger='hover'
+                        colors='primary:#ffffff'
+                        style='width:2rem;height:2rem'>
+                    </lord-icon>
                 </div>
             </div>
         </div>
