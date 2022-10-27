@@ -12,7 +12,7 @@
     <nav class="nav"></nav>
     <main>
         <h1 class="title">Add Song</h1>
-        <form class="form">
+        <form class="form" action="/server/add-song/index.php" method="POST" enctype="multipart/form-data">
             <div class="input-group">
                 <label for="Judul">Title</label>
                 <input type="text" id="Judul" name="Judul" placeholder="Shape of You" maxlength="64" required>
@@ -27,21 +27,22 @@
             </div>
             <div class="input-group">
                 <label for="Genre">Genre</label>
-                <input type="text" id="Genre" name="Genre" placeholder="Pop" maxlength="64" required>
+                <input type="text" id="Genre" name="Genre" placeholder="Pop" maxlength="64">
             </div>
             <div class="input-group">
                 <label for="Audio">Audio</label>
                 <input type="file" id="Audio" name="Audio" accept="audio/*" required>
             </div>
+            <input type="hidden" id="Duration" name="Duration"/>
             <div class="input-group">
                 <label for="Image">Cover Image</label>
                 <input type="file" id="Image" name="Image" accept="image/*">
             </div>
             <div class="input-group">
                 <label for="Album">Album</label>
-                <input type="text" id="Album" name="Album" placeholder="Divide" maxlength="128" required>
+                <input type="text" id="Album" name="Album" placeholder="Divide" maxlength="128">
             </div>
-            <button class="btn save-btn">Save</button>
+            <button type="submit" class="btn save-btn">Save</button>
         </form>
     </main>
     <script src="https://cdn.lordicon.com/pzdvqjsp.js"></script>
