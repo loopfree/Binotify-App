@@ -6,7 +6,7 @@ services:
     build:
       context: ./src
     ports:
-      - 8080:80
+      - "8080:80"
     depends_on:
       - db
     volumes:
@@ -19,7 +19,7 @@ services:
     build:
       context: ./data
     ports:
-      - 5432:5432
+      - "5432:5432"
     environment:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: postgres
