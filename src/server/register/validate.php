@@ -44,11 +44,24 @@ if(isset($_GET["email"])) {
 
     $row = pg_fetch_row($result);
 
+    $isUnique;
+
     if($row !== false) {
-        echo "not unique";
+        $isUnique = "not unique";
     } else {
-        echo "unique";
+        $isUnique = "unique";
     }
+
+    // regex = ^\w+@[A-Za-z]+[.][A-Za-z]+([.][A-Za-z]+)*$
+    $regexp = "/^\w+@[A-Za-z]+[.][A-Za-z]+([.][A-Za-z]+)*$/i";
+
+    if(preg_match($regexp, $email) === 1) {
+        $isUnique = "unique";
+    } else {
+        $isUnique = "not unique";
+    }
+
+    echo $isUnique;
 
     pg_close($conn);
 }

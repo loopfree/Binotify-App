@@ -55,7 +55,7 @@ const emailValidate = debounce(() => {
             emailInput.style = "border: 1px ridge #0F0";
             emailUnique = true;
         } else {
-            usernameInput.style = "border: 1px ridge #F00";
+            emailInput.style = "border: 1px ridge #F00";
             emailUnique = false;
         }
 
