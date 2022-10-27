@@ -45,6 +45,7 @@ if($row === false) {
     $json += ["user-id" => $row[0]];
 
     $_SESSION['logged_in'] = true;
+    $_SESSION['username'] = $username;
     if($row[1] === "f") {
         $_SESSION["admin"] = false;
     } else {

@@ -1,6 +1,7 @@
 window.onload = () => {
     getNav();
     getSongCards();
+    getProfile();
 }
 
 function getNav() {
@@ -22,6 +23,16 @@ function getSongCards() {
         songPlayUpdate();
     }
     xhr.send(null);
+}
+
+function getProfile() {
+    const profile = document.getElementById("profile");
+    const xhr = new XMLHttpRequest();
+    xhr.open('GET', `/server/home/profile.php`);
+    xhr.onload = function() {
+        profile.innerHTML = this.responseText;
+    }
+    xhr.send();
 }
 
 function songPlayUpdate() {
