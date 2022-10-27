@@ -175,14 +175,17 @@ main {
 .judul-edit { grid-area: 5 / 1 / 6 / 2; }
 .judul-new { grid-area: 5 / 2 / 6 / 5; }
 
-.penyanyi-edit { grid-area: 6 / 1 / 7 / 2; }
-.penyanyi-new { grid-area: 6 / 2 / 7 / 5; }
+/* .penyanyi-edit { grid-area: 6 / 1 / 7 / 2; }
+.penyanyi-new { grid-area: 6 / 2 / 7 / 5; } */
 
-.tgl-edit { grid-area: 7 / 1 / 8 / 2; }
-.tgl-new { grid-area: 7 / 2 / 8 / 5; }
+.tgl-edit { grid-area: 6 / 1 / 7 / 2; }
+.tgl-new { grid-area: 6 / 2 / 7 / 5; }
 
-.genre-edit { grid-area: 8 / 1 / 9 / 2; }
-.genre-new { grid-area: 8 / 2 / 9 / 5; }
+.genre-edit { grid-area: 7 / 1 / 8 / 2; }
+.genre-new { grid-area: 7 / 2 / 8 / 5; }
+
+/* .genre-edit { grid-area: 8 / 1 / 9 / 2; }
+.genre-new { grid-area: 8 / 2 / 9 / 5; } */
 
 .save-changes { grid-area: 9 / 1 / 10 / 4; }
 
@@ -256,6 +259,13 @@ main {
     background-color: var(--p-gray);
 }
 
+#delete-confirm-container > button:hover {
+    border: 1px solid white;
+}
+
+#delete-cancel-container > button:hover {
+    border: 1px solid white;
+}
 
 .song-image {
     width: 100%;
