@@ -1,4 +1,5 @@
 <?php
+session_start();
 
 if($_SERVER['REQUEST_METHOD'] === "GET") {
     header("Location: /index.php");
@@ -34,8 +35,6 @@ $result = pg_query($conn, $query);
 
 $row = pg_fetch_row($result);
 
-session_start();
-
 if($row === false) {
     $json += ["success" => "false"];
 } else {
@@ -45,10 +44,11 @@ if($row === false) {
      */
     $json += ["user-id" => $row[0]];
 
+    $_SESSION['logged_in'] = true;
     if($row[1] === "f") {
-        $_SESSION["is-admin"] = false;
+        $_SESSION["admin"] = false;
     } else {
-        $_SESSION["is-admin"] = true;
+        $_SESSION["admin"] = true;
     }
 }
 

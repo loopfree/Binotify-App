@@ -75,38 +75,3 @@ main {
     border-left: 0.75rem solid var(--p-black);
     margin-left: 0.25rem;
 }
-
-@media screen and (max-width: 768px) {
-    .home-body {
-        flex-direction: column-reverse;
-    }
-    .nav-button {
-        flex-direction: column;
-        gap: 0.5rem;
-        text-align: center;
-        align-items: space-between;
-        justify-content: space-between;
-    }
-    .nav-desc {
-        display: none;
-    }
-    .logout-button {
-        display: none;
-    }
-    .divider {
-        display: none;
-    }
-    .nav-container {
-        display: flex;
-        flex-direction: row;
-        justify-content: space-between;
-        align-items: center;
-    }
-    .app-title {
-        display: none;
-    }
-    .nav {
-        padding-top: 0.25rem;
-        padding-bottom: 0.25rem;
-    }
-}

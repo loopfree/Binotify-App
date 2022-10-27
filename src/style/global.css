@@ -82,6 +82,7 @@ a {
   color: white;
   opacity: 75%;
   transition-duration: 100ms;
+  cursor: pointer;
 }
 
 .nav-button:hover {

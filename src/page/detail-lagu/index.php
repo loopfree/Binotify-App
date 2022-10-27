@@ -101,7 +101,7 @@ if(isset($_GET["message"])) {
             </script>
             <?php
             (function() use($songId) {
-                if($_SESSION["is-admin"]) {
+                if($_SESSION["admin"]) {
                     ?>
 
                     <div class="edit">
