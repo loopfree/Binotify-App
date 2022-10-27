@@ -9,7 +9,7 @@ $pageNumber = $json["pageNum"];
 $genreFilter = $json["genreFilter"];
 $reversed = $json["reversed"];
 
-$offset = $pageNumber * 8;
+$offset = $pageNumber * 7;
 
 $conn = pg_connect("host=db_x port=5432 dbname=postgres user=postgres password=postgres");
 
@@ -30,7 +30,7 @@ if(count($genreFilter) === 0) {
             LOWER(judul) LIKE LOWER('$searchQuery%')
         ORDER BY
             judul ASC
-        LIMIT 8 OFFSET $offset;
+        LIMIT 7 OFFSET $offset;
     ";
 } else {
     $filterStr = "(";
@@ -57,7 +57,7 @@ if(count($genreFilter) === 0) {
         " . $filterStr . "
         ORDER BY
             judul ASC
-        LIMIT 8 OFFSET $offset;  
+        LIMIT 7 OFFSET $offset;  
     ";
 }
 

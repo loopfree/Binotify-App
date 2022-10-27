@@ -28,4 +28,6 @@ main {
     grid-column-start: 2;
     justify-self: end;
     border-radius: 36px;
+    padding-left: 15%;
+    padding-right: 15%;
 }

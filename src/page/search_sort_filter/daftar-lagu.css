@@ -117,25 +117,6 @@ main {
     font-family: "Gotham Regular";
 }
 
-::-webkit-scrollbar {
-    width: 17px;
-}
-  
-::-webkit-scrollbar-track {
-    background-color: transparent;
-}
-  
-::-webkit-scrollbar-thumb {
-    background-color: #d6dee1;
-    border-radius: 20px;
-    border: 6px solid transparent;
-    background-clip: content-box;
-}
-  
-::-webkit-scrollbar-thumb:hover {
-    background-color: #a8bbbf;
-}
-
 .genre-list .song-genre {
     color: black;
     padding: 12px 16px;
@@ -160,7 +141,7 @@ main {
 
 .song-list {
     margin-top: 1rem;
-    height: 80%;
+    height: 90%;
 }
 
 .song {
@@ -289,7 +270,7 @@ no | img | judul    | -gap- | genre | tahun |
 
 .pagination {
     position: fixed;
-    bottom: 3%;
+    bottom: 5%;
     height: 50px;
 }
 
