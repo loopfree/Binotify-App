@@ -38,10 +38,10 @@ if($_SERVER["REQUEST_METHOD"] !== "POST") {
 $currentTime = (string) time();
 $imagePath = null;
 
-if(isset($_FILES['album-cover']) && $_FILES['album-cover']['error'] !== 4) {
-    $imageDir = '/assets/img/';
+if(isset($_FILES['album-image']) && $_FILES['album-image']['error'] !== 4) {
+    $imageDir = '/../assets/img/';
 
-    $imageName = basename($_FILES['album-cover']['name']);
+    $imageName = basename($_FILES['album-image']['name']);
     $imageName = separateNameAndExt($imageName);
 
     $imageNameHashed = $imageName['name'] . $currentTime;
@@ -50,7 +50,7 @@ if(isset($_FILES['album-cover']) && $_FILES['album-cover']['error'] !== 4) {
     $imageFile = realpath(dirname(getcwd())) . $imageDir . $imageNameFixed;
     $imagePath = "/assets/img/" . $imageNameFixed;
 
-    if(!move_uploaded_file($_FILES['album-cover']['tmp_name'], $imageFile)) {
+    if(!move_uploaded_file($_FILES['album-image']['tmp_name'], $imageFile)) {
         $message .= "Upload image error";
     }
 }
@@ -75,5 +75,5 @@ if ($genre) {
 
 pg_close($conn);
 
-header("Refresh: 0; url=/page/album-detail/");
+header("Refresh: 0; url=/page/album-detail/index.php?album-id=$albumId");
 ?>

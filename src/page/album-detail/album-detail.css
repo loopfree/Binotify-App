@@ -172,10 +172,11 @@ no | img | judul    | -gap- | genre | tahun |
 
 /* ----------------------------------------------------------------- */
 
-.remove {
+.remove-button {
     text-align: center;
     grid-area: 1 / 6 / 3 / 7;
     font-family: "Gotham Regular";
+    cursor: pointer;
 }
 
 .image-container {

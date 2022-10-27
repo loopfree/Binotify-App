@@ -44,6 +44,7 @@ function getAlbumInfo() {
         albumTitle.innerHTML = json["title"];
         albumDesc.innerHTML = `${json["artist"]} • ${json["genre"]}, ${secToString(json["duration"])}`;
         albumSongList.innerHTML = json["song-list-html"];
+        updateSongList();
     }
     xhr.send();
 }
@@ -63,9 +64,6 @@ deleteButton.onclick = function() {
 confirmDeleteButton.onclick = function() {
     const xhr = new XMLHttpRequest();
     xhr.open('GET', '/server/album-detail/delete-album.php?album-id='+albumId);
-    xhr.onload = function() {
-        console.log(this.response);
-    }
     xhr.send();
 }
 
@@ -79,5 +77,20 @@ function secToString(t) {
     }
     else {
         return `${Math.floor(t/60)} min ${t%60} sec`;
+    }
+}
+
+function updateSongList() {
+    const removeButtons = document.getElementsByClassName("remove-button");
+    console.log(removeButtons);
+    console.log(removeButtons[0]);
+    for (let i=0; i < removeButtons.length; i++) {
+        console.log('ye');
+        const removeButton = removeButtons[i];
+        console.log('yo');
+        removeButton.addEventListener("click", function() {
+            console.log('hi');
+            window.location.href = `/server/album-detail/delete-song.php?album-id=${albumId}&song-id=${removeButton.getAttribute("song-id")}`;
+        });
     }
 }
