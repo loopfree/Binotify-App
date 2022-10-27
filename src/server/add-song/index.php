@@ -154,11 +154,8 @@ if($albumId !== null) {
     ";
 }
 
-
 $result = pg_query($conn, $query);
-
-header("Location: Location: /page/add-song/index.html?succeed");
-
 pg_close($conn);
 
+header("Refresh:0; url=/page/album-list/");
 ?>
