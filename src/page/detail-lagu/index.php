@@ -227,11 +227,44 @@ if(isset($_GET["message"])) {
                 }
             ?>
             <?php
-            if($albumName !== null) {
+            if($albumName !== "") {
                 ?>
                 <div class="album">
-                    <a href="/page/album-detail/index.php?album-id=<?php echo $albumId ?>">
+                    <a 
+                        href="/page/album-detail/index.php?album-id=<?php echo $albumId ?>"
+                    >
                         <?php echo $albumName ?>
+                    </a>
+                </div>
+                <style>
+                    .album > a {
+                        all: unset;
+                        font-family: "Gotham Bold";
+                        padding: 10px;
+                        background-color: #1ed760;
+                        border: 1px solid #1ed760;
+                        border-radius: 5px;
+                    }
+
+                    .album > a:hover {
+                        border: 1px solid #f037a5;
+                        background-color: transparent;
+                        color: #f037a5;
+                    }
+                </style>
+                <?php
+            } else {
+                ?>
+                <style>
+                    .album > a  {
+                        padding: 0;
+                        border: 0px;
+                    }
+                </style>
+                 <div class="album">
+                    <a 
+                        href="/page/album-detail/index.php?album-id=<?php echo $albumId ?>"
+                    >
                     </a>
                 </div>
                 <?php
