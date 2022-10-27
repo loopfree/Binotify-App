@@ -133,6 +133,7 @@ a {
   font-family: 'Gotham Regular', sans-serif;
   font-weight: bold;
   margin-bottom: .5rem;
+  font-size: 1rem;
 }
 
 .input-group input {
@@ -140,8 +141,8 @@ a {
   outline: none;
   background: none;
   border: 1px solid gray;
-  font-size: 1em;
-  padding: .5em;
+  font-size: .8rem;
+  padding: .5rem;
   color: inherit;
   border-radius: 5px;
 }

@@ -7,7 +7,6 @@
 }
 
 body {
-    overflow: hidden;
     font-family: 'Gotham Regular', sans-serif;
 }
 
@@ -15,14 +14,23 @@ body {
 /* Section 1 - Sliding Image */
 /* Section 1 - Sliding Image */
 
+.main-wrapper {
+    height: 100vh;
+    width: 100%;
+    overflow: hidden;
+    position: absolute;
+    z-index: -999;
+    opacity: 50%;
+    filter: blur(2px);
+}
 
 .wrapper-images {
     display: flex;
     flex-direction: column;
     height: 150vh;
     justify-content: center;
-    left: 50%;
-    position: absolute;
+    position: relative;
+    left: 0%;
     top: 50%;
     opacity: 0.8;
     transform: translate3d(-50%, -50%, 0) perspective(800px) rotatey(-10deg) rotate(10deg);
@@ -84,7 +92,7 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    height: 140px;
+    height: 80px;
 }
 
 .brand-logo {
@@ -154,35 +162,13 @@ body {
     max-width: 50%;
     padding: 2rem 4rem;
     border-radius: 20px;
+    height: fit-content;
+    max-height: 80vh;
+    overflow-y: auto;
 }
   
 .input-group {
-    margin-bottom: 2rem;
-    display: flex;
-    flex-direction: column;
-}
-  
-.input-group:last-child {
-    margin-bottom: 0;
-}
-  
-.input-group label {
-    font-weight: bold;
-    margin-bottom: .5rem;
-}
-  
-.input-group input {
-    outline: none;
-    background: none;
-    border: 1px solid gray;
-    font-size: 1em;
-    padding: .5em;
-    color: inherit;
-    border-radius: 5px;
-}
-  
-.input-group input:focus {
-    border-color: #fff;
+    margin-bottom: 1.5rem;
 }
   
 @media (max-width: 800px) {
