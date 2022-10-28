@@ -81,19 +81,20 @@ function secToString(t) {
 }
 
 function updateSongList() {
+    const removeButtons = document.getElementsByClassName("remove-button");
+    for (let i=0; i < removeButtons.length; i++) {
+        const removeButton = removeButtons[i];
+        removeButton.addEventListener("click", function(event) {
+            event.stopPropagation();
+            window.location.href = `/server/album-detail/delete-song.php?album-id=${albumId}&song-id=${removeButton.getAttribute("song-id")}`;
+    });
+    }
+    
     const songBoxes = document.getElementsByClassName("song");
     for (let i=0; i < songBoxes.length; i++) {
         const songBox = songBoxes[i];
         songBox.addEventListener("click", function() {
             window.location.href = `/page/detail-lagu/index.php?song-id=${songBox.getAttribute("song-id")}`;
-        });
-    }
-
-    const removeButtons = document.getElementsByClassName("remove-button");
-    for (let i=0; i < removeButtons.length; i++) {
-        const removeButton = removeButtons[i];
-        removeButton.addEventListener("click", function() {
-            window.location.href = `/server/album-detail/delete-song.php?album-id=${albumId}&song-id=${removeButton.getAttribute("song-id")}`;
         });
     }
 }

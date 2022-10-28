@@ -36,10 +36,10 @@ function separateNameAndExt($filename) {
 }
 
 $songId = $_POST["songId"];
-$judul = $_POST["Judul"];
-$album = $_POST["Album"];
-$tanggalTerbit = $_POST["Tanggal_terbit"];
-$genre = $_POST["Genre"];
+$judul = trim($_POST["Judul"]);
+$album = trim($_POST["Album"]);
+$tanggalTerbit = trim($_POST["Tanggal_terbit"]);
+$genre = trim($_POST["Genre"]);
 $albumId = null;
 
 $conn = pg_connect("host=db_x port=5432 dbname=postgres user=postgres password=postgres");
@@ -59,7 +59,8 @@ if($album !== "") {
     $row = pg_fetch_row($result);
 
     if($row === false) {
-        header("Location: /page/detail-lagu/index.php?song-id=$songId&message=Album-doesn't-exist");
+        echo "<script type='text/javascript'>alert('Album not found');
+              window.location.href='/page/detail-lagu/index.php?song-id=$songId'</script>";
         return;
     }
 
@@ -77,7 +78,8 @@ if($album !== "") {
     $result = pg_query($conn, $query);
 
     if($result === false) {
-        header("Location: /page/detail-lagu/index.php?song-id=$songId&message=Error-update-album");
+        echo "<script type='text/javascript'>alert('Update album error');
+              window.location.href='/page/detail-lagu/index.php?song-id=$songId'</script>";
         return;
     }
 }
@@ -95,7 +97,8 @@ if($judul !== "") {
     $result = pg_query($conn, $query);
 
     if($result === false) {
-        header("Location: /page/detail-lagu/index.php?song-id=$songId&message=Error-update-judul");
+        echo "<script type='text/javascript'>alert('Update title error');
+              window.location.href='/page/detail-lagu/index.php?song-id=$songId'</script>";
         return;
     }
 }
@@ -113,7 +116,8 @@ if($tanggalTerbit !== "") {
     $result = pg_query($conn, $query);
 
     if($result === false) {
-        header("Location: /page/detail=lagu/index.php?song-id=$songId&message=Error-update-tanggal-terbit");
+        echo "<script type='text/javascript'>alert('Update release date error');
+              window.location.href='/page/detail-lagu/index.php?song-id=$songId'</script>";
         return;
     }
 }
@@ -131,7 +135,8 @@ if($genre !== "") {
     $result = pg_query($conn, $query);
 
     if($result === false) {
-        header("Location: /page-detail-lagu/index.php?song-id=$songId&message=Error-update-genre");
+        echo "<script type='text/javascript'>alert('Singer name does not match');
+              window.location.href='/page/detail-lagu/index.php?song-id=$songId'</script>";
         return;
     }
 }
@@ -154,7 +159,8 @@ if(isset($_FILES["Audio"]) && $_FILES["Audio"]["error"] != 4) {
     $message = "";
 
     if(!move_uploaded_file($_FILES['Audio']['tmp_name'], $musicFile)) {
-        header("Location: /page/detail-lagu/index.php?song-id=$songId&message=Error-upload-lagu");
+        echo "<script type='text/javascript'>alert('Upload audio error');
+              window.location.href='/page/detail-lagu/index.php?song-id=$songId'</script>";
         return;
     }
 
@@ -170,7 +176,8 @@ if(isset($_FILES["Audio"]) && $_FILES["Audio"]["error"] != 4) {
     $result = pg_query($conn, $query);
 
     if($result === false) {
-        header("Location: /page/detail-lagu/index.php?song-id=$songId&message=Error-update-lagu");
+        echo "<script type='text/javascript'>alert('Update audio error');
+              window.location.href='/page/detail-lagu/index.php?song-id=$songId'</script>";
         return;
     }
 }
@@ -188,7 +195,9 @@ if(isset($_FILES["Image"]) && $_FILES["Image"]["error"] != 4) {
     $sqlImageFile = "/assets/img/" . $imageNameFixed;
 
     if(!move_uploaded_file($_FILES['Image']['tmp_name'], $imageFile)) {
-        header("Location: /page/detail-lagu/index.php?song-id=$songId&message=error-upload-image");
+        echo "<script type='text/javascript'>alert('Upload image error');
+              window.location.href='/page/detail-lagu/index.php?song-id=$songId'</script>";
+        return;
     }
 
     $query = "
@@ -203,12 +212,16 @@ if(isset($_FILES["Image"]) && $_FILES["Image"]["error"] != 4) {
     $result = pg_query($conn, $query);
 
     if($result === false) {
-        header("Location: /page/detail-lagu/index.php?song-id=$songId&message=Error-update-image");
+        echo "<script type='text/javascript'>alert('Update image error');
+              window.location.href='/page/detail-lagu/index.php?song-id=$songId'</script>";
         return;
     }
 }
 
+pg_query_params($conn, "UPDATE \"Album\" SET Total_duration=(SELECT (SELECT COALESCE(SUM(Duration),0) FROM \"Song\" WHERE album_id=$1) 
+                                         WHERE album_id=$1", [$albumId]);
+
 pg_close($conn);
 
-header("Location: /page/detail-lagu/index.php?song-id=$songId");
+header("Refresh:0; url=/page/detail-lagu/index.php?song-id=$songId");
 ?>
