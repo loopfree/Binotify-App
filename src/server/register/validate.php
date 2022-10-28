@@ -17,13 +17,18 @@ if(isset($_GET["name"])) {
 
     $row = pg_fetch_row($result);
 
-    if($row !== false) {
-        echo "not unique";
+    $regexp = "/^[A-Za-z_0-9]+$/i";
+
+    $isUnique;
+
+    if($row !== false || preg_match($regexp, $name) === 0) {
+        $isUnique = "not unique";
     } else {
-        echo "unique";
+        $isUnique = "unique";
     }
 
     pg_close($conn);
+    echo $isUnique;
 }
 
 if(isset($_GET["email"])) {
