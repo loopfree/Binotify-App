@@ -218,7 +218,7 @@ if(isset($_FILES["Image"]) && $_FILES["Image"]["error"] != 4) {
     }
 }
 
-pg_query_params($conn, "UPDATE \"Album\" SET Total_duration=(SELECT (SELECT COALESCE(SUM(Duration),0) FROM \"Song\" WHERE album_id=$1) 
+pg_query_params($conn, "UPDATE \"Album\" SET Total_duration=(SELECT COALESCE(SUM(Duration),0) FROM \"Song\" WHERE album_id=$1) 
                                          WHERE album_id=$1", [$albumId]);
 
 pg_close($conn);

@@ -44,6 +44,15 @@ function getAlbumInfo() {
         albumTitle.innerHTML = json["title"];
         albumDesc.innerHTML = `${json["artist"]} • ${json["genre"]}, ${secToString(json["duration"])}`;
         albumSongList.innerHTML = json["song-list-html"];
+        var admin = json["admin"];
+        console.log(admin);
+        if (!admin) {
+            const removeButtons = document.getElementsByClassName("remove-button");
+            for (let i=0; i < removeButtons.length; i++) {
+                const removeButton = removeButtons[i];
+                removeButton.style.display = "none";
+            }
+        }
         updateSongList();
     }
     xhr.send();

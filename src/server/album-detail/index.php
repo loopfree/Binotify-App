@@ -1,5 +1,9 @@
 <?php
+session_start();
+
 $json = array();
+$json += ["admin" => $_SESSION["logged_in"] && $_SESSION["admin"]];
+
 $album_id = $_GET["album-id"];
 $conn = pg_connect("host=db_x port=5432 dbname=postgres user=postgres password=postgres");
 
