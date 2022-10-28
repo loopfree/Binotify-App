@@ -2,10 +2,8 @@
 
 $db_handle = pg_connect("host=db_x port=5432 dbname=postgres user=postgres password=postgres");
 
-// $no_of_rows = pg_query($db_handle, 'SELECT COUNT(*) FROM "Album";');     // for pagination
-
-$result = pg_query($db_handle, 'SELECT song_id, Judul, EXTRACT(YEAR FROM Tanggal_terbit) AS Tahun, Penyanyi,
-                                Genre, Image_path FROM "Song" ORDER BY Judul LIMIT 10;');
+$result = pg_query($db_handle, 'SELECT * FROM (SELECT song_id, Judul, EXTRACT(YEAR FROM Tanggal_terbit) AS Tahun, Penyanyi,
+                                Genre, Image_path FROM "Song" ORDER BY song_id DESC LIMIT 10) AS temp ORDER BY Judul ASC;');
 $content = "";
 
 for ($row = 0; $row < pg_num_rows($result); $row++) {

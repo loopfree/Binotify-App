@@ -119,7 +119,7 @@ if ($penyanyiAlbum != null && $penyanyiAlbum != $penyanyi) {
     return;
 }
 
-$songId = hashUsername($judul . $currentTime);
+$songId = pg_fetch_row(pg_query($conn, "SELECT COUNT(*) FROM \"Song\";"))[0] + 1;
 
 if($albumId !== null) {
     $query = "
@@ -160,5 +160,5 @@ pg_query_params($conn, "UPDATE \"Album\" SET Total_duration=(SELECT COALESCE(SUM
 
 pg_close($conn);
 
-header("Refresh:0; url=/page/album-list/");
+header("Refresh:0; url=/page/add-song/");
 ?>
