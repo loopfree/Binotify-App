@@ -25,7 +25,7 @@ Aplikasi web ini merupakan aplikasi web yang memiliki fungsionalitas terkait pem
     ```
 3. Pada browser <strong><em>Chromium Based</em></strong>, ketikkan
     ```
-    https://localhost:8080/
+    http://localhost:8080/
     ```
     <strong><ins><em>Note</em></ins></strong>: Pastikan tidak ada yang sedang berjalan pada port 8080
 
@@ -95,7 +95,7 @@ Aplikasi web ini merupakan aplikasi web yang memiliki fungsionalitas terkait pem
 </tr>
 <tr>
     <td>Halaman Home</td>
-    <td>13520071</td>
+    <td>13520050, 13520071</td>
 </tr>
 <tr>
     <td>Halaman Daftar Album</td>
@@ -148,7 +148,7 @@ Aplikasi web ini merupakan aplikasi web yang memiliki fungsionalitas terkait pem
 </tr>
 <tr>
     <td>Halaman Search, Sort, dan Filter</td>
-    <td>13520050, 13520131</td>
+    <td>13520131</td>
 </tr>
 <tr>
     <td>Halaman Detail Lagu</td>
@@ -184,6 +184,6 @@ Aplikasi web ini merupakan aplikasi web yang memiliki fungsionalitas terkait pem
 </tr>
 <tr>
     <td>UI/UX seperti Spotify</td>
-    <td>13520050, 13520071, 13520131</td>
+    <td>13520050, 13520131</td>
 </tr>
 </table>
