@@ -56,7 +56,7 @@ if(!move_uploaded_file($_FILES['Audio']['tmp_name'], $musicFile)) {
     return;
 }
 
-$sqlImageFile = null;
+$sqlImageFile = '/assets/img/song-default.png';
 
 if(isset($_FILES['Image']) && $_FILES['Image']['error'] !== 4) {
     $imageDir = '/../assets/img/';
