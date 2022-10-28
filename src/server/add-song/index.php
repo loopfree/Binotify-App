@@ -119,7 +119,7 @@ if ($penyanyiAlbum != null && $penyanyiAlbum != $penyanyi) {
     return;
 }
 
-$songId = pg_fetch_row(pg_query($conn, "SELECT COUNT(*) FROM \"Song\";"))[0] + 1;
+$songId = pg_fetch_row(pg_query($conn, "SELECT MAX(song_id) FROM \"Song\";"))[0] + 1;
 
 if($albumId !== null) {
     $query = "

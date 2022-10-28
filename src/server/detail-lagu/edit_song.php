@@ -47,7 +47,7 @@ $conn = pg_connect("host=db_x port=5432 dbname=postgres user=postgres password=p
 if($album !== "") {
     $query = "
         SELECT
-            album_id
+            album_id, Penyanyi
         FROM
             \"Album\"
         WHERE
@@ -65,17 +65,12 @@ if($album !== "") {
     }
 
     $albumId = $row[0];
+    $penyanyiAlbum = trim($row[1]);
 
-    $query = "
-        UPDATE
-            \"Song\"
-        SET
-            album_id = $albumId
-        WHERE
-            song_id = $songId;
-    ";
+    $query = "UPDATE \"Song\" SET album_id = $1, Penyanyi = $2
+              WHERE song_id = $3;";
 
-    $result = pg_query($conn, $query);
+    $result = pg_query_params($conn, $query, [$albumId, $penyanyiAlbum, $songId]);
 
     if($result === false) {
         echo "<script type='text/javascript'>alert('Update album error');
