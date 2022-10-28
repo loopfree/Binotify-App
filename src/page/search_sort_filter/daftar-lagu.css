@@ -84,7 +84,7 @@ main {
     margin-left: 4rem;
 }
 
-.sort > button, .filter > button{
+.sort > button, .filter > button, .date > button{
     all: unset;
     cursor: pointer;
     height: 2.8rem;
@@ -95,9 +95,12 @@ main {
     color: #1ED760;
 }
 
-
 .fa-filter:hover {
     color: #1ED760;
+}
+
+.fa-calendar-alt:hover {
+    color: #1ed760;
 }
 
 .fa-filter {

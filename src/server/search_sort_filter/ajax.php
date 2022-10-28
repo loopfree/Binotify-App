@@ -8,6 +8,7 @@ $searchQuery = $json["searchQuery"];
 $pageNumber = $json["pageNum"];
 $genreFilter = $json["genreFilter"];
 $reversed = $json["reversed"];
+$dateSorted = $json["dateSorted"];
 
 $offset = $pageNumber * 7;
 
@@ -61,9 +62,14 @@ if(count($genreFilter) === 0) {
     ";
 }
 
+if($dateSorted) {
+    $sqlQuery = str_replace("judul ASC", "tanggal_terbit DESC, judul ASC", $sqlQuery);
+}
+
 if($reversed) {
     $sqlQuery = str_replace("ASC", "DESC", $sqlQuery);
 }
+
 
 $result = pg_query($conn, $sqlQuery);
 

@@ -257,12 +257,14 @@ const getNewSong = debounce(() => {
     }
 
     const isReversed = document.getElementById("reverse-checkbox");
+    const isDated = document.getElementById("date-checkbox");
 
     const query = {
         searchQuery: searchInput.value,
         pageNum: pageNum,
         genreFilter: genreFilter,
-        reversed: isReversed.checked
+        reversed: isReversed.checked,
+        dateSorted: isDated.checked
     }
 
     const qJson = JSON.stringify(query);
@@ -293,5 +295,13 @@ const sortChkbox = document.getElementById("reverse-checkbox");
 
 sortBtn.onclick = () => {
     sortChkbox.checked = !sortChkbox.checked;
+    getNewSong();
+}
+
+const date = document.getElementsByClassName("date")[0];
+const dateChkbox = document.getElementById("date-checkbox");
+
+date.onclick = () => {
+    dateChkbox.checked = !dateChkbox.checked;
     getNewSong();
 }

@@ -54,6 +54,11 @@
                         <div class="song-genre">IDK</div>
                     </div>          
                 </div>
+
+                <div class="date">
+                    <i class="far fa-calendar-alt"></i>
+                </div>
+                <input type="checkbox" style="display: none;" id="date-checkbox">
             </div>
         </div>
 
