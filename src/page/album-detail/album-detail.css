@@ -8,6 +8,21 @@
     gap: 1rem;
 }
 
+@media screen and (max-width: 768px) {
+    .album-info-grid {
+        grid-template-columns: 1fr;
+    }
+    .album-image-container {
+        grid-row: span 1;
+    }
+    .album-tag {
+        grid-column: span 1;
+    }
+    .album-title {
+        grid-column: span 1;
+    }
+}
+    
 .album-image-container {
     grid-row: span 3;
     text-align: center;
@@ -33,24 +48,17 @@
 
 .album-desc {
     padding-top: 0.5rem;
+    height: fit-content;
 }
 
 .album-settings {
-    display: grid;
-    grid-template-columns: 3rem 1rem 2rem 1rem 3rem;
-    grid-column-gap: 0px;
+    display: flex;
+    gap: 1rem;
+    justify-content: flex-end;
 }
 
 .album-settings li {
     list-style-type: none;
-}
-
-.edit-settings {
-    grid-area: 1 / 2 / 2 / 3;
-}
-
-.delete-settings {
-    grid-area: 1 / 4 / 2 / 5;
 }
 
 .settings-button {
