@@ -26,7 +26,7 @@
             </div>
             <div class="input-group">
                 <label for="Album">Artist</label>
-                <input type="text" id="Penyanyi" name="Penyanyi" placeholder="Ed Sheeran" maxlength="128">
+                <input type="text" id="Penyanyi" name="Penyanyi" placeholder="Ed Sheeran" maxlength="128" required>
             </div>
             <div class="input-group">
                 <label for="Tanggal_terbit">Release date</label>
@@ -39,7 +39,7 @@
             <input type="hidden" id="Total_duration" name="Total_duration"/>
             <div class="input-group">
                 <label for="Image">Cover Image</label>
-                <input type="file" id="Image" name="Image" accept="image/*">
+                <input type="file" id="Image" name="Image" accept="image/*" required>
             </div>
             <button type="submit" class="btn save-btn">Save</button>
         </form>
