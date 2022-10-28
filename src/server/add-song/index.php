@@ -50,10 +50,10 @@ $musicFile = realpath(dirname(getcwd())) . $musicDir . $musicNameFixed;
 
 $sqlMusicFile = '/assets/audio/' . $musicNameFixed;
 
-$message = "";
-
 if(!move_uploaded_file($_FILES['Audio']['tmp_name'], $musicFile)) {
-    $message .= "Upload audio Error";
+    echo "<script type='text/javascript'>alert('There is no such album');
+              window.location.href='/page/add-song/'</script>";
+    return;
 }
 
 $sqlImageFile = null;
@@ -71,7 +71,9 @@ if(isset($_FILES['Image']) && $_FILES['Image']['error'] !== 4) {
     $sqlImageFile = "/assets/img/" . $imageNameFixed;
 
     if(!move_uploaded_file($_FILES['Image']['tmp_name'], $imageFile)) {
-        $message .= "Upload image error";
+        echo "<script type='text/javascript'>alert('Upload image error');
+              window.location.href='/page/add-song/'</script>";
+        return;
     }
 }
 
@@ -85,11 +87,12 @@ $album = $_POST["Album"];
 $conn = pg_connect("host=db_x port=5432 dbname=postgres user=postgres password=postgres");
 
 $albumId = null;
+$penyanyiAlbum = null;
 
 if($album !== "") {
     $query = "
         SELECT
-            album_id
+            album_id, Penyanyi
         FROM
             \"Album\"
         WHERE
@@ -101,12 +104,19 @@ if($album !== "") {
     $row = pg_fetch_row($result);
 
     if($row === false) {
-        $message .= "There is no album";
-        header("Location: /page/add-song/index.html?$message");
+        echo "<script type='text/javascript'>alert('There is no such album');
+              window.location.href='/page/add-song/'</script>";
         return;
     } else {
         $albumId = $row[0];
+        $penyanyiAlbum = $row[1];
     }
+}
+
+if ($penyanyiAlbum != null && $penyanyiAlbum != $penyanyi) {
+    echo "<script type='text/javascript'>alert('Singer name does not match');
+          window.location.href='/page/add-song/'</script>";
+    return;
 }
 
 $songId = hashUsername($judul . $currentTime);
