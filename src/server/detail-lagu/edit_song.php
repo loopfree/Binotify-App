@@ -199,7 +199,7 @@ if(isset($_FILES["Image"]) && $_FILES["Image"]["error"] != 4) {
         UPDATE
             \"Song\"
         SET
-            audio_path = '$sqlMusicFile'
+            image_path = '$sqlImageFile'
         WHERE
             song_id = $songId;
     ";
