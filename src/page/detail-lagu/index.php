@@ -94,7 +94,7 @@ if(isset($_GET["message"])) {
     <nav class="nav"></nav>
     <main>
         <div class="container-grid">
-            <div class="head">
+            <div class="title">
                 Song Detail
             </div>
             <script>

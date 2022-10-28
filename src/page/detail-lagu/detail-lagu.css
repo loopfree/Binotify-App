@@ -1,11 +1,5 @@
 @import url('/style/global.css');
 
-
-main {
-    padding: 2rem;
-    width: 100%;
-}
-
 .play-button {
     background-color: var(--p-green);
     border-radius: 100%;
@@ -41,22 +35,44 @@ main {
 
 .container-grid {
     display: grid;
-    grid-template-columns: 10rem 10rem 10rem;
+    grid-template-columns: repeat(2, 1fr);
     grid-template-rows: repeat(6, 1fr);
-    grid-column-gap: 0px;
-    grid-row-gap: 0px;
+    gap: 1rem;
     font-family: "Gotham Regular";
 }
 
-.head { grid-area: 1/1/2/4; }
-.edit { grid-area: 1/4/2/7; }
+@media screen and (max-width: 768px) {
+    .container-grid {
+        display: flex;
+        flex-direction: column;
+    }
+}
+
+.title {
+    grid-column: span 2;
+}
+
+.song-image {
+    grid-area: 2/1/span 3;
+}
+
+.duration {
+    grid-area: 5/1;
+}
+
+.album {
+    grid-area: 6/1;
+}
+
+/* .head { grid-area: 1/1/2/4; } */
+/* .edit { grid-area: 1/4/2/7; }
 .song-image { grid-area: 2/1/5/4; }
 .duration { grid-area: 5/1/6/4; }
 .album { grid-area: 6/1/7/4; }
 .judul-lagu { grid-area: 2/4/3/7; }
 .penyanyi { grid-area: 3/4/4/7 }
 .tanggal-terbit { grid-area: 4/4/5/7; }
-.genre { grid-area: 5/4/6/7; }
+.genre { grid-area: 5/4/6/7; } */
 
 .user {
     text-align: right;
