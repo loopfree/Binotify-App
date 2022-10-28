@@ -64,6 +64,9 @@ deleteButton.onclick = function() {
 confirmDeleteButton.onclick = function() {
     const xhr = new XMLHttpRequest();
     xhr.open('GET', '/server/album-detail/delete-album.php?album-id='+albumId);
+    xhr.onload = function() {
+        window.location.href = '/page/album-list/';
+    }
     xhr.send();
 }
 
