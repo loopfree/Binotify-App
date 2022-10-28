@@ -13,7 +13,12 @@ for ($row = 0; $row < pg_num_rows($result); $row++) {
     $artist = pg_fetch_result($result, $row, "Penyanyi");
     $genre = pg_fetch_result($result, $row, "Genre");
     $imgpath = pg_fetch_result($result, $row, "Image_path");
-
+    if (trim($genre) != "") {
+        $genre = "• " . $genre;
+    }
+    if (trim($artist) != "") {
+        $artist = $artist . " •";
+    }
     $content .= "
         <div class='song-card' song-id='$song_id'>
             <img 
@@ -23,7 +28,7 @@ for ($row = 0; $row < pg_num_rows($result); $row++) {
             >
             <div class='song-info'>
                 <h2 class='song-title'>$title</h2>
-                <p class='song-desc'>$artist • $year • $genre</p>
+                <p class='song-desc'>$artist $year $genre</p>
             </div>
             <div class='play-button'>
                 <div class='triangle'></div>
