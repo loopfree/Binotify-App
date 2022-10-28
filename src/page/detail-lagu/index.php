@@ -90,7 +90,7 @@ if(isset($_GET["message"])) {
     <script src="edit-lagu.js" defer></script>
     <script src="audio-onplay.js" defer></script>
 </head>
-<body class="dark-bg home-body">
+<body class="dark-bg body">
     <nav class="nav"></nav>
     <main>
         <div class="container-grid">

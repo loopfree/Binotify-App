@@ -1,19 +1,21 @@
 @import url('/style/global.css');
 
-main {
-    padding: 2rem;
-}
-
-.title {
-    font-size: 1.5rem;
-    margin-bottom: 1rem;
-}
-
 .songs-container {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    gap: 3rem;
-    padding-right: 10%;
+    gap: 1rem;
+}
+
+@media screen and (max-width: 1024px) {
+    .songs-container {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .songs-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
 }
 
 .song-card {
@@ -24,8 +26,7 @@ main {
     transition-duration: 300ms;
     cursor: pointer;
     position: relative;
-    height: 100%;
-    width: 100%;
+    min-width: 0;
 }
 
 .song-card:hover {
