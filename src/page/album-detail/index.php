@@ -32,66 +32,72 @@ if (!isset($_GET["album-id"])) {
                 <p>Album Description</p>
             </div>
             
-            <div class="album-settings">
-                <div class="edit-settings">
-                    <li class="settings-button">
-                        <lord-icon
-                            src="/assets/lord-icon/settings-icon.json"
-                            trigger="hover"
-                            colors="primary:#ffffff"
-                            style="width:2rem;height:2rem">
-                        </lord-icon>
-                    </li>
-                    <form class="form" action="/server/album-detail/edit-album.php" method="POST" enctype="multipart/form-data"> 
-                        <div id="edit-modal" class="modal">
+            <?php
+            if($_SESSION["admin"]) {
+                ?>
+                <div class="album-settings">
+                    <div class="edit-settings">
+                        <li class="settings-button">
+                            <lord-icon
+                                src="/assets/lord-icon/settings-icon.json"
+                                trigger="hover"
+                                colors="primary:#ffffff"
+                                style="width:2rem;height:2rem">
+                            </lord-icon>
+                        </li>
+                        <form class="form" action="/server/album-detail/edit-album.php" method="POST" enctype="multipart/form-data"> 
+                            <div id="edit-modal" class="modal">
+                                <div class="modal-content">
+                                    <div class="close-area">
+                                        <span class="close">&times;</span>
+                                    </div>
+                                    <p class="album-title-edit">Album Title</p>
+                                    <div class="album-title-new">
+                                        <input type="text" name="album-title">
+                                    </div>
+                                    <p class="album-cover-edit">Album Cover</p>
+                                    <div class="album-cover-new">
+                                        <input type="file" name="album-image" accept="image/*">
+                                    </div>
+                                    <p class="genre-edit">Genre</p>
+                                    <div class="genre-new">
+                                        <input type="text" name="genre">
+                                    </div>
+                                    <input hidden type="text" name="album-id" value="<?php echo $_GET["album-id"]; ?>">
+                                    <div class="save-changes">
+                                        <button>Save Changes</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    
+                    <div class="delete-settings">
+                        <li class="settings-button">
+                            <lord-icon
+                                src="/assets/lord-icon/delete-icon.json"
+                                trigger="hover"
+                                colors="primary:#ffffff"
+                                style="width:2rem;height:2rem">
+                            </lord-icon>
+                        </li>
+                        <div id="delete-modal" class="modal">
                             <div class="modal-content">
-                                <div class="close-area">
-                                    <span class="close">&times;</span>
+                                <p class="delete-sentence">Do you want to delete the album?</p>
+                                <div id="delete-confirm-container">
+                                    <button class="confirm-button">Confirm</button>
                                 </div>
-                                <p class="album-title-edit">Album Title</p>
-                                <div class="album-title-new">
-                                    <input type="text" name="album-title">
+                                <div id="delete-cancel-container">
+                                    <button class="cancel-button">Cancel</button>
                                 </div>
-                                <p class="album-cover-edit">Album Cover</p>
-                                <div class="album-cover-new">
-                                    <input type="file" name="album-image" accept="image/*">
-                                </div>
-                                <p class="genre-edit">Genre</p>
-                                <div class="genre-new">
-                                    <input type="text" name="genre">
-                                </div>
-                                <input hidden type="text" name="album-id" value="<?php echo $_GET["album-id"]; ?>">
-                                <div class="save-changes">
-                                    <button>Save Changes</button>
-                                </div>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-                
-                <div class="delete-settings">
-                    <li class="settings-button">
-                        <lord-icon
-                            src="/assets/lord-icon/delete-icon.json"
-                            trigger="hover"
-                            colors="primary:#ffffff"
-                            style="width:2rem;height:2rem">
-                        </lord-icon>
-                    </li>
-                    <div id="delete-modal" class="modal">
-                        <div class="modal-content">
-                            <p class="delete-sentence">Do you want to delete the album?</p>
-                            <div id="delete-confirm-container">
-                                <button class="confirm-button">Confirm</button>
-                            </div>
-                            <div id="delete-cancel-container">
-                                <button class="cancel-button">Cancel</button>
                             </div>
                         </div>
                     </div>
+                    
                 </div>
-                
-            </div>
+                <?php
+            }
+            ?>
         </div>
 
         <div class="cont">
