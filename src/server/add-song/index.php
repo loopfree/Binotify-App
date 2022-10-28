@@ -154,7 +154,10 @@ if($albumId !== null) {
     ";
 }
 
-$result = pg_query($conn, $query);
+pg_query($conn, $query);
+pg_query_params($conn, "UPDATE \"Album\" SET Total_duration=(SELECT (SELECT COALESCE(SUM(Duration),0) FROM \"Song\" WHERE album_id=$1) 
+                                         WHERE album_id=$1", [$albumId]);
+
 pg_close($conn);
 
 header("Refresh:0; url=/page/album-list/");
