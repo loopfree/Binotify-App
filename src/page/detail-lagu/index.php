@@ -88,7 +88,7 @@ if(isset($_GET["message"])) {
     <link rel="stylesheet" href="detail-lagu.css">
     <script src="modal.js" defer></script>
     <script src="edit-lagu.js" defer></script>
-    <script src="audio-onplay.js" defer></script>
+    <!-- <script src="audio-onplay.js" defer></script> -->
 </head>
 <body class="dark-bg body">
     <nav class="nav"></nav>

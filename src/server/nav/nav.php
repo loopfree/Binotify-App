@@ -37,7 +37,7 @@ session_start();
         </li>
     </a>
     <?php
-    if ($_SESSION['admin']) {
+    if ($_SESSION['logged_in'] && $_SESSION['admin']) {
         ?>
         <a href="/page/add-album/">
             <li class="nav-button">
@@ -80,7 +80,7 @@ session_start();
     <?php
     if(isset($_SESSION['logged_in'])) {
         ?>
-        <script src="/server/nav/logout.js" defer></script>
+        <!-- <script src="/server/nav/logout.js" defer></script> -->
         <div class="nav-button logout-button" onclick="
             const logoutButton = document.getElementsByClassName('nav-button logout-button')[0];
             logoutButton.onclick = function() {
