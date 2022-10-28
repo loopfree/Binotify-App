@@ -4,7 +4,7 @@
 
 .album-info-grid {
     display: grid;
-    grid-template-columns: repeat(2, 2fr) 1fr;
+    grid-template-columns: repeat(4, 1fr);
     gap: 1rem;
     position: relative;
     top: 0;
@@ -33,7 +33,7 @@
 
 .album-tag {
     padding-top: 0.2rem;
-    grid-column: span 2;
+    grid-column: span 3;
 }
 
 .album-image-container > img {
@@ -43,7 +43,7 @@
 
 .album-title {
     padding-top: 1.5rem;
-    grid-column: span 2;
+    grid-column: span 3;
 }
 
 .album-title > h1 {
@@ -53,6 +53,7 @@
 .album-desc {
     padding-top: 0.5rem;
     height: fit-content;
+    grid-column: span 2;
 }
 
 .album-settings {
