@@ -56,7 +56,7 @@ if(!move_uploaded_file($_FILES['Audio']['tmp_name'], $musicFile)) {
     return;
 }
 
-$sqlImageFile = null;
+$sqlImageFile = '/assets/img/song-default.png';
 
 if(isset($_FILES['Image']) && $_FILES['Image']['error'] !== 4) {
     $imageDir = '/../assets/img/';
@@ -119,7 +119,7 @@ if ($penyanyiAlbum != null && $penyanyiAlbum != $penyanyi) {
     return;
 }
 
-$songId = hashUsername($judul . $currentTime);
+$songId = pg_fetch_row(pg_query($conn, "SELECT MAX(song_id) FROM \"Song\";"))[0] + 1;
 
 if($albumId !== null) {
     $query = "
@@ -155,10 +155,10 @@ if($albumId !== null) {
 }
 
 pg_query($conn, $query);
-pg_query_params($conn, "UPDATE \"Album\" SET Total_duration=(SELECT (SELECT COALESCE(SUM(Duration),0) FROM \"Song\" WHERE album_id=$1) 
+pg_query_params($conn, "UPDATE \"Album\" SET Total_duration=(SELECT COALESCE(SUM(Duration),0) FROM \"Song\" WHERE album_id=$1) 
                                          WHERE album_id=$1", [$albumId]);
 
 pg_close($conn);
 
-header("Refresh:0; url=/page/album-list/");
+header("Refresh:0; url=/page/add-song/");
 ?>

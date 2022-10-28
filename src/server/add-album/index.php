@@ -38,7 +38,7 @@ if($_SERVER["REQUEST_METHOD"] !== "POST") {
 
 $currentTime = (string) time();
 
-$sqlImageFile = null;
+$sqlImageFile = '/assets/img/song-default.png';
 
 if(isset($_FILES['Image']) && $_FILES['Image']['error'] !== 4) {
     $imageDir = '/../assets/img/';

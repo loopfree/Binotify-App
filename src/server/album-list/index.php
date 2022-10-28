@@ -13,6 +13,9 @@ for ($row = 0; $row < pg_num_rows($result); $row++) {
     $year = (new DateTime(pg_fetch_result($result, $row, "Tanggal_terbit")))->format("Y");
     $artist = pg_fetch_result($result, $row, "Penyanyi");
     $genre = pg_fetch_result($result, $row, "Genre");
+    if (trim($genre) != "") {
+        $genre = "• " . $genre;
+    }
     $imgpath = pg_fetch_result($result, $row, "Image_path");
 
     $content .= "
@@ -24,7 +27,7 @@ for ($row = 0; $row < pg_num_rows($result); $row++) {
             >
             <div class='album-info'>
                 <h2 class='album-title'>$title</h2>
-                <p class='album-desc'>$year • $artist • $genre</p>
+                <p class='album-desc'>$year • $artist $genre</p>
             </div>
             <div class='play-button'>
                 <div class='triangle'></div>
