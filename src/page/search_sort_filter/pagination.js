@@ -61,6 +61,9 @@ fourth.onclick = () => {
 }
 
 back.onclick = () => {
+    if(pageNum == 0) {
+        return;
+    }
     pageNum -= 1;
     getNewSong();
 }
