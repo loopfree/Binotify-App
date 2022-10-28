@@ -15,15 +15,15 @@ if (!isset($_GET["album-id"])) {
     <link rel="stylesheet" href="album-detail.css">
     <script src="album-detail.js" defer></script>
 </head>
-<body class="dark-bg home-body">
+<body class="dark-bg body">
     <nav class="nav"></nav>
     <main album-id=<?php echo $_GET["album-id"]; ?>>
         <div class="album-info-grid">
-            <div class="album-tag">
-                <p>ALBUM</p>
-            </div>
             <div class="album-image-container">
                 <img src=""/>
+            </div>
+            <div class="album-tag">
+                <p>ALBUM</p>
             </div>
             <div class="album-title">
                 <h1>Album Title</h1>

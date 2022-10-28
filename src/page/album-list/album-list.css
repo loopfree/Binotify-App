@@ -10,14 +10,24 @@ main {
 }
 
 .album-container {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
     gap: 1rem;
 }
 
+@media screen and (max-width: 1024px) {
+    .album-container {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .album-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
 .album-card {
-    width: 11.5rem;
     background: #242526;
     padding: 1rem;
     border-radius: 8px;
