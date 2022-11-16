@@ -28,17 +28,9 @@ if(!is_array($playedSongArr)) {
 }
 
 if(count($playedSongArr) < 3) {
-    if(in_array($songId, $playedSongArr)) {
-        echo "valid";
-        return;
-    }
-
-    $playedSongArr[] = $songId;
-
+    array_push($playedSongArr, 1);
     $_SESSION["played-song"] = $playedSongArr;
-
     echo "valid";
-    return;
 }
 
 echo "invalid";

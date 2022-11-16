@@ -29,6 +29,8 @@ if(count($genreFilter) === 0) {
             \"Song\"
         WHERE
             LOWER(judul) LIKE LOWER('$searchQuery%')
+            OR
+            LOWER(penyanyi) LIKE LOWER('$searchQuery%')
         ORDER BY
             judul ASC
         LIMIT 7 OFFSET $offset;
@@ -53,6 +55,8 @@ if(count($genreFilter) === 0) {
             \"Song\"
         WHERE
             LOWER(judul) LIKE LOWER('$searchQuery%')
+            OR
+            LOWER(penyanyi) LIKE LOWER('$searchQuery%')
             AND
             genre IN
         " . $filterStr . "
