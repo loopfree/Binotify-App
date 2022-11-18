@@ -10,10 +10,10 @@ if(isset($_GET["name"])) {
         FROM
             \"User\"
         WHERE
-            username = '$name';
+            username = $1;
     ";
 
-    $result = pg_query($conn, $query);
+    $result = pg_query_params($conn, $query, [$name]);
 
     $row = pg_fetch_row($result);
 
@@ -42,10 +42,10 @@ if(isset($_GET["email"])) {
         FROM
             \"User\"
         WHERE
-            email = '$email';
+            email = $1;
     ";
 
-    $result = pg_query($conn, $query);
+    $result = pg_query_params($conn, $query, [$email]);
 
     $row = pg_fetch_row($result);
 

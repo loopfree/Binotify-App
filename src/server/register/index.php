@@ -19,29 +19,10 @@
 
     $conn = pg_connect("host=db_x port=5432 dbname=postgres user=postgres password=postgres");
 
-    // $query = "
-    //     INSERT INTO
-    //         \"User\"
-    //     VALUES (
-    //         $userId,
-    //         '$email',
-    //         '$passwordHashed',
-    //         '$username',
-    //         false
-    //     );
-    // ";
+    $query = "INSERT INTO \"User\"
+              VALUES ($1, $2, $3, $4, $5);";
 
-    $query = "INSERT INTO" .
-                "\"User\"" .
-            "VALUES (" .
-                "$userId," .
-                "'$email'," .
-                "'$passwordHashed'," .
-                "'$username'," .
-                "false" .
-            ");";
-
-    $result = pg_query($conn, $query);
+    $result = pg_query_params($conn, $query, [$userId, $email, $passwordHashed, $username, false]);
 
     if(!$result) {
         echo "fail";

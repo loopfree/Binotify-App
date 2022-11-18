@@ -54,15 +54,14 @@ if(count($genreFilter) === 0) {
         FROM
             \"Song\"
         WHERE
-            LOWER(judul) LIKE LOWER('$searchQuery%')
+            LOWER(judul) LIKE LOWER('$1%')
             OR
-            LOWER(penyanyi) LIKE LOWER('$searchQuery%')
+            LOWER(penyanyi) LIKE LOWER('$1%')
             AND
-            genre IN
-        " . $filterStr . "
+            genre IN $2
         ORDER BY
             judul ASC
-        LIMIT 7 OFFSET $offset;  
+        LIMIT 7 OFFSET $3;  
     ";
 }
 
@@ -75,7 +74,7 @@ if($reversed) {
 }
 
 
-$result = pg_query($conn, $sqlQuery);
+$result = pg_query_params($conn, $sqlQuery, [$searchQuery, $filterStr, $offset]);
 
 if($result === false) {
     echo pg_last_error($conn);

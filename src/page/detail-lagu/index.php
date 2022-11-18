@@ -31,10 +31,10 @@ if(isset($_GET["song-id"])) {
         FROM
             \"Song\"
         WHERE
-            song_id = $songId;
+            song_id = $1;
     ";
 
-    $result = pg_query($conn, $query);
+    $result = pg_query_params($conn, $query, [$songId]);
 
     $row = pg_fetch_row($result);
 
@@ -54,10 +54,10 @@ if(isset($_GET["song-id"])) {
                 FROM
                     \"Album\"
                 WHERE
-                    album_id = $row[6];
+                    album_id = $1;
             ";
 
-            $result = pg_query($conn, $query);
+            $result = pg_query_params($conn, $query, [$row[6]]);
 
             $row = pg_fetch_row($result);
 

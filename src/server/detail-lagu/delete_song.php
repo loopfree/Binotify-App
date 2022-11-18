@@ -8,10 +8,10 @@ $query = "
     DELETE FROM
         \"Song\"
     WHERE
-        song_id = $songId;
+        song_id = $1;
 ";
 
-$result = pg_query($conn, $query);
+$result = pg_query_params($conn, $query, [$songId]);
 
 header("Location: /index.php");
 

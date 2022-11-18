@@ -22,16 +22,16 @@ $query = "
     FROM
         \"User\"
     WHERE
-        username = '$username'
+        username = $1
         AND
-        password = '$passwordHashed';
+        password = $2;
 ";
 
 $json = array();
 
 $conn = pg_connect("host=db_x port=5432 dbname=postgres user=postgres password=postgres");
 
-$result = pg_query($conn, $query);
+$result = pg_query_params($conn, $query, [$username, $passwordHashed]);
 
 $row = pg_fetch_row($result);
 

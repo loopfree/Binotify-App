@@ -13,10 +13,10 @@ switch($getQuery) {
 			FROM
 				\"User\"
 			WHERE
-				user_id = '$userId';
+				user_id = $1;
 		";
 
-		$result = pg_query($conn, $query);
+		$result = pg_query_params($conn, $query, [$userId]);
 
 		$row = pg_fetch_row($result);
 

@@ -96,10 +96,10 @@ if($album !== "") {
         FROM
             \"Album\"
         WHERE
-            judul = '$album';
+            judul = $1;
     ";
 
-    $result = pg_query($conn, $query);
+    $result = pg_query_params($conn, $query, [$album]);
 
     $row = pg_fetch_row($result);
 
@@ -123,38 +123,20 @@ $songId = pg_fetch_row(pg_query($conn, "SELECT MAX(song_id) FROM \"Song\";"))[0]
 
 if($albumId !== null) {
     $query = "
-        INSERT INTO
-            \"Song\"
-        VALUES (
-            $songId,
-            '$judul',
-            '$penyanyi',
-            '$tanggalTerbit',
-            '$genre',
-            $duration,
-            '$sqlMusicFile',
-            '$sqlImageFile',
-            $albumId
-        );
+        INSERT INTO \"Song\"
+        VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9);
     ";
+    pg_query_params($conn, $query, [$songId, $judul, $penyanyi, $tanggalTerbit, $genre, 
+                                    $duration, $sqlMusicFile, $sqlImageFile, $albumId]);
 } else {
     $query = "
-        INSERT INTO
-            \"Song\"
-        VALUES (
-            $songId,
-            '$judul',
-            '$penyanyi',
-            '$tanggalTerbit',
-            '$genre',
-            $duration,
-            '$sqlMusicFile',
-            '$sqlImageFile'
-        );
+        INSERT INTO \"Song\"
+        VALUES ($1, $2, $3, $4, $5, $6, $7, $8);
     ";
+    pg_query_params($conn, $query, [$songId, $judul, $penyanyi, $tanggalTerbit, $genre, 
+                                    $duration, $sqlMusicFile, $sqlImageFile]);
 }
 
-pg_query($conn, $query);
 pg_query_params($conn, "UPDATE \"Album\" SET Total_duration=(SELECT COALESCE(SUM(Duration),0) FROM \"Song\" WHERE album_id=$1) 
                                          WHERE album_id=$1", [$albumId]);
 

@@ -51,10 +51,10 @@ if($album !== "") {
         FROM
             \"Album\"
         WHERE
-            judul = '$album';
+            judul = $1;
     ";
 
-    $result = pg_query($conn, $query);
+    $result = pg_query_params($conn, $query, [$album]);
 
     $row = pg_fetch_row($result);
 
@@ -84,12 +84,12 @@ if($judul !== "") {
         UPDATE 
             \"Song\"
         SET 
-            judul = '$judul'
+            judul = $1
         WHERE
-            song_id = $songId; 
+            song_id = $2; 
     ";
 
-    $result = pg_query($conn, $query);
+    $result = pg_query_params($conn, $query, [$judul, $songId]);
 
     if($result === false) {
         echo "<script type='text/javascript'>alert('Update title error');
@@ -103,12 +103,12 @@ if($tanggalTerbit !== "") {
         UPDATE
             \"Song\"
         SET
-            tanggal_terbit = '$tanggalTerbit'
+            tanggal_terbit = $1
         WHERE
-            song_id = $songId;
+            song_id = $2;
     ";
 
-    $result = pg_query($conn, $query);
+    $result = pg_query_params($conn, $query, [$tanggalTerbit, $songId]);
 
     if($result === false) {
         echo "<script type='text/javascript'>alert('Update release date error');
@@ -122,12 +122,12 @@ if($genre !== "") {
         UPDATE
             \"Song\"
         SET
-            genre = '$genre'
+            genre = $1
         WHERE
-            song_id = $songId;
+            song_id = $2;
     ";
 
-    $result = pg_query($conn, $query);
+    $result = pg_query_params($conn, $query, [$genre, $songId]);
 
     if($result === false) {
         echo "<script type='text/javascript'>alert('Singer name does not match');
@@ -163,12 +163,12 @@ if(isset($_FILES["Audio"]) && $_FILES["Audio"]["error"] != 4) {
         UPDATE
             \"Song\"
         SET
-            audio_path = '$sqlMusicFile'
+            audio_path = $1
         WHERE
-            song_id = $songId;
+            song_id = $2;
     ";
 
-    $result = pg_query($conn, $query);
+    $result = pg_query_params($conn, $query, [$sqlMusicFile, $songId]);
 
     if($result === false) {
         echo "<script type='text/javascript'>alert('Update audio error');
@@ -199,12 +199,12 @@ if(isset($_FILES["Image"]) && $_FILES["Image"]["error"] != 4) {
         UPDATE
             \"Song\"
         SET
-            image_path = '$sqlImageFile'
+            image_path = $1
         WHERE
-            song_id = $songId;
+            song_id = $2;
     ";
 
-    $result = pg_query($conn, $query);
+    $result = pg_query($conn, $query, [$sqlImageFile, $songId]);
 
     if($result === false) {
         echo "<script type='text/javascript'>alert('Update image error');

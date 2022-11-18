@@ -2,8 +2,6 @@
 
 $db_handle = pg_connect("host=db_x port=5432 dbname=postgres user=postgres password=postgres");
 
-// $no_of_rows = pg_query($db_handle, 'SELECT COUNT(*) FROM "Album";');     // for pagination
-
 $result = pg_query($db_handle, 'SELECT * FROM "Album" ORDER BY Judul;');
 $content = "";
 
