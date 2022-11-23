@@ -1,0 +1,334 @@
+@import url('/style/global.css');
+
+:root {
+    /* VARIABLES */
+    /* Colors */
+    /* p stands for primary, s stands for secondary */
+    --p-black: #191414;
+    --p-gray: #242526;
+    --p-green: #1DB954;
+    --p-lime: #1ED760;
+    --p-white: #FFFFFF;
+    --s-spearmint: #4B917D;
+    --s-fuschia: #F037A5;
+    --s-citric: #CDF564;
+  }
+  
+  /* FONTS */
+  @font-face {
+    font-family: "Gotham Bold";
+    src: url("/assets/font/GothamBold.ttf") format("truetype");
+  }
+  
+  @font-face {
+    font-family: "Gotham Regular";
+    src: url("/assets/font/GothamRegular.ttf") format("truetype");
+  }
+  
+  html, body {
+    font-family: 'Gotham Regular', sans-serif;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    font-family: "Gotham Bold";
+  }
+  
+  p, a, li {
+    font-family: "Gotham Regular";
+  }
+  
+  .title {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    font-family: "Gotham Bold", sans-serif;
+  }
+  
+  /* GLOBAL STYLE */
+  .body {
+    display: flex;
+    height: 100vh;
+    width: 100%;
+  }
+  
+  main {
+    overflow-y: auto;
+    padding: 2rem;
+    padding-right: 10%;
+    width: 100%;
+  }
+  
+  @media screen and (max-width: 768px) {
+    main {
+      padding-right: 2rem;
+      width: auto;
+    }
+  }
+  
+  .status {
+    border: solid 1px var(--p-green);
+    color: var(--p-green);
+    border-radius: 24px;
+    padding: 0.25rem 0.5rem;
+    font-family: 'Gotham Bold', sans-serif;
+    font-size: 0.75rem;
+    width: fit-content;
+  }
+  
+  .nav {
+    background: black;
+    padding: 2rem;
+    min-width: 12%;
+    position: sticky;
+    left: 0;
+    bottom: 0;
+    z-index: 50;
+  }
+  
+  nav > ul { 
+    list-style-type: none;
+  }
+  
+  a {
+    text-decoration: none;
+  }
+  
+  .nav-button {
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+    align-items: center;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    color: white;
+    opacity: 75%;
+    transition-duration: 100ms;
+    cursor: pointer;
+  }
+  
+  .nav-button:hover {
+    opacity: 100%;
+  }
+  
+  .status {
+    border: solid 1px var(--p-green);
+    color: var(--p-green);
+    border-radius: 24px;
+    padding: 0.25rem 0.5rem;
+    font-family: 'Gotham Bold', sans-serif;
+    font-size: 0.75rem;
+    width: fit-content;
+  }
+  
+  .logout-button {
+    position: absolute;
+    bottom: 2rem;
+    left: 2rem;
+    color: var(--s-fuschia);
+  }
+  
+  .divider {
+    border-bottom: 1px solid gray;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    opacity: 50%;
+  }
+  
+  .dark-bg {
+    background: linear-gradient(180deg, #242526, var(--p-black));
+    background-repeat: no-repeat;
+    min-height: 100vh;
+    color: white;
+  }
+  
+  /* FORMS */
+  .input-group {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .input-group:last-child {
+    margin-bottom: 0;
+  }
+  
+  .input-group label {
+    font-family: 'Gotham Regular', sans-serif;
+    font-weight: bold;
+    margin-bottom: .5rem;
+    font-size: 1rem;
+  }
+  
+  .input-group input {
+    font-family: 'Gotham Regular', sans-serif;
+    outline: none;
+    background: none;
+    border: 1px solid gray;
+    font-size: .8rem;
+    padding: .5rem;
+    color: inherit;
+    border-radius: 5px;
+  }
+  
+  .input-group input:focus {
+    border-color: #fff;
+  }
+  
+  /* BUTTON */
+  .btn {
+    color: white;
+    background-color: #1DB954;
+    padding: .75rem 1.5rem;
+    border-radius: .5rem;
+    text-decoration: none;
+    font-size: .9rem;
+    outline: none;
+    border: none;
+    cursor: pointer;
+    font-weight: 600;
+    transition-duration: 100ms;
+  }
+  
+  .btn:hover {
+    background-color: #1ED760;
+  }
+  
+  .btn:focus {
+    background-color: #30bd61;
+  }
+  
+  @media screen and (max-width: 768px) {
+    .body {
+        flex-direction: column-reverse;
+        align-items: flex-end;
+    }
+    .nav-button {
+        flex-direction: column;
+        gap: 0.5rem;
+        text-align: center;
+        align-items: space-between;
+        justify-content: space-between;
+    }
+    .nav-desc {
+        display: none;
+    }
+    .logout-button {
+        display: none;
+    }
+    .divider {
+        display: none;
+    }
+    .nav-container {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+    }
+    .app-title {
+        display: none;
+    }
+    .nav {
+        padding-top: 0.25rem;
+        padding-bottom: 0.25rem;
+        align-items: center;
+        justify-content: center;
+        left: 0;
+    }
+  }
+  
+  /* CSS RESET */
+  html, body, div, span, applet, object, iframe,
+  h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+  a, abbr, acronym, address, big, cite, code,
+  del, dfn, em, img, ins, kbd, q, s, samp,
+  small, strike, strong, sub, sup, tt, var,
+  b, u, i, center,
+  dl, dt, dd, ol, ul, li,
+  fieldset, form, label, legend,
+  table, caption, tbody, tfoot, thead, tr, th, td,
+  article, aside, canvas, details, embed, 
+  figure, figcaption, footer, header, hgroup, 
+  menu, nav, output, ruby, section, summary,
+  time, mark, audio, video {
+      margin: 0;
+      padding: 0;
+      border: 0;
+  }
+
+/* 
+----------------------------------------------------------
+----------------------------------------------------------
+----------------------------------------------------------
+----------------------------------------------------------
+*/
+
+main {
+    padding: 2rem;
+    padding-right: 10%;
+    font-family: 'Gotham Regular', sans-serif;
+}
+
+.title {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    table-layout: fixed;
+    text-align: left;
+}
+
+th {
+    border-bottom: solid 1px gray;
+}
+
+td {
+    border-bottom: 1px solid rgb(73, 72, 75);
+}
+
+th, td {
+    padding: 1rem 0.5rem;
+}
+
+.subscribe {
+    padding: 0.75rem;
+    border-radius: 0.25rem;
+    outline: none;
+    margin-left: 0.5rem;
+    border: 1px solid #1DB954;
+    background-color: #1DB954;
+    color: #303037;
+    cursor: pointer;
+    transition: 0.3s ease-in-out;
+}
+
+.waiting {
+    padding: 0.75rem;
+    border-radius: 0.25rem;
+    outline: none;
+    margin-left: 0.5rem;
+    border: 1px solid #1DB954;
+    background-color: #1DB954;
+    color: #303037;
+    transition: 0.3s ease-in-out;
+
+    cursor: not-allowed;
+    /* pointer-events: none; */
+}
+  
+.subscribe:hover {
+    background: transparent;
+    color: #1DB954;
+}
+
+.ctr {
+    text-align: center;
+}
+
+.rejected {
+    color: rgb(213, 48, 48);
+}
+
+.granted {
+    color: #1ED760;
+}
