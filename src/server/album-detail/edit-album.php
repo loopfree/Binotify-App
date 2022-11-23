@@ -1,5 +1,6 @@
 <?php
 require $_SERVER['DOCUMENT_ROOT'] . '/hash.php';
+require $_SERVER['DOCUMENT_ROOT'] . '/postgreurl.php';
 
 function separateNameAndExt($filename) {
     $result = array();
@@ -59,7 +60,7 @@ $title = trim($_POST["album-title"]);
 $genre = trim($_POST["genre"]);
 $albumId = $_POST["album-id"];
 
-$conn = pg_connect("host=db_x port=5432 dbname=postgres user=postgres password=postgres");
+$conn = pg_connect($postgreUrl);
 
 if ($title) {
     pg_query_params($conn, "UPDATE \"Album\" SET Judul=$1 WHERE album_id=$2", [$title, $albumId]);

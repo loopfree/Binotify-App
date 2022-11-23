@@ -1,11 +1,13 @@
 <?php
+require $_SERVER['DOCUMENT_ROOT'] . '/postgreurl.php';
+
 session_start();
 
 $json = array();
 $json += ["admin" => $_SESSION["logged_in"] && $_SESSION["admin"]];
 
 $album_id = $_GET["album-id"];
-$conn = pg_connect("host=db_x port=5432 dbname=postgres user=postgres password=postgres");
+$conn = pg_connect($postgreUrl);
 
 $query = "SELECT * FROM \"Album\" WHERE album_id = $album_id;";
 $result = pg_query($conn, $query);

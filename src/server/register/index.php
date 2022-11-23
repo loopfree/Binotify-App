@@ -5,6 +5,7 @@
     }
 
     require $_SERVER['DOCUMENT_ROOT'] . '/hash.php';
+    require $_SERVER['DOCUMENT_ROOT'] . '/postgreurl.php';
 
     $json_content = file_get_contents("php://input");
 
@@ -17,12 +18,12 @@
 
     $userId = hashUsername($username);
 
-    $conn = pg_connect("host=db_x port=5432 dbname=postgres user=postgres password=postgres");
+    $conn = pg_connect($postgreUrl);
 
     $query = "INSERT INTO \"User\"
               VALUES ($1, $2, $3, $4, $5);";
 
-    $result = pg_query_params($conn, $query, [$userId, $email, $passwordHashed, $username, false]);
+    $result = pg_query_params($conn, $query, [$userId, $email, $passwordHashed, $username, "f"]);
 
     if(!$result) {
         echo "fail";

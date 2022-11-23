@@ -1,6 +1,8 @@
 <?php
 
-$conn = pg_connect("host=db_x port=5432 dbname=postgres user=postgres password=postgres");
+require $_SERVER['DOCUMENT_ROOT'] . '/postgreurl.php';
+
+$conn = pg_connect($postgreUrl);
 
 $query = "
     SELECT

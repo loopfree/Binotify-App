@@ -1,6 +1,7 @@
 <?php
 
 require $_SERVER['DOCUMENT_ROOT'] . '/hash.php';
+require $_SERVER['DOCUMENT_ROOT'] . '/postgreurl.php';
 
 function separateNameAndExt($filename) {
     $result = array();
@@ -64,7 +65,7 @@ $genre = $_POST["Genre"];
 $duration = $_POST["Duration"];
 $album = $_POST["Album"];
 
-$conn = pg_connect("host=db_x port=5432 dbname=postgres user=postgres password=postgres");
+$conn = pg_connect($postgreUrl);
 $result = pg_query_params($conn, "SELECT * FROM \"Album\" WHERE Judul=$1", [$judul]);
 
 if (pg_num_rows($result) > 0) {

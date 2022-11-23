@@ -1,6 +1,7 @@
 <?php
+require $_SERVER['DOCUMENT_ROOT'] . '/postgreurl.php';
 
-$db_handle = pg_connect("host=db_x port=5432 dbname=postgres user=postgres password=postgres");
+$db_handle = pg_connect($postgreUrl);
 
 $result = pg_query($db_handle, 'SELECT * FROM "Album" ORDER BY Judul;');
 $content = "";

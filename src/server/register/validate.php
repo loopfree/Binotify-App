@@ -1,8 +1,10 @@
 <?php
+require $_SERVER['DOCUMENT_ROOT'] . '/postgreurl.php';
 if(isset($_GET["name"])) {
+
     $name = $_GET["name"];
 
-    $conn = pg_connect("host=db_x port=5432 dbname=postgres user=postgres password=postgres");
+    $conn = pg_connect($postgreUrl);
 
     $query = "
         SELECT
@@ -34,7 +36,7 @@ if(isset($_GET["name"])) {
 if(isset($_GET["email"])) {
     $email = $_GET["email"];
 
-    $conn = pg_connect("host=db_x port=5432 dbname=postgres user=postgres password=postgres");
+    $conn = pg_connect($postgreUrl);
 
     $query = "
         SELECT

@@ -1,4 +1,5 @@
 <?php
+require $_SERVER['DOCUMENT_ROOT'] . '/postgreurl.php';
 
 $query = $_GET["query"];
 
@@ -12,7 +13,7 @@ $dateSorted = $json["dateSorted"];
 
 $offset = $pageNumber * 7;
 
-$conn = pg_connect("host=db_x port=5432 dbname=postgres user=postgres password=postgres");
+$conn = pg_connect($postgreUrl);
 
 $sqlQuery;
 
@@ -28,12 +29,12 @@ if(count($genreFilter) === 0) {
         FROM
             \"Song\"
         WHERE
-            LOWER(judul) LIKE LOWER('$searchQuery%')
+            LOWER(judul) LIKE LOWER($1)
             OR
-            LOWER(penyanyi) LIKE LOWER('$searchQuery%')
+            LOWER(penyanyi) LIKE LOWER($1)
         ORDER BY
             judul ASC
-        LIMIT 7 OFFSET $offset;
+        LIMIT 7 OFFSET $2;
     ";
 } else {
     $filterStr = "(";
@@ -54,14 +55,14 @@ if(count($genreFilter) === 0) {
         FROM
             \"Song\"
         WHERE
-            LOWER(judul) LIKE LOWER('$1%')
+            LOWER(judul) LIKE LOWER($1)
             OR
-            LOWER(penyanyi) LIKE LOWER('$1%')
+            LOWER(penyanyi) LIKE LOWER($1)
             AND
-            genre IN $2
+            genre IN $filterStr
         ORDER BY
             judul ASC
-        LIMIT 7 OFFSET $3;  
+        LIMIT 7 OFFSET $2;  
     ";
 }
 
@@ -74,7 +75,7 @@ if($reversed) {
 }
 
 
-$result = pg_query_params($conn, $sqlQuery, [$searchQuery, $filterStr, $offset]);
+$result = pg_query_params($conn, $sqlQuery, [$searchQuery . "%", $offset]);
 
 if($result === false) {
     echo pg_last_error($conn);

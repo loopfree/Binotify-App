@@ -1,6 +1,8 @@
 <?php
 
-$db_handle = pg_connect("host=db_x port=5432 dbname=postgres user=postgres password=postgres");
+require $_SERVER['DOCUMENT_ROOT'] . '/postgreurl.php';
+
+$db_handle = pg_connect($postgreUrl);
 
 $result = pg_query($db_handle, 'SELECT * FROM (SELECT song_id, Judul, EXTRACT(YEAR FROM Tanggal_terbit) AS Tahun, Penyanyi,
                                 Genre, Image_path FROM "Song" ORDER BY song_id DESC LIMIT 10) AS temp ORDER BY Judul ASC;');

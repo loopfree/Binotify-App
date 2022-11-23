@@ -1,6 +1,8 @@
 <?php
 
-$db_handle = pg_connect("host=db_x port=5432 dbname=postgres user=postgres password=postgres");
+require $_SERVER['DOCUMENT_ROOT'] . '/postgreurl.php';
+
+$db_handle = pg_connect($postgreUrl);
 
 $result = pg_query($db_handle, 'SELECT Username, Email FROM "User" WHERE is_admin=false;');
 $content = "";

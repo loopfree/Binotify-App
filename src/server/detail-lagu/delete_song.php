@@ -1,8 +1,9 @@
 <?php
+require $_SERVER['DOCUMENT_ROOT'] . '/postgreurl.php';
 
 $songId = $_POST["song-id"];
 
-$conn = pg_connect("host=db_x port=5432 dbname=postgres user=postgres password=postgres");
+$conn = pg_connect($postgreUrl);
 
 $query = "
     DELETE FROM

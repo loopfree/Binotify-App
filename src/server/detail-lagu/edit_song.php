@@ -5,6 +5,7 @@
 // $decoded = json_decode($json_content, true);
 
 require $_SERVER['DOCUMENT_ROOT'] . '/hash.php';
+require $_SERVER['DOCUMENT_ROOT'] . '/postgreurl.php';
 
 function separateNameAndExt($filename) {
     $result = array();
@@ -42,7 +43,7 @@ $tanggalTerbit = trim($_POST["Tanggal_terbit"]);
 $genre = trim($_POST["Genre"]);
 $albumId = null;
 
-$conn = pg_connect("host=db_x port=5432 dbname=postgres user=postgres password=postgres");
+$conn = pg_connect($postgreUrl);
 
 if($album !== "") {
     $query = "

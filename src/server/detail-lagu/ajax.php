@@ -2,10 +2,12 @@
 
 $getQuery = $_GET["q"];
 
+require $_SERVER['DOCUMENT_ROOT'] . '/postgreurl.php';
 switch($getQuery) {
 	case "isadmin":
+
 		$userId = $_GET["user-id"];
-		$conn = pg_connect("host=db_x port=5432 dbname=postgres user=postgres password=postgres");
+		$conn = pg_connect($postgreUrl);
 
 		$query = "
 			SELECT 
