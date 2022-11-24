@@ -61,7 +61,7 @@ xhr.onload = function() {
     
     const singerList  = JSON.parse(this.responseText);
     
-    singerList.forEach(elem => {
+    singerList.forEach((elem, index) => {
         const singer = elem["singer-name"];
         const status = elem["status"];
 
@@ -70,24 +70,70 @@ xhr.onload = function() {
         const singerCol = document.createElement("th");
         singerCol.innerHTML = singer;
         
-        const emptyCol1 = document.createElement("th");
         const emptyCol2 = document.createElement("th");
         
+        /**
+         * Handling the display according to the status
+         */
+        const singerLinkCol = document.createElement("th");
         const subscribeCol = document.createElement("th");
         subscribeCol.className = "ctr";
-        
-        const subscribeButton = document.createElement("button");
-        subscribeButton.className = "subscribe";
-        subscribeButton.textContent = status === "Granted" ? "Unsubscribe" : "Subscribe";
-        
-        subscribeCol.appendChild(subscribeButton);
+
+        if(elem.status === "PENDING") {
+            const subscribeButton = document.createElement("button");
+            subscribeButton.className = "waiting";
+            subscribeButton.textContent = "Subscribe";
+            
+            subscribeCol.appendChild(subscribeButton);
+
+        } else if(elem.stats === "ACCEPTED") {
+            /**
+             * TODO: linking href to react
+             */
+            const singerLinkHref = document.createElement("a");
+
+            const singerLinkButton = document.createElement("button");
+            singerLinkButton.className = "btn";
+            singerLinkButton.textContent = "Visit Singer page";
+
+            singerLinkHref.appendChild(singerLinkButton);
+            singerLinkCol.appendChild(singerLinkHref);
+            
+        } else if(elem.status === "REJECTED" || elem.status === "") {
+            const subscribeButton = document.createElement("button");
+            subscribeButton.className = "subscribe";
+            subscribeButton.textContent = "Subscribe";
+            subscribeButton.onclick = () => {
+                const xhr = new XMLHttpRequest();
+                
+                xhr.onloadend = function() {
+                    console.log(this.responseText);
+                };
+
+                xhr.open("GET", `/server/singer-list/request-subscription.php?creator_id=${singer}`);
+
+                xhr.send();
+
+                window.location.reload();
+            };
+
+            subscribeCol.appendChild(subscribeButton);
+            
+        } else {
+            alert("Invalid status received");
+        }
         
         const statusCol = document.createElement("th");
         statusCol.className = "ctr";
+        if(elem.status === "ACCEPTED") {
+            statusCol.className = "ctr granted";
+        } else if(elem.status === "REJECTED") {
+            statusCol.className = "ctr rejected";
+        }
         statusCol.innerHTML = status;
         
         singerRow.appendChild(singerCol);
-        singerRow.appendChild(emptyCol1);
+        singerRow.appendChild(singerLinkCol);
         singerRow.appendChild(emptyCol2);
         singerRow.appendChild(subscribeCol);
         singerRow.appendChild(statusCol);

@@ -32,7 +32,7 @@ while($row = pg_fetch_row($result)) {
                     subscriber_id = $2;
                 ";
     
-    $creatorId = hashUsername($row[0]);
+    $creatorId = hashUsername(trim($row[0]));
     $subscriberId = hashUsername($_SESSION["username"]);
 
     $subscriptionStatus = pg_query_params($conn, $query, [$creatorId, $subscriberId]);
@@ -44,7 +44,7 @@ while($row = pg_fetch_row($result)) {
     }
 
     $temp += ["status" => $status];
-    
+
     $resp[] = $temp;
 }
 

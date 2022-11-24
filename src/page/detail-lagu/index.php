@@ -1,4 +1,5 @@
 <?php
+require $_SERVER['DOCUMENT_ROOT'] . "/postgreurl.php";
 
 session_start();
 
@@ -17,7 +18,7 @@ $albumName = "";
 if(isset($_GET["song-id"])) {
     $songId = $_GET["song-id"];
 
-    $conn = pg_connect("host=db_x port=5432 dbname=postgres user=postgres password=postgres");
+    $conn = pg_connect($postgreUrl);
 
     $query = "
         SELECT
