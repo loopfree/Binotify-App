@@ -2,7 +2,7 @@
 session_start();
 
 if (!isset($_SESSION['logged_in'])) {
-    $_SESSION["admin"] = false;
+    $_SESSION["logged_in"] = false;
     header("Location: /page/login/");
 }
 else {
