@@ -6,7 +6,7 @@ if($_SERVER['REQUEST_METHOD'] === "GET") {
 }
 
 require $_SERVER['DOCUMENT_ROOT'] . '/hash.php';
-require $_SERVER['DOCUMENT_ROOT'] . '/postgreurl.php';
+require $_SERVER['DOCUMENT_ROOT'] . '/utils/db_connection.php';
 
 $json_content = file_get_contents("php://input");
 
@@ -29,11 +29,7 @@ $query = "
 ";
 
 $json = array();
-
-$conn = pg_connect($postgreUrl);
-
 $result = pg_query_params($conn, $query, [$username, $passwordHashed]);
-
 $row = pg_fetch_row($result);
 
 if($row === false) {
@@ -53,8 +49,6 @@ if($row === false) {
         $_SESSION["admin"] = true;
     }
 }
-
-pg_close($conn);
 
 echo json_encode($json);
 

@@ -1,5 +1,5 @@
 <?php
-require $_SERVER['DOCUMENT_ROOT'] . "/postgreurl.php";
+require $_SERVER['DOCUMENT_ROOT'] . "/utils/db_connection.php";
 
 session_start();
 
@@ -17,8 +17,6 @@ $albumName = "";
 
 if(isset($_GET["song-id"])) {
     $songId = $_GET["song-id"];
-
-    $conn = pg_connect($postgreUrl);
 
     $query = "
         SELECT
@@ -65,8 +63,6 @@ if(isset($_GET["song-id"])) {
             $albumName = $row[0];
         }
     }
-
-    pg_close($conn);
 }
 
 if(isset($_GET["message"])) {

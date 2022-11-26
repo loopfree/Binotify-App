@@ -1,7 +1,7 @@
 <?php
 
 require $_SERVER['DOCUMENT_ROOT'] . '/hash.php';
-require $_SERVER['DOCUMENT_ROOT'] . '/postgreurl.php';
+require $_SERVER['DOCUMENT_ROOT'] . '/utils/db_connection.php';
 
 function separateNameAndExt($filename) {
     $result = array();
@@ -65,7 +65,6 @@ $genre = $_POST["Genre"];
 $duration = $_POST["Duration"];
 $album = $_POST["Album"];
 
-$conn = pg_connect($postgreUrl);
 $result = pg_query_params($conn, "SELECT * FROM \"Album\" WHERE Judul=$1", [$judul]);
 
 if (pg_num_rows($result) > 0) {
@@ -77,7 +76,6 @@ else {
     $query = "INSERT INTO \"Album\" VALUES ($1,$2,$3,$4,$5,$6,$7);";
 
     pg_query_params($conn, $query, [$albumId, $judul, $penyanyi, 0, $sqlImageFile, $tanggalTerbit, $genre]);
-    pg_close($conn);
     header("Refresh:0; url=/page/album-list/");
 }
 ?>

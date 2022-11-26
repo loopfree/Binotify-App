@@ -1,5 +1,5 @@
 <?php
-require $_SERVER['DOCUMENT_ROOT'] . '/postgreurl.php';
+require $_SERVER['DOCUMENT_ROOT'] . '/utils/db_connection.php';
 
 $query = $_GET["query"];
 
@@ -12,8 +12,6 @@ $reversed = $json["reversed"];
 $dateSorted = $json["dateSorted"];
 
 $offset = $pageNumber * 7;
-
-$conn = pg_connect($postgreUrl);
 
 $sqlQuery;
 
@@ -102,10 +100,6 @@ while($row = pg_fetch_row($result)) {
     $index += 1;
 }
 
-// print_r($res);
-
 echo json_encode($res);
-
-pg_close($conn);
 
 ?>

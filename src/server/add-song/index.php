@@ -1,7 +1,7 @@
 <?php
 
 require $_SERVER['DOCUMENT_ROOT'] . '/hash.php';
-require $_SERVER['DOCUMENT_ROOT'] . '/postgreurl.php';
+require $_SERVER['DOCUMENT_ROOT'] . '/utils/db_connection.php';
 
 function separateNameAndExt($filename) {
     $result = array();
@@ -84,9 +84,6 @@ $tanggalTerbit = $_POST["Tanggal_terbit"];
 $genre = $_POST["Genre"];
 $duration = $_POST["Duration"];
 $album = $_POST["Album"];
-
-$conn = pg_connect($postgreUrl);
-
 $albumId = null;
 $penyanyiAlbum = null;
 
@@ -140,8 +137,6 @@ if($albumId !== null) {
 
 pg_query_params($conn, "UPDATE \"Album\" SET Total_duration=(SELECT COALESCE(SUM(Duration),0) FROM \"Song\" WHERE album_id=$1) 
                                          WHERE album_id=$1", [$albumId]);
-
-pg_close($conn);
 
 header("Refresh:0; url=/page/add-song/");
 ?>

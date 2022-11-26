@@ -1,10 +1,8 @@
 <?php
 
-require $_SERVER['DOCUMENT_ROOT'] . '/postgreurl.php';
+require $_SERVER['DOCUMENT_ROOT'] . '/db_connection.php';
 
-$db_handle = pg_connect($postgreUrl);
-
-$result = pg_query($db_handle, 'SELECT Username, Email FROM "User" WHERE is_admin=false;');
+$result = pg_query($conn, 'SELECT Username, Email FROM "User" WHERE is_admin=false;');
 $content = "";
 
 for ($row = 0; $row < pg_num_rows($result); $row++) {
@@ -18,8 +16,6 @@ for ($row = 0; $row < pg_num_rows($result); $row++) {
         </tr>
     ";
 }
-
-pg_close($db_handle);
 
 echo $content;
 

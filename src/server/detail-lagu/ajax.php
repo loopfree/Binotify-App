@@ -2,12 +2,11 @@
 
 $getQuery = $_GET["q"];
 
-require $_SERVER['DOCUMENT_ROOT'] . '/postgreurl.php';
+require $_SERVER['DOCUMENT_ROOT'] . '/utils/db_connection.php';
 switch($getQuery) {
 	case "isadmin":
 
 		$userId = $_GET["user-id"];
-		$conn = pg_connect($postgreUrl);
 
 		$query = "
 			SELECT 
@@ -32,7 +31,6 @@ switch($getQuery) {
 			echo "error";
 		}
 
-		pg_close($conn);
 		break;
 
 }

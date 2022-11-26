@@ -1,5 +1,5 @@
 <?php
-require $_SERVER['DOCUMENT_ROOT'] . '/postgreurl.php';
+require $_SERVER['DOCUMENT_ROOT'] . '/utils/db_connection.php';
 
 session_start();
 
@@ -7,7 +7,6 @@ $json = array();
 $json += ["admin" => $_SESSION["logged_in"] && $_SESSION["admin"]];
 
 $album_id = $_GET["album-id"];
-$conn = pg_connect($postgreUrl);
 
 $query = "SELECT * FROM \"Album\" WHERE album_id = $album_id;";
 $result = pg_query($conn, $query);
@@ -59,8 +58,6 @@ for ($row = 0; $row < pg_num_rows($result); $row++) {
 }
 
 $json += ["song-list-html" => $content];
-
-pg_close($conn);
 
 echo json_encode($json);
 ?>

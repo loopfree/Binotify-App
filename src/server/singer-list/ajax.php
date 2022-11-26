@@ -2,10 +2,8 @@
 
 session_start();
 
-require $_SERVER['DOCUMENT_ROOT'] . '/postgreurl.php';
+require $_SERVER['DOCUMENT_ROOT'] . '/utils/db_connection.php';
 require $_SERVER['DOCUMENT_ROOT'] . '/hash.php';
-
-$conn = pg_connect($postgreUrl);
 
 $query = "SELECT DISTINCT penyanyi FROM \"Song\"";
 
@@ -49,7 +47,5 @@ while($row = pg_fetch_row($result)) {
 }
 
 echo json_encode($resp);
-
-pg_close($conn);
 
 ?>

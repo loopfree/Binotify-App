@@ -1,6 +1,6 @@
 <?php
 require $_SERVER['DOCUMENT_ROOT'] . '/hash.php';
-require $_SERVER['DOCUMENT_ROOT'] . '/postgreurl.php';
+require $_SERVER['DOCUMENT_ROOT'] . '/utils/db_connection.php';
 
 function separateNameAndExt($filename) {
     $result = array();
@@ -60,8 +60,6 @@ $title = trim($_POST["album-title"]);
 $genre = trim($_POST["genre"]);
 $albumId = $_POST["album-id"];
 
-$conn = pg_connect($postgreUrl);
-
 if ($title) {
     pg_query_params($conn, "UPDATE \"Album\" SET Judul=$1 WHERE album_id=$2", [$title, $albumId]);
 }
@@ -73,8 +71,6 @@ if ($imagePath) {
 if ($genre) {
     pg_query_params($conn, "UPDATE \"Album\" SET Genre=$1 WHERE album_id=$2", [$genre, $albumId]);
 }
-
-pg_close($conn);
 
 header("Refresh: 0; url=/page/album-detail/index.php?album-id=$albumId");
 ?>

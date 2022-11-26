@@ -1,10 +1,8 @@
 <?php
-require $_SERVER['DOCUMENT_ROOT'] . '/postgreurl.php';
+require $_SERVER['DOCUMENT_ROOT'] . '/utils/db_connection.php';
 if(isset($_GET["name"])) {
 
     $name = $_GET["name"];
-
-    $conn = pg_connect($postgreUrl);
 
     $query = "
         SELECT
@@ -29,14 +27,11 @@ if(isset($_GET["name"])) {
         $isUnique = "unique";
     }
 
-    pg_close($conn);
     echo $isUnique;
 }
 
 if(isset($_GET["email"])) {
     $email = $_GET["email"];
-
-    $conn = pg_connect($postgreUrl);
 
     $query = "
         SELECT
@@ -62,14 +57,7 @@ if(isset($_GET["email"])) {
         $isUnique = "unique";
     }
 
-    // if(preg_match($regexp, $email) === 1) {
-    //     $isUnique = "unique";
-    // } else {
-    //     $isUnique = "not unique";
-    // }
-
     echo $isUnique;
 
-    pg_close($conn);
 }
 ?>

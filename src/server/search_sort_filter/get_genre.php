@@ -1,8 +1,6 @@
 <?php
 
-require $_SERVER['DOCUMENT_ROOT'] . '/postgreurl.php';
-
-$conn = pg_connect($postgreUrl);
+require $_SERVER['DOCUMENT_ROOT'] . '/utils/db_connection.php';
 
 $query = "
     SELECT
@@ -12,8 +10,6 @@ $query = "
 ";
 
 $result = pg_query($conn, $query);
-
-pg_close($conn);
 
 $res = array();
 

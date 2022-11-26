@@ -1,5 +1,5 @@
 <?php
-require $_SERVER['DOCUMENT_ROOT'] . '/postgreurl.php';
+require $_SERVER['DOCUMENT_ROOT'] . '/utils/db_connection.php';
 require $_SERVER['DOCUMENT_ROOT'] . '/hash.php';
 
 session_start();
@@ -32,8 +32,6 @@ $req = array(
 
 $res = $client->__soapCall('requestSubscription', array($req));
 
-$conn = pg_connect($postgreUrl);
-
 $query = "SELECT status FROM \"Subscription\" WHERE creator_id = $1 AND subscriber_id = $2";
 
 $check = pg_query_params($conn, $query, [$creatorId, $subscriberId]);
@@ -54,9 +52,6 @@ if(!$exists) {
     $query = "UPDATE \"Subscription\" SET status = 'PENDING' WHERE creator_id = $1 AND subscriber_id = $2";
     pg_query_params($conn, $query, [$creatorId, $subscriberId]);
 }
-
-
-pg_close($conn);
 
 echo json_encode($res);
 ?>

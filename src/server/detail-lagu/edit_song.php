@@ -5,7 +5,7 @@
 // $decoded = json_decode($json_content, true);
 
 require $_SERVER['DOCUMENT_ROOT'] . '/hash.php';
-require $_SERVER['DOCUMENT_ROOT'] . '/postgreurl.php';
+require $_SERVER['DOCUMENT_ROOT'] . '/utils/db_connection.php';
 
 function separateNameAndExt($filename) {
     $result = array();
@@ -42,8 +42,6 @@ $album = trim($_POST["Album"]);
 $tanggalTerbit = trim($_POST["Tanggal_terbit"]);
 $genre = trim($_POST["Genre"]);
 $albumId = null;
-
-$conn = pg_connect($postgreUrl);
 
 if($album !== "") {
     $query = "
@@ -216,8 +214,6 @@ if(isset($_FILES["Image"]) && $_FILES["Image"]["error"] != 4) {
 
 pg_query_params($conn, "UPDATE \"Album\" SET Total_duration=(SELECT COALESCE(SUM(Duration),0) FROM \"Song\" WHERE album_id=$1) 
                                          WHERE album_id=$1", [$albumId]);
-
-pg_close($conn);
 
 header("Refresh:0; url=/page/detail-lagu/index.php?song-id=$songId");
 ?>

@@ -1,9 +1,7 @@
 <?php
-require $_SERVER['DOCUMENT_ROOT'] . '/postgreurl.php';
+require $_SERVER['DOCUMENT_ROOT'] . '/utils/db_connection.php';
 
 $songId = $_POST["song-id"];
-
-$conn = pg_connect($postgreUrl);
 
 $query = "
     DELETE FROM
@@ -15,7 +13,5 @@ $query = "
 $result = pg_query_params($conn, $query, [$songId]);
 
 header("Location: /index.php");
-
-pg_close($conn);
 
 ?>

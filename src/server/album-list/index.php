@@ -1,9 +1,7 @@
 <?php
-require $_SERVER['DOCUMENT_ROOT'] . '/postgreurl.php';
+require $_SERVER['DOCUMENT_ROOT'] . '/utils/db_connection.php';
 
-$db_handle = pg_connect($postgreUrl);
-
-$result = pg_query($db_handle, 'SELECT * FROM "Album" ORDER BY Judul;');
+$result = pg_query($conn, 'SELECT * FROM "Album" ORDER BY Judul;');
 $content = "";
 
 for ($row = 0; $row < pg_num_rows($result); $row++) {
@@ -34,8 +32,6 @@ for ($row = 0; $row < pg_num_rows($result); $row++) {
         </div>
     ";
 }
-
-pg_close($db_handle);
 
 echo $content;
 

@@ -5,7 +5,7 @@
     }
 
     require $_SERVER['DOCUMENT_ROOT'] . '/hash.php';
-    require $_SERVER['DOCUMENT_ROOT'] . '/postgreurl.php';
+    require $_SERVER['DOCUMENT_ROOT'] . '/utils/db_connection.php';
 
     $json_content = file_get_contents("php://input");
 
@@ -18,8 +18,6 @@
 
     $userId = hashUsername($username);
 
-    $conn = pg_connect($postgreUrl);
-
     $query = "INSERT INTO \"User\"
               VALUES ($1, $2, $3, $4, $5);";
 
@@ -31,6 +29,5 @@
         echo "succeed";
     }
 
-    pg_close($conn);
 })();
 ?>
