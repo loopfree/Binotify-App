@@ -2,7 +2,7 @@
 
 $getQuery = $_GET["q"];
 
-require $_SERVER['DOCUMENT_ROOT'] . '/utils/db_connection.php';
+require $_SERVER['DOCUMENT_ROOT'] . '/server/utils/db_connection.php';
 switch($getQuery) {
 	case "isadmin":
 

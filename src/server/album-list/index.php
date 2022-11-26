@@ -1,5 +1,5 @@
 <?php
-require $_SERVER['DOCUMENT_ROOT'] . '/utils/db_connection.php';
+require $_SERVER['DOCUMENT_ROOT'] . '/server/utils/db_connection.php';
 
 $result = pg_query($conn, 'SELECT * FROM "Album" ORDER BY Judul;');
 $content = "";

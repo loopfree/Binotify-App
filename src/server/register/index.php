@@ -4,8 +4,8 @@
         return;
     }
 
-    require $_SERVER['DOCUMENT_ROOT'] . '/hash.php';
-    require $_SERVER['DOCUMENT_ROOT'] . '/utils/db_connection.php';
+    require $_SERVER['DOCUMENT_ROOT'] . '/server/utils/hash.php';
+    require $_SERVER['DOCUMENT_ROOT'] . '/server/utils/db_connection.php';
 
     $json_content = file_get_contents("php://input");
 

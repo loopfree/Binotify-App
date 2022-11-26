@@ -80,12 +80,11 @@ session_start();
     <?php
     if(isset($_SESSION['logged_in'])) {
         ?>
-        <!-- <script src="/server/nav/logout.js" defer></script> -->
         <div class="nav-button logout-button" onclick="
             const logoutButton = document.getElementsByClassName('nav-button logout-button')[0];
             logoutButton.onclick = function() {
                 const xhr = new XMLHttpRequest();
-                xhr.open('GET', `/server/nav/logout.php`);
+                xhr.open('GET', `/server/utils/logout.php`);
                 xhr.onload = function() {
                     window.location.href = '/page/login/';
                 }

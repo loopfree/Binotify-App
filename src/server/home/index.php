@@ -1,6 +1,6 @@
 <?php
 
-require $_SERVER['DOCUMENT_ROOT'] . '/utils/db_connection.php';
+require $_SERVER['DOCUMENT_ROOT'] . '/server/utils/db_connection.php';
 
 $result = pg_query($conn, 'SELECT * FROM (SELECT song_id, Judul, EXTRACT(YEAR FROM Tanggal_terbit) AS Tahun, Penyanyi,
                            Genre, Image_path FROM "Song" ORDER BY song_id DESC LIMIT 10) AS temp ORDER BY Judul ASC;');
