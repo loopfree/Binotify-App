@@ -5,20 +5,13 @@ session_start();
 require $_SERVER['DOCUMENT_ROOT'] . '/server/utils/db_connection.php';
 require $_SERVER['DOCUMENT_ROOT'] . '/server/utils/hash.php';
 
-$query = "SELECT DISTINCT penyanyi FROM \"Song\"";
-
-$result = pg_query($conn, $query);
-
+$restResponse = file_get_contents("localhost:3000/premium_singer/list");
+$premiumSingers = json_decode($response);
 $resp = array();
 
-while($row = pg_fetch_row($result)) {
-    /**
-     * storing the singer and subscription status in an
-     * associative array, to make it easier to be read in the
-     * frontend later
-     */
+foreach ($premiumSingers["singers"] as $premiumSinger) {
     $temp = array();
-    $temp += ["singer-name" => $row[0]];
+    $temp += ["singer-name" => $premiumSinger["name"]];
 
     $query = "SELECT 
                     status 
@@ -29,15 +22,12 @@ while($row = pg_fetch_row($result)) {
                     AND
                     subscriber_id = $2;
                 ";
-    
-    $creatorId = hashUsername(trim($row[0]));
-    $subscriberId = hashUsername($_SESSION["username"]);
 
-    $subscriptionStatus = pg_query_params($conn, $query, [$creatorId, $subscriberId]);
+    $subscriptionStatus = pg_query_params($conn, $query, [$premiumSinger["id"], $_SESSION["user_id"]]);
 
     $status = "";
 
-    if($row2 = pg_fetch_row($subscriptionStatus)) {
+    if ($row2 = pg_fetch_row($subscriptionStatus)) {
         $status = $row2[0];
     }
 

@@ -5,6 +5,10 @@ if($_SERVER['REQUEST_METHOD'] === "GET") {
     header("Location: /index.php");
 }
 
+if (!isset($_SESSION['logged_in'])) {
+    $_SESSION["logged_in"] = false;
+}
+
 require $_SERVER['DOCUMENT_ROOT'] . '/server/utils/hash.php';
 require $_SERVER['DOCUMENT_ROOT'] . '/server/utils/db_connection.php';
 
@@ -32,7 +36,7 @@ $json = array();
 $result = pg_query_params($conn, $query, [$username, $passwordHashed]);
 $row = pg_fetch_row($result);
 
-if($row === false) {
+if ($row === false) {
     $json += ["success" => "false"];
 } else {
     $json += ["success" => "true"];
@@ -42,6 +46,7 @@ if($row === false) {
     $json += ["user-id" => $row[0]];
 
     $_SESSION['logged_in'] = true;
+    $_SESSION['user_id'] = $row[0];
     $_SESSION['username'] = $username;
     if($row[1] === "f") {
         $_SESSION["admin"] = false;
