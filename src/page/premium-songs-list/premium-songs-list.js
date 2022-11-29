@@ -4,6 +4,11 @@ window.onload = () => {
     getProfile();
 }
 
+async function getSongsList() {
+    const response = await fetch("http://localhost:3000/premium_singer/list");
+    return await response.json();
+}
+
 function getNav() {
     const nav = document.getElementsByClassName('nav')[0];
     const xhr = new XMLHttpRequest();
@@ -16,13 +21,32 @@ function getNav() {
 
 function getSongCards() {
     const songContainer = document.getElementById("songs-container");
-    const xhr = new XMLHttpRequest();
-    xhr.open("GET", "/server/home/index.php", true);
-    xhr.onload = function() {
-        songContainer.innerHTML = this.responseText;
-        songPlayUpdate();
-    }
-    xhr.send(null);
+    // Fetch data
+    getSongsList().then((results) => {
+        if(results !== null)  {
+            results.forEach((result) => {
+                const songCard = document.createElement("div");
+                songCard.className = "song-card";
+                songCard.innerHTML = `
+                    <img 
+                        src='$imgpath'
+                        alt='$title'
+                        class='song-image'
+                    >
+                    <div class='song-info'>
+                        <h2 class='song-title'>${result.judul}</h2>
+                    </div>
+                    <div class='play-button'>
+                        <div class='triangle'></div>
+                    </div>
+                `;
+                songContainer.appendChild(songCard);
+            });
+            songPlayUpdate();
+        } else {
+            songContainer.innerHTML = `<p class="text-center">No premium songs available</p>`;
+        }
+    });
 }
 
 function getProfile() {
