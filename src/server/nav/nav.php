@@ -36,17 +36,6 @@ session_start();
             <p class="nav-desc">Albums</p>
         </li>
     </a>
-    <a href="/page/premium-songs-list/">
-        <li class="nav-button">
-            <lord-icon
-                src="/assets/lord-icon/album-icon.json"
-                trigger="hover"
-                colors="primary:#ffffff"
-                style="width:2rem;height:2rem">
-            </lord-icon>
-            <p class="nav-desc">Premium</p>
-        </li>
-    </a>
     <?php
     if($_SESSION["logged_in"]) {
         ?>
@@ -60,6 +49,17 @@ session_start();
                     style="width:2rem;height:2rem">
                 </lord-icon>
                 <p class="nav-desc">Premium Singer</p>
+            </li>
+        </a>
+        <a href="/page/premium-songs-list/">
+            <li class="nav-button">
+                <lord-icon
+                    src="/assets/lord-icon/album-icon.json"
+                    trigger="hover"
+                    colors="primary:#ffffff"
+                    style="width:2rem;height:2rem">
+                </lord-icon>
+                <p class="nav-desc">Premium</p>
             </li>
         </a>
         <?php
