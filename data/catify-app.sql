@@ -22,7 +22,7 @@ SET row_security = off;
 
 CREATE TYPE public.sub_status AS ENUM (
     'PENDING',
-    'APPROVED',
+    'ACCEPTED',
     'REJECTED'
 );
 
@@ -51,6 +51,28 @@ CREATE TABLE public."Album" (
 ALTER TABLE public."Album" OWNER TO postgres;
 
 --
+-- Name: Album_album_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE public."Album_album_id_seq"
+    AS integer
+    START WITH 5
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public."Album_album_id_seq" OWNER TO postgres;
+
+--
+-- Name: Album_album_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE public."Album_album_id_seq" OWNED BY public."Album".album_id;
+
+
+--
 -- Name: Song; Type: TABLE; Schema: public; Owner: postgres
 --
 
@@ -68,6 +90,28 @@ CREATE TABLE public."Song" (
 
 
 ALTER TABLE public."Song" OWNER TO postgres;
+
+--
+-- Name: Song_song_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE public."Song_song_id_seq"
+    AS integer
+    START WITH 11
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public."Song_song_id_seq" OWNER TO postgres;
+
+--
+-- Name: Song_song_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE public."Song_song_id_seq" OWNED BY public."Song".song_id;
+
 
 --
 -- Name: Subscription; Type: TABLE; Schema: public; Owner: postgres
@@ -98,6 +142,49 @@ CREATE TABLE public."User" (
 ALTER TABLE public."User" OWNER TO postgres;
 
 --
+-- Name: User_user_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE public."User_user_id_seq"
+    AS integer
+    START WITH 3
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public."User_user_id_seq" OWNER TO postgres;
+
+--
+-- Name: User_user_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE public."User_user_id_seq" OWNED BY public."User".user_id;
+
+
+--
+-- Name: Album album_id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public."Album" ALTER COLUMN album_id SET DEFAULT nextval('public."Album_album_id_seq"'::regclass);
+
+
+--
+-- Name: Song song_id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public."Song" ALTER COLUMN song_id SET DEFAULT nextval('public."Song_song_id_seq"'::regclass);
+
+
+--
+-- Name: User user_id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public."User" ALTER COLUMN user_id SET DEFAULT nextval('public."User_user_id_seq"'::regclass);
+
+
+--
 -- Data for Name: Album; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
@@ -114,15 +201,15 @@ COPY public."Album" (album_id, judul, penyanyi, total_duration, image_path, tang
 --
 
 COPY public."Song" (song_id, judul, penyanyi, tanggal_terbit, genre, duration, audio_path, image_path, album_id) FROM stdin;
-6	Dance The Night Away                                            	TWICE                                                                                                                           	2018-07-09	K-pop                                                           	180	/assets/audio/TWICE _Dance The Night Away_ M_V1666936946.mp3                                                                                                                                                                                                    	https://i.scdn.co/image/ab67616d0000b27340d7efd2594a2b6bda60ea18                                                                                                                                                                                                	4
-5	ノーチラス                                                           	Yorushika                                                                                                                       	2019-08-28	J-pop                                                           	240	/assets/audio/ - ノーチラス (OFFICIAL VIDEO)1666937118.mp3                                                                                                                                                                                                           	https://i.scdn.co/image/ab67616d0000b2730fc9f40ffa270f17b66bcdac                                                                                                                                                                                                	1
-8	More & More                                                     	TWICE                                                                                                                           	2020-07-01	K-pop                                                           	240	/assets/audio/TWICE _MORE & MORE_ M_V1666937713.mp3                                                                                                                                                                                                             	/assets/img/more_and_more1666937713.jpg                                                                                                                                                                                                                         	\N
-4	エイミー                                                            	Yorushika                                                                                                                       	2019-08-28	J-pop                                                           	212	/assets/audio/Yorushika - Amy (エイミー) (Lyrics_Kan_Rom_Eng)1666937082.mp3                                                                                                                                                                                         	https://i.scdn.co/image/ab67616d0000b2730fc9f40ffa270f17b66bcdac                                                                                                                                                                                                	1
-3	心に穴が空いた                                                         	Yorushika                                                                                                                       	2019-08-28	J-pop                                                           	264	/assets/audio/ - 心に穴が空いた (Music Video)1666937138.mp3                                                                                                                                                                                                            	https://i.scdn.co/image/ab67616d0000b2730fc9f40ffa270f17b66bcdac                                                                                                                                                                                                	1
-2	歩く                                                              	Yorushika                                                                                                                       	2019-08-28	J-pop                                                           	206	/assets/audio/Yorushika - Walk (歩く) (Lyrics_Kan_Rom_Eng)1666937159.mp3                                                                                                                                                                                          	https://i.scdn.co/image/ab67616d0000b2730fc9f40ffa270f17b66bcdac                                                                                                                                                                                                	1
 1	雨とカプチーノ                                                         	Yorushika                                                                                                                       	2019-08-28	J-pop                                                           	269	/assets/audio/ - 雨とカプチーノ(Official Video)1666937177.mp3                                                                                                                                                                                                          	https://i.scdn.co/image/ab67616d0000b2730fc9f40ffa270f17b66bcdac                                                                                                                                                                                                	1
-9	The Feels                                                       	TWICE                                                                                                                           	2021-10-01	                                                                	232	/assets/audio/TWICE _The Feels_ M_V1666937776.mp3                                                                                                                                                                                                               	/assets/img/the_feels1666937776.jpg                                                                                                                                                                                                                             	\N
+2	歩く                                                              	Yorushika                                                                                                                       	2019-08-28	J-pop                                                           	206	/assets/audio/Yorushika - Walk (歩く) (Lyrics_Kan_Rom_Eng)1666937159.mp3                                                                                                                                                                                          	https://i.scdn.co/image/ab67616d0000b2730fc9f40ffa270f17b66bcdac                                                                                                                                                                                                	1
+3	心に穴が空いた                                                         	Yorushika                                                                                                                       	2019-08-28	J-pop                                                           	264	/assets/audio/ - 心に穴が空いた (Music Video)1666937138.mp3                                                                                                                                                                                                            	https://i.scdn.co/image/ab67616d0000b2730fc9f40ffa270f17b66bcdac                                                                                                                                                                                                	1
+4	エイミー                                                            	Yorushika                                                                                                                       	2019-08-28	J-pop                                                           	212	/assets/audio/Yorushika - Amy (エイミー) (Lyrics_Kan_Rom_Eng)1666937082.mp3                                                                                                                                                                                         	https://i.scdn.co/image/ab67616d0000b2730fc9f40ffa270f17b66bcdac                                                                                                                                                                                                	1
+5	ノーチラス                                                           	Yorushika                                                                                                                       	2019-08-28	J-pop                                                           	240	/assets/audio/ - ノーチラス (OFFICIAL VIDEO)1666937118.mp3                                                                                                                                                                                                           	https://i.scdn.co/image/ab67616d0000b2730fc9f40ffa270f17b66bcdac                                                                                                                                                                                                	1
+6	Dance The Night Away                                            	TWICE                                                                                                                           	2018-07-09	K-pop                                                           	180	/assets/audio/TWICE _Dance The Night Away_ M_V1666936946.mp3                                                                                                                                                                                                    	https://i.scdn.co/image/ab67616d0000b27340d7efd2594a2b6bda60ea18                                                                                                                                                                                                	4
 7	What Is Love                                                    	TWICE                                                                                                                           	2018-07-09	K-pop                                                           	208	/assets/audio/TWICE _What is Love__ M_V1666937617.mp3                                                                                                                                                                                                           	/assets/img/what_is_love1666937589.jpg                                                                                                                                                                                                                          	4
+8	More & More                                                     	TWICE                                                                                                                           	2020-07-01	K-pop                                                           	240	/assets/audio/TWICE _MORE & MORE_ M_V1666937713.mp3                                                                                                                                                                                                             	/assets/img/more_and_more1666937713.jpg                                                                                                                                                                                                                         	\N
+9	The Feels                                                       	TWICE                                                                                                                           	2021-10-01	                                                                	232	/assets/audio/TWICE _The Feels_ M_V1666937776.mp3                                                                                                                                                                                                               	/assets/img/the_feels1666937776.jpg                                                                                                                                                                                                                             	\N
 10	Feel Special                                                    	TWICE                                                                                                                           	2018-08-23	K-pop                                                           	221	/assets/audio/TWICE_Feel Special_M_V1666937851.mp3                                                                                                                                                                                                              	/assets/img/feel_special1666937851.jpg                                                                                                                                                                                                                          	\N
 \.
 
@@ -140,9 +227,30 @@ COPY public."Subscription" (creator_id, subscriber_id, status) FROM stdin;
 --
 
 COPY public."User" (user_id, email, password, username, is_admin) FROM stdin;
-531	admin@admin.com                                                                                                                                                                                                                                                 	b                                                                                                                                                                                                                                                               	admin                                                                                                                                                                                                                                                           	t
-308	ice@gmail.com                                                                                                                                                                                                                                                   	jdf                                                                                                                                                                                                                                                             	ice                                                                                                                                                                                                                                                             	f
+1	admin@admin.com                                                                                                                                                                                                                                                 	b                                                                                                                                                                                                                                                               	admin                                                                                                                                                                                                                                                           	t
+2	ice@gmail.com                                                                                                                                                                                                                                                   	jdf                                                                                                                                                                                                                                                             	ice                                                                                                                                                                                                                                                             	f
 \.
+
+
+--
+-- Name: Album_album_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public."Album_album_id_seq"', 1, false);
+
+
+--
+-- Name: Song_song_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public."Song_song_id_seq"', 1, false);
+
+
+--
+-- Name: User_user_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public."User_user_id_seq"', 1, false);
 
 
 --

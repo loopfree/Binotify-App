@@ -65,15 +65,15 @@ $genre = $_POST["Genre"];
 $duration = $_POST["Duration"];
 $album = $_POST["Album"];
 
-$result = pg_query_params($conn, "SELECT * FROM \"Album\" WHERE Judul=$1", [$judul]);
+$result = pg_query_params($conn, "SELECT * FROM \"Album\" WHERE judul=$1", [$judul]);
 
 if (pg_num_rows($result) > 0) {
     echo "<script type='text/javascript'>alert('Album name existed');
           window.location.href='/page/add-album/'</script>";
 }
 else {
-    $albumId = hashUsername($judul);
-    $query = "INSERT INTO \"Album\" VALUES ($1,$2,$3,$4,$5,$6,$7);";
+    $query = "INSERT INTO \"Album\" (judul, penyanyi, total_duration, image_path, tanggal_terbit, genre) 
+              VALUES ($1,$2,$3,$4,$5,$6);";
 
     pg_query_params($conn, $query, [$albumId, $judul, $penyanyi, 0, $sqlImageFile, $tanggalTerbit, $genre]);
     header("Refresh:0; url=/page/album-list/");

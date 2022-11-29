@@ -117,21 +117,19 @@ if ($penyanyiAlbum != null && $penyanyiAlbum != $penyanyi) {
     return;
 }
 
-$songId = pg_fetch_row(pg_query($conn, "SELECT MAX(song_id) FROM \"Song\";"))[0] + 1;
-
 if($albumId !== null) {
     $query = "
-        INSERT INTO \"Song\"
-        VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9);
+        INSERT INTO \"Song\" (judul, penyanyi, tanggal_terbit, genre, duration, audio_path, image_path, album_id)
+        VALUES ($1, $2, $3, $4, $5, $6, $7, $8);
     ";
-    pg_query_params($conn, $query, [$songId, $judul, $penyanyi, $tanggalTerbit, $genre, 
+    pg_query_params($conn, $query, [$judul, $penyanyi, $tanggalTerbit, $genre, 
                                     $duration, $sqlMusicFile, $sqlImageFile, $albumId]);
 } else {
     $query = "
-        INSERT INTO \"Song\"
-        VALUES ($1, $2, $3, $4, $5, $6, $7, $8);
+        INSERT INTO \"Song\" (judul, penyanyi, tanggal_terbit, genre, duration, audio_path, image_path, album_id)
+        VALUES ($1, $2, $3, $4, $5, $6, $7);
     ";
-    pg_query_params($conn, $query, [$songId, $judul, $penyanyi, $tanggalTerbit, $genre, 
+    pg_query_params($conn, $query, [$judul, $penyanyi, $tanggalTerbit, $genre, 
                                     $duration, $sqlMusicFile, $sqlImageFile]);
 }
 

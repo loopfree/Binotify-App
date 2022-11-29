@@ -16,12 +16,10 @@
     $password = $decoded["password"];
     $passwordHashed = hashPasswordTo($password);
 
-    $userId = hashUsername($username);
+    $query = "INSERT INTO \"User\" (email, password, username, is_admin)
+              VALUES ($1, $2, $3, $4);";
 
-    $query = "INSERT INTO \"User\"
-              VALUES ($1, $2, $3, $4, $5);";
-
-    $result = pg_query_params($conn, $query, [$userId, $email, $passwordHashed, $username, "f"]);
+    $result = pg_query_params($conn, $query, [$email, $passwordHashed, $username, "f"]);
 
     if(!$result) {
         echo "fail";
