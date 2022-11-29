@@ -37,6 +37,35 @@ session_start();
         </li>
     </a>
     <?php
+    if($_SESSION["logged_in"]) {
+        ?>
+        <a href="/page/singer-list/index.php">
+            <li class="nav-button">
+                <script src="https://cdn.lordicon.com/fudrjiwc.js"></script>
+                <lord-icon
+                    src="https://cdn.lordicon.com/kipaqhoz.json"
+                    trigger="morph"
+                    colors="primary:#ffffff"
+                    style="width:2rem;height:2rem">
+                </lord-icon>
+                <p class="nav-desc">Premium Singer</p>
+            </li>
+        </a>
+        <a href="/page/premium-songs-list/">
+            <li class="nav-button">
+                <lord-icon
+                    src="/assets/lord-icon/album-icon.json"
+                    trigger="hover"
+                    colors="primary:#ffffff"
+                    style="width:2rem;height:2rem">
+                </lord-icon>
+                <p class="nav-desc">Premium</p>
+            </li>
+        </a>
+        <?php
+    }
+    ?>
+    <?php
     if ($_SESSION['logged_in'] && $_SESSION['admin']) {
         ?>
         <a href="/page/add-album/">
