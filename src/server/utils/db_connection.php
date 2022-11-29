@@ -1,3 +1,3 @@
 <?php
-$conn = pg_pconnect("host=localhost port=5433 dbname=Binotify user=postgres password=admin");
+$conn = pg_pconnect("host=localhost port=6001 dbname=catifyapp user=postgres password=admin");
 ?>
