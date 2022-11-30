@@ -14,8 +14,9 @@ window.onload = () => {
 const update = (cb, time) => {
     let timeoutId = null;
     const func = () => {
+        cb();
         clearTimeout(timeoutId);
-        timeoutId = setTimeout(cb,time);
+        timeoutId = setTimeout(func,time);
     }
 
     return func;
@@ -167,4 +168,4 @@ update(() => {
     xhr.open("GET", "/server/utils/poll-subscription.php");
 
     xhr.send();
-}, 20000);
+}, 20000)();
