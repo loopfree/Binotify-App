@@ -5,7 +5,7 @@ window.onload = () => {
 }
 
 async function getSongsList() {
-    const response = await fetch("http://localhost:3000/premium_singer/list");
+    const response = await fetch("http://localhost:3000/premium_singer/song");
     return await response.json();
 }
 
@@ -23,14 +23,15 @@ function getSongCards() {
     const songContainer = document.getElementById("songs-container");
     // Fetch data
     getSongsList().then((results) => {
+        console.log(results);
         if(results !== null)  {
-            results.forEach((result) => {
+            results.songs.forEach((result) => {
                 const songCard = document.createElement("div");
                 songCard.className = "song-card";
                 songCard.innerHTML = `
                     <img 
-                        src='$imgpath'
-                        alt='$title'
+                        src='/assets/img/song-default.png'
+                        alt=''
                         class='song-image'
                     >
                     <div class='song-info'>
@@ -44,6 +45,7 @@ function getSongCards() {
             });
             songPlayUpdate();
         } else {
+            console.log('fetch')
             songContainer.innerHTML = `<p class="text-center">No premium songs available</p>`;
         }
     });

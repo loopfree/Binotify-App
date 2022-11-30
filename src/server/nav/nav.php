@@ -54,7 +54,7 @@ session_start();
         <a href="/page/premium-songs-list/">
             <li class="nav-button">
                 <lord-icon
-                    src="/assets/lord-icon/album-icon.json"
+                    src="/assets/lord-icon/premium-songs.json"
                     trigger="hover"
                     colors="primary:#ffffff"
                     style="width:2rem;height:2rem">
