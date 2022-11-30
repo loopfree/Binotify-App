@@ -19,7 +19,7 @@
     <nav class="nav"></nav>
     <div id="profile" class="profile"></div>
     <main>
-        <h1 class="title">Songs</h1>
+        <h1 class="title">Premium songs</h1>
         <div id="songs-container" class="songs-container"></div>
     </main>
     <script src="https://cdn.lordicon.com/pzdvqjsp.js"></script>
