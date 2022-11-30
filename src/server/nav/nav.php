@@ -48,7 +48,7 @@ session_start();
                     colors="primary:#ffffff"
                     style="width:2rem;height:2rem">
                 </lord-icon>
-                <p class="nav-desc">Premium Singer</p>
+                <p class="nav-desc">Premium singers</p>
             </li>
         </a>
         <a href="/page/premium-songs-list/">
@@ -59,7 +59,7 @@ session_start();
                     colors="primary:#ffffff"
                     style="width:2rem;height:2rem">
                 </lord-icon>
-                <p class="nav-desc">Premium</p>
+                <p class="nav-desc">Premium songs</p>
             </li>
         </a>
         <?php
