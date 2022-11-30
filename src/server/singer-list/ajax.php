@@ -5,11 +5,32 @@ session_start();
 require $_SERVER['DOCUMENT_ROOT'] . '/server/utils/db_connection.php';
 require $_SERVER['DOCUMENT_ROOT'] . '/server/utils/hash.php';
 
-$restResponse = file_get_contents("localhost:3000/premium_singer/list");
-$premiumSingers = json_decode($response);
+function requestSingerFromRest() {
+    $url = "http://catify-rest:3000/premium_singer/list";
+
+    $params = array('http' => array(
+        'method' => 'POST',
+    ));
+
+    $ctx = stream_context_create($params);
+    $fp = @fopen($url, 'rb', false, $ctx);
+
+    if(!$fp) {
+        throw new Exception('Problem with $url');
+    }
+
+    $response = @stream_get_contents($fp);
+    if($response === false) {
+        throw new Exception("Problem reading data from $url");
+    }
+
+    return $response;
+}
+
+$premiumSingers = json_decode(requestSingerFromRest());
 $resp = array();
 
-foreach ($premiumSingers["singers"] as $premiumSinger) {
+foreach ($premiumSingers->singers as $premiumSinger) {
     $temp = array();
     $temp += ["singer-name" => $premiumSinger["name"]];
 
