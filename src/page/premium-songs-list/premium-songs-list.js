@@ -21,6 +21,7 @@ function getNav() {
 
 function getSongCards() {
     const songContainer = document.getElementById("songs-container");
+    let audio = new Audio();
     // Fetch data
     getSongsList().then((results) => {
         console.log(results);
@@ -28,6 +29,7 @@ function getSongCards() {
             results.songs.forEach((result) => {
                 const songCard = document.createElement("div");
                 songCard.className = "song-card";
+                songCard.setAttribute("audio_path", result.audio_path);
                 songCard.innerHTML = `
                     <img 
                         src='/assets/img/song-default.png'
@@ -43,7 +45,7 @@ function getSongCards() {
                 `;
                 songContainer.appendChild(songCard);
             });
-            songPlayUpdate();
+            songPlayUpdate(audio);
         } else {
             console.log('fetch')
             songContainer.innerHTML = `<p class="text-center">No premium songs available</p>`;
@@ -61,7 +63,7 @@ function getProfile() {
     xhr.send();
 }
 
-function songPlayUpdate() {
+function songPlayUpdate(audio) {
     const songCards = document.getElementsByClassName("song-card");
 
     for (let i=0; i < songCards.length; i++) {
@@ -77,7 +79,9 @@ function songPlayUpdate() {
             playButton.style.transform = "translateY(0.5rem)";
         })
         songCard.addEventListener("click", function() {
-            window.location.href = `/page/detail-lagu/index.php?song-id=${songCard.getAttribute("song-id")}`;
+            audio.pause();
+            audio.setAttribute("src", songCard.getAttribute("audio_path"));
+            audio.play();
         })
     }
 }
