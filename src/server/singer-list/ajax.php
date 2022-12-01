@@ -53,6 +53,7 @@ foreach ($premiumSingers->singers as $premiumSinger) {
     }
 
     $temp += ["status" => $status];
+    $temp += ["singer-id" => $premiumSinger->id];
 
     $resp[] = $temp;
 }

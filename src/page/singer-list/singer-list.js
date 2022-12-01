@@ -72,13 +72,14 @@ function displayTable() {
         const singerList  = JSON.parse(this.responseText);
         
         singerList.forEach((elem, index) => {
-            const singer = elem["singer-name"];
+            const singerName = elem["singer-name"];
+            const singerId = elem["singer-id"];
             const status = elem["status"];
 
             const singerRow = document.createElement("tr");
             
             const singerCol = document.createElement("th");
-            singerCol.innerHTML = singer;
+            singerCol.innerHTML = singerName;
             
             const emptyCol2 = document.createElement("th");
             
@@ -96,7 +97,7 @@ function displayTable() {
                 
                 subscribeCol.appendChild(subscribeButton);
 
-            } else if(elem.stats === "ACCEPTED") {
+            } else if(elem.status === "ACCEPTED") {
                 /**
                  * TODO: linking href to react
                  */
@@ -117,14 +118,12 @@ function displayTable() {
                     const xhr = new XMLHttpRequest();
                     
                     xhr.onloadend = function() {
-                        console.log(this.responseText);
+                        window.location.reload();
                     };
 
-                    xhr.open("GET", `/server/singer-list/request-subscription.php?creator_id=${singer}`);
+                    xhr.open("GET", `/server/singer-list/request-subscription.php?creator_id=${singerId}`);
 
                     xhr.send();
-
-                    window.location.reload();
                 };
 
                 subscribeCol.appendChild(subscribeButton);
@@ -163,6 +162,7 @@ update(() => {
     xhr.onloadend = function() {
         displayTable();
         console.log("Subscription table successfully polled");
+        console.log("from php", this.responseText);
     }
 
     xhr.open("GET", "/server/utils/poll-subscription.php");

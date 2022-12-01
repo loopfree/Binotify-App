@@ -8,7 +8,6 @@ if(!isset($_GET["creator_id"])) {
     return;
 }
 
-
 $requestSubscriptionUrl = "http://catify-soap:8042/request?wsdl";
 
 $options = array(
@@ -22,17 +21,9 @@ $options = array(
             );
             
 $client = new SoapClient($requestSubscriptionUrl, $options);
-            
-function obtainUserId() {
-    $query = "SELECT user_id FROM \"Subscription\" WHERE username = $1";;
 
-    $result = pg_query_params($conn, $query, $_SESSION["username"]);
-
-    return pg_fetch_result($result, 0, "user_id");
-}
-
-$creatorId = hashUsername($_GET["creator_id"]);
-$subscriberId = obtainUserId();
+$creatorId = $_GET["creator_id"];
+$subscriberId = $_SESSION["user_id"];
 
 $req = array(
     "subscriberId" => $subscriberId,
@@ -40,29 +31,6 @@ $req = array(
 );
 
 $res = $client->__soapCall('requestSubscription', array($req));
-
-
-
-$query = "SELECT status FROM \"Subscription\" WHERE creator_id = $1 AND subscriber_id = $2";
-
-$check = pg_query_params($conn, $query, [$creatorId, $subscriberId]);
-
-$exists = false;
-
-if($row = pg_fetch_row($check)) {
-    $exists = true;
-}
-
-if(!$exists) {
-    $query = "INSERT INTO \"Subscription\"
-                VALUES ( $1, $2, 'PENDING');
-            ";
-    
-    pg_query_params($conn, $query, [$creatorId, $subscriberId]);
-} else {
-    $query = "UPDATE \"Subscription\" SET status = 'PENDING' WHERE creator_id = $1 AND subscriber_id = $2";
-    pg_query_params($conn, $query, [$creatorId, $subscriberId]);
-}
 
 echo json_encode($res);
 ?>
