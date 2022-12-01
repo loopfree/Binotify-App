@@ -20,7 +20,10 @@
     <div id="profile" class="profile"></div>
     <main>
         <h1 class="title">Premium songs</h1>
-        <div id="songs-container" class="songs-container"></div>
+        <?php
+            $user_id = $_SESSION["user_id"];
+            echo "<div id='songs-container' class='songs-container' user_id='$user_id'></div>";
+        ?>
     </main>
     <script src="https://cdn.lordicon.com/pzdvqjsp.js"></script>
 </body>
