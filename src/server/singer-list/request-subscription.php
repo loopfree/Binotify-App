@@ -11,7 +11,7 @@ if(!isset($_GET["creator_id"])) {
 $creatorId = hashUsername($_GET["creator_id"]);
 $subscriberId = hashUsername($_SESSION["username"]);
 
-$requestSubscriptionUrl = "http://localhost:8042/request?wsdl";
+$requestSubscriptionUrl = "http://catify-soap:8042/request?wsdl";
 
 $options = array(
     "stream_context" => stream_context_create([
