@@ -8,8 +8,6 @@ if(!isset($_GET["creator_id"])) {
     return;
 }
 
-$creatorId = hashUsername($_GET["creator_id"]);
-$subscriberId = hashUsername($_SESSION["username"]);
 
 $requestSubscriptionUrl = "http://catify-soap:8042/request?wsdl";
 
@@ -17,13 +15,24 @@ $options = array(
     "stream_context" => stream_context_create([
         "socket" => [
                 "bindto" => "0:0"
-            ]
-        ]),
-    "trace" => 1,
-    "exception" => 0
-);
-
+                ]
+                ]),
+                "trace" => 1,
+                "exception" => 0
+            );
+            
 $client = new SoapClient($requestSubscriptionUrl, $options);
+            
+function obtainUserId() {
+    $query = "SELECT user_id FROM \"Subscription\" WHERE username = $1";;
+
+    $result = pg_query_params($conn, $query, $_SESSION["username"]);
+
+    return pg_fetch_result($result, 0, "user_id");
+}
+
+$creatorId = hashUsername($_GET["creator_id"]);
+$subscriberId = obtainUserId();
 
 $req = array(
     "subscriberId" => $subscriberId,
@@ -31,6 +40,8 @@ $req = array(
 );
 
 $res = $client->__soapCall('requestSubscription', array($req));
+
+
 
 $query = "SELECT status FROM \"Subscription\" WHERE creator_id = $1 AND subscriber_id = $2";
 
