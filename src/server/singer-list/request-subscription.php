@@ -26,6 +26,7 @@ $creatorId = $_GET["creator_id"];
 $subscriberId = $_SESSION["user_id"];
 
 $req = array(
+    "apiKey" => getenv('API_KEY'),
     "subscriberId" => $subscriberId,
     "creatorId" => $creatorId
 );
