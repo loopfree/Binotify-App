@@ -5,7 +5,7 @@ window.onload = () => {
 }
 
 async function getSongsList() {
-    const response = await fetch("http://localhost:3000/premium_singer/song");
+    const response = await fetch("http://localhost:3000/subscriber/premium_song");  // TODO: add json body
     return await response.json();
 }
 
