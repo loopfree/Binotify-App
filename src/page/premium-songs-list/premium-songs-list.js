@@ -1,11 +1,12 @@
 window.onload = () => {
     getNav();
+    getCreatorIds();
     getSongCards();
     getProfile();
 }
 
 async function getSongsList(user_id) {
-    const response = await fetch("http://localhost:3000/premium_singer/song/list" + user_id);
+    const response = await fetch("http://localhost:3000/premium_singer/" + user_id + "/song/list");
     return await response.json();
 }
 
@@ -19,51 +20,66 @@ function getNav() {
     xhr.send();
 }
 
-function getSongCards() {
+function getCreatorIds() {
     const songContainer = document.getElementById("songs-container");
     const xhr = new XMLHttpRequest();
     xhr.open("GET", "/server/premium-songs-list/index.php", true);
     xhr.onload = function() {
         songContainer.innerHTML = this.responseText;
-        songPlayUpdate();
     }
     xhr.send(null);
 }
 
 // function getSongCards() {
 //     const songContainer = document.getElementById("songs-container");
-//     const userId = songContainer.getAttribute("user_id");
-//     let audio = new Audio();
-//     // Fetch data
-//     getSongsList(userId).then((results) => {
-//         console.log(results);
-//         if(results !== null)  {
-//             results.songs.forEach((result) => {
-//                 const songCard = document.createElement("div");
-//                 songCard.className = "song-card";
-//                 songCard.setAttribute("audio_path", result.audio_path);
-//                 songCard.innerHTML = `
-//                     <img 
-//                         src='/assets/img/song-default.png'
-//                         alt=''
-//                         class='song-image'
-//                     >
-//                     <div class='song-info'>
-//                         <h2 class='song-title'>${result.judul}</h2>
-//                     </div>
-//                     <div class='play-button'>
-//                         <div class='triangle'></div>
-//                     </div>
-//                 `;
-//                 songContainer.appendChild(songCard);
-//             });
-//             songPlayUpdate(audio);
-//         } else {
-//             console.log('fetch')
-//             songContainer.innerHTML = `<p class="text-center">No premium songs available</p>`;
-//         }
-//     });
+//     const xhr = new XMLHttpRequest();
+//     xhr.open("GET", "/server/premium-songs-list/index.php", true);
+//     xhr.onload = function() {
+//         songContainer.innerHTML = this.responseText;
+//         songPlayUpdate();
+//     }
+//     xhr.send(null);
 // }
+
+function getSongCards() {
+    const songContainer = document.getElementById("songs-container");
+    const creatorIdFields = document.getElementsByClassName("creator-id");
+    console.log(creatorIdFields);
+    const userId = songContainer.getAttribute("user_id");
+    let audio = new Audio();
+    // Fetch data
+    for(let i=0; i < creatorIdFields.length; i++) {
+        const creatorId = creatorIdField[i].getAttribute("creator_id");
+        getSongsList(creatorId).then((results) => {
+            console.log(results);
+            if(results !== null)  {
+                results.songs.forEach((result) => {
+                    const songCard = document.createElement("div");
+                    songCard.className = "song-card";
+                    songCard.setAttribute("audio_path", result.audio_path);
+                    songCard.innerHTML = `
+                        <img 
+                            src='/assets/img/song-default.png'
+                            alt=''
+                            class='song-image'
+                        >
+                        <div class='song-info'>
+                            <h2 class='song-title'>${result.judul}</h2>
+                        </div>
+                        <div class='play-button'>
+                            <div class='triangle'></div>
+                        </div>
+                    `;
+                    songContainer.appendChild(songCard);
+                });
+                songPlayUpdate(audio);
+            } else {
+                console.log('fetch')
+                songContainer.innerHTML = `<p class="text-center">No premium songs available</p>`;
+            }
+        });
+    };
+}
 
 function getProfile() {
     const profile = document.getElementById("profile");
