@@ -32,7 +32,7 @@ $resp = array();
 
 foreach ($premiumSingers->singers as $premiumSinger) {
     $temp = array();
-    $temp += ["singer-name" => $premiumSinger["name"]];
+    $temp += ["singer-name" => $premiumSinger->name];
 
     $query = "SELECT 
                     status 
@@ -44,7 +44,7 @@ foreach ($premiumSingers->singers as $premiumSinger) {
                     subscriber_id = $2;
                 ";
 
-    $subscriptionStatus = pg_query_params($conn, $query, [$premiumSinger["id"], $_SESSION["user_id"]]);
+    $subscriptionStatus = pg_query_params($conn, $query, [$premiumSinger->id, $_SESSION["user_id"]]);
 
     $status = "";
 
