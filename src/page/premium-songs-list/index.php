@@ -16,6 +16,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>\(OwO)/</title>
     <link rel="stylesheet" href="premium-songs-list.css">
+    <script>
+        const creatorId = <?php echo $_GET['creator_id'] ?>
+    </script>
     <script src="premium-songs-list.js" defer></script>
 </head>
 <body class="dark-bg body">
