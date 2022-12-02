@@ -3,7 +3,7 @@
     if (!($_SESSION["logged_in"])) {
         header("Location: /index.php");
     }
-    if (!isset($_GET["album-id"])) {
+    if (!isset($_GET["creator_id"])) {
         header("Location: /page/singer-list/");
     }
 ?>
@@ -25,8 +25,8 @@
         <h1 class="title">Premium songs</h1>
         <?php
             $user_id = $_SESSION["user_id"];
-            $artist_id = $_GET["artist_id"];
-            echo "<div id='songs-container' class='songs-container' user_id='$user_id' artist_id='$artist_id'></div>";
+            $creator_id = $_GET["creator_id"];
+            echo "<div id='songs-container' class='songs-container' user_id='$user_id' creator_id='$creator_id'></div>";
         ?>
     </main>
     <script src="https://cdn.lordicon.com/pzdvqjsp.js"></script>

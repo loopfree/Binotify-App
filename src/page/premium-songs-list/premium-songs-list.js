@@ -54,7 +54,7 @@ function getCreatorIds() {
 
 function getSongCards() {
     const songContainer = document.getElementById("songs-container");
-    const creatorId = songContainer.getAttribute("artist_id");
+    const creatorId = songContainer.getAttribute("creator_id");
     // console.log(creatorIdFields);
     // const userId = songContainer.getAttribute("user_id");
     let audio = new Audio();
