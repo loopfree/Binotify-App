@@ -3,6 +3,7 @@ window.onload = () => {
     // getCreatorIds();
     getProfile();
     getSongCards();
+    setInterval(getSongCards, 20000);
 }
 
 async function getSongsList(creatorId) {
@@ -54,6 +55,7 @@ function getNav() {
 
 function getSongCards() {
     const songContainer = document.getElementById("songs-container");
+    songContainer.innerHTML = "";
     // const creatorId = songContainer.getAttribute("creator_id");
     // console.log(creatorIdFields);
     // const userId = songContainer.getAttribute("user_id");
