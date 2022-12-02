@@ -1,6 +1,7 @@
 <?php
 require $_SERVER['DOCUMENT_ROOT'] . '/server/utils/db_connection.php';
 require $_SERVER['DOCUMENT_ROOT'] . '/server/utils/hash.php';
+require $_SERVER['DOCUMENT_ROOT'] . '/server/utils/apikey.php';
 
 session_start();
 
@@ -26,7 +27,7 @@ $creatorId = $_GET["creator_id"];
 $subscriberId = $_SESSION["user_id"];
 
 $req = array(
-    "apiKey" => getenv('API_KEY'),
+    "apiKey" => $apikey,
     "subscriberId" => $subscriberId,
     "creatorId" => $creatorId
 );
