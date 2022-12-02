@@ -102,6 +102,7 @@ function displayTable() {
                  * TODO: linking href to react
                  */
                 const singerLinkHref = document.createElement("a");
+                singerLinkHref.href = `/page/premium-songs-list/index.php?creator_id=${singerId}`;
 
                 const singerLinkButton = document.createElement("button");
                 singerLinkButton.className = "btn";
