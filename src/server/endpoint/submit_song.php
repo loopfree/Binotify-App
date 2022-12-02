@@ -41,7 +41,7 @@ $imageNameHashed = $imageName['name'] . $currentTime;
 $imageNameFixed = $imageNameHashed . '.' . $imageName['ext'];
 
 $imageFile = realpath(dirname(getcwd())) . $imageDir . $imageNameFixed;
-$sqlImageFile = "/assets/img/" . $imageNameFixed;
+$sqlImageFile = "/assets/audio/" . $imageNameFixed;
 
 if(!move_uploaded_file($_FILES['audio']['tmp_name'], $imageFile)) {
     echo json_encode(["path" => null]);
