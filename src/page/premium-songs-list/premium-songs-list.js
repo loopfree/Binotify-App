@@ -5,8 +5,19 @@ window.onload = () => {
     getProfile();
 }
 
-async function getSongsList(user_id) {
-    const response = await fetch("http://localhost:3000/premium_singer/" + user_id + "/song/list");
+async function getSongsList(creatorId) {
+    const songContainer = document.getElementById("songs-container");
+    const userId = songContainer.getAttribute("user_id");
+    const token = document.cookie.split('; ')
+        .find((row) => row.startsWith("token="))
+        ?.split("=")[1];
+
+    const response = await fetch(`http://localhost:3000/subscriber/${userId}/premium_song/${creatorId}`, {
+        method: "GET",
+        headers: {
+            'Authorization': token === undefined ? "" : token
+        },
+    });
     return await response.json();
 }
 
@@ -45,11 +56,11 @@ function getSongCards() {
     const songContainer = document.getElementById("songs-container");
     const creatorIdFields = document.getElementsByClassName("creator-id");
     console.log(creatorIdFields);
-    const userId = songContainer.getAttribute("user_id");
+    // const userId = songContainer.getAttribute("user_id");
     let audio = new Audio();
     // Fetch data
     for(let i=0; i < creatorIdFields.length; i++) {
-        const creatorId = creatorIdField[i].getAttribute("creator_id");
+        const creatorId = creatorIdFields[i].getAttribute("creator_id");
         getSongsList(creatorId).then((results) => {
             console.log(results);
             if(results !== null)  {

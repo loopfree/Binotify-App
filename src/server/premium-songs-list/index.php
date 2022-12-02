@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-echo $_SESSION['user_id'];
+// echo $_SESSION['user_id'];
 
 require $_SERVER['DOCUMENT_ROOT'] . '/server/utils/db_connection.php';
 
@@ -50,9 +50,10 @@ $content = "";
 
 for ($row = 0; $row < pg_num_rows($result); $row++) {
     $creator_id = pg_fetch_result($result, $row, "creator_id");
+    $user_id = $_SESSION['user_id'];
     $content .= "
-      <input type=hidden class='creator-id' creator_id=$creator_id>
-    "
+      <input type=hidden class='creator-id' creator_id=$creator_id user_id=$user_id>
+    ";
     // // echo $creator_id;
     // // call rest api
     // $url = "http://catify-rest:3000/premium_singer/list";
