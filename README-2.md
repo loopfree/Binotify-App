@@ -54,6 +54,6 @@
 </tr>
 <tr>
     <td>Halaman List Lagu Premium</td>
-    <td>13520050</td>
+    <td>13520050, 13520131</td>
 </tr>
 </table>
