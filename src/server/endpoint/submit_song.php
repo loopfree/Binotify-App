@@ -32,7 +32,7 @@ function separateNameAndExt($filename) {
 }
 
 $currentTime = (string) time();
-$imageDir = '/../assets/img/';
+$imageDir = '/../assets/audio/';
 
 $imageName = basename($_FILES['audio']['name']);
 $imageName = separateNameAndExt($imageName);
