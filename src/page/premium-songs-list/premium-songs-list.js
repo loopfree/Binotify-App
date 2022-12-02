@@ -1,8 +1,8 @@
 window.onload = () => {
     getNav();
-    getCreatorIds();
-    getSongCards();
+    // getCreatorIds();
     getProfile();
+    getSongCards();
 }
 
 async function getSongsList(creatorId) {
@@ -31,15 +31,15 @@ function getNav() {
     xhr.send();
 }
 
-function getCreatorIds() {
-    const songContainer = document.getElementById("songs-container");
-    const xhr = new XMLHttpRequest();
-    xhr.open("GET", "/server/premium-songs-list/index.php", true);
-    xhr.onload = function() {
-        songContainer.innerHTML = this.responseText;
-    }
-    xhr.send(null);
-}
+// function getCreatorIds() {
+//     const songContainer = document.getElementById("songs-container");
+//     const xhr = new XMLHttpRequest();
+//     xhr.open("GET", "/server/premium-songs-list/index.php", true);
+//     xhr.onload = function() {
+//         songContainer.innerHTML = this.responseText;
+//     }
+//     xhr.send(null);
+// }
 
 // function getSongCards() {
 //     const songContainer = document.getElementById("songs-container");
@@ -54,7 +54,7 @@ function getCreatorIds() {
 
 function getSongCards() {
     const songContainer = document.getElementById("songs-container");
-    const creatorId = songContainer.getAttribute("creator_id");
+    // const creatorId = songContainer.getAttribute("creator_id");
     // console.log(creatorIdFields);
     // const userId = songContainer.getAttribute("user_id");
     let audio = new Audio();
