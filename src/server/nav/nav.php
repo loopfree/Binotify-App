@@ -51,17 +51,6 @@ session_start();
                 <p class="nav-desc">Premium singers</p>
             </li>
         </a>
-        <a href="/page/premium-songs-list/">
-            <li class="nav-button">
-                <lord-icon
-                    src="/assets/lord-icon/premium-songs.json"
-                    trigger="hover"
-                    colors="primary:#ffffff"
-                    style="width:2rem;height:2rem">
-                </lord-icon>
-                <p class="nav-desc">Premium songs</p>
-            </li>
-        </a>
         <?php
     }
     ?>
