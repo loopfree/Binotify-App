@@ -54,42 +54,41 @@ function getCreatorIds() {
 
 function getSongCards() {
     const songContainer = document.getElementById("songs-container");
-    const creatorIdFields = document.getElementsByClassName("creator-id");
-    console.log(creatorIdFields);
+    const creatorId = songContainer.getAttribute("artist_id");
+    // console.log(creatorIdFields);
     // const userId = songContainer.getAttribute("user_id");
     let audio = new Audio();
     // Fetch data
-    for(let i=0; i < creatorIdFields.length; i++) {
-        const creatorId = creatorIdFields[i].getAttribute("creator_id");
-        getSongsList(creatorId).then((results) => {
-            console.log(results);
-            if(results !== null)  {
-                results.songs.forEach((result) => {
-                    const songCard = document.createElement("div");
-                    songCard.className = "song-card";
-                    songCard.setAttribute("audio_path", result.audio_path);
-                    songCard.innerHTML = `
-                        <img 
-                            src='/assets/img/song-default.png'
-                            alt=''
-                            class='song-image'
-                        >
-                        <div class='song-info'>
-                            <h2 class='song-title'>${result.judul}</h2>
-                        </div>
-                        <div class='play-button'>
-                            <div class='triangle'></div>
-                        </div>
-                    `;
-                    songContainer.appendChild(songCard);
-                });
-                songPlayUpdate(audio);
-            } else {
-                console.log('fetch')
-                songContainer.innerHTML = `<p class="text-center">No premium songs available</p>`;
-            }
-        });
-    };
+    // for(let i=0; i < creatorIdFields.length; i++) {
+    //     const creatorId = creatorIdFields[i].getAttribute("creator_id");
+    getSongsList(creatorId).then((results) => {
+        console.log(results);
+        if(results !== null)  {
+            results.songs.forEach((result) => {
+                const songCard = document.createElement("div");
+                songCard.className = "song-card";
+                songCard.setAttribute("audio_path", result.audio_path);
+                songCard.innerHTML = `
+                    <img 
+                        src='/assets/img/song-default.png'
+                        alt=''
+                        class='song-image'
+                    >
+                    <div class='song-info'>
+                        <h2 class='song-title'>${result.judul}</h2>
+                    </div>
+                    <div class='play-button'>
+                        <div class='triangle'></div>
+                    </div>
+                `;
+                songContainer.appendChild(songCard);
+            });
+            songPlayUpdate(audio);
+        } else {
+            console.log('fetch')
+            songContainer.innerHTML = `<p class="text-center">No premium songs available</p>`;
+        }
+    });
 }
 
 function getProfile() {
