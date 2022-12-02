@@ -16,7 +16,7 @@ function requestSingerFromRest() {
     $fp = @fopen($url, 'rb', false, $ctx);
 
     if(!$fp) {
-        throw new Exception('Problem with $url');
+        throw new Exception("Problem with $url");
     }
 
     $response = @stream_get_contents($fp);
