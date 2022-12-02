@@ -1,3 +1,9 @@
+### --------------------------------------------------------------------------------------------------------
+# Update Tugas Besar 2 IF3110
+## Readme untuk Tugas Besar 2 IF3110 mengenai
+## perubahan yang diimplementasikan dapat diakses pada tautan [ini](README-2.md)
+### --------------------------------------------------------------------------------------------------------
+
 # Tugas Besar 1 IF3110 
 ![Logo](./readme-related/main.jpg)
 
